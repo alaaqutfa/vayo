@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <!-- vayoclinic -->
 <head>
   <meta charset="utf-8">
@@ -30,6 +30,60 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <style>
+    .vayo-language-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: 18px;
+      padding: 4px;
+      border: 1px solid color-mix(in srgb, var(--accent-color), transparent 82%);
+      border-radius: 999px;
+      background: var(--surface-color);
+    }
+
+    .vayo-language-switcher button {
+      border: 0;
+      border-radius: 999px;
+      padding: 6px 9px;
+      background: transparent;
+      color: var(--default-color);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .vayo-language-switcher button.active {
+      background: var(--accent-color);
+      color: var(--contrast-color);
+    }
+
+    [dir="rtl"] body {
+      text-align: right;
+    }
+
+    [dir="rtl"] .vayo-language-switcher {
+      margin-left: 0;
+      margin-right: 18px;
+    }
+
+    [dir="rtl"] .ms-4 {
+      margin-left: 0 !important;
+      margin-right: 1.5rem !important;
+    }
+
+    [dir="rtl"] .me-2 {
+      margin-right: 0 !important;
+      margin-left: .5rem !important;
+    }
+
+    @media (max-width: 1199px) {
+      .vayo-language-switcher {
+        margin-left: 8px;
+        margin-right: 8px;
+      }
+    }
+  </style>
 </head>
 
 <body class="index-page">
@@ -102,7 +156,11 @@
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
-
+        <div class="vayo-language-switcher" aria-label="Language switcher">
+          <button type="button" class="active" data-vayo-lang="en">EN</button>
+          <button type="button" data-vayo-lang="ar">AR</button>
+          <button type="button" data-vayo-lang="fr">FR</button>
+        </div>
       </div>
 
     </div>
@@ -1060,15 +1118,465 @@
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
+  <script>
+    (function () {
+      const vayoTranslations = {
+        ar: {
+          title: "فايو كلينك - رعاية طبية موثوقة",
+          dir: "rtl",
+          text: {
+            "Home": "الرئيسية",
+            "About": "من نحن",
+            "Departments": "الأقسام",
+            "Services": "الخدمات",
+            "Doctors": "الأطباء",
+            "Patient Pages": "صفحات المرضى",
+            "Department Details": "تفاصيل القسم",
+            "Service Details": "تفاصيل الخدمة",
+            "Book Appointment": "حجز موعد",
+            "Book Book Appointment": "حجز موعد",
+            "Testimonials": "آراء المرضى",
+            "Frequently Asked Questions": "الأسئلة الشائعة",
+            "Gallery": "المعرض",
+            "Terms": "الشروط",
+            "Privacy": "الخصوصية",
+            "Resources": "الموارد",
+            "Patient Guide": "دليل المريض",
+            "Health Programs": "البرامج الصحية",
+            "Preventive Care": "الرعاية الوقائية",
+            "Family Medicine": "طب الأسرة",
+            "Diagnostics": "التشخيص",
+            "Chronic Care": "رعاية الأمراض المزمنة",
+            "Wellness Plans": "خطط العافية",
+            "Insurance Support": "دعم التأمين",
+            "Patient Forms": "نماذج المرضى",
+            "Visit Preparation": "التحضير للزيارة",
+            "Contact": "تواصل معنا",
+            "Accredited": "موثوق",
+            "24/7 Emergency": "طوارئ 24/7",
+            "4.9/5 Rating": "تقييم 4.9/5",
+            "Modern": "رعاية صحية",
+            "Healthcare": "حديثة",
+            "With Compassionate Care": "بلمسة إنسانية",
+            "Years Experience": "سنوات خبرة",
+            "Patients Treated": "مرضى تمت رعايتهم",
+            "Medical Experts": "خبراء طبيون",
+            "Watch Our Story": "تعرّف على قصتنا",
+            "Emergency Hotline": "خط الطوارئ",
+            "Next Available": "أقرب موعد متاح",
+            "Today 2:30 PM": "اليوم 2:30 مساءً",
+            "1,234 Reviews": "1,234 تقييم",
+            "Personal Care, Advanced Medicine": "رعاية شخصية وطب متقدم",
+            "Always here when you need us most": "نحن هنا عندما تحتاجون إلينا",
+            "Featured Departments": "الأقسام المميزة",
+            "Cardiovascular Medicine": "طب القلب والأوعية",
+            "Neurological Sciences": "علوم الأعصاب",
+            "Orthopedic Surgery": "جراحة العظام",
+            "Pediatric Care": "رعاية الأطفال",
+            "Oncology Center": "مركز الأورام",
+            "Emergency Services Available 24/7": "خدمات الطوارئ متاحة 24/7",
+            "Featured Services": "الخدمات المميزة",
+            "Comprehensive Care at Vayo Clinic": "رعاية شاملة في فايو كلينك",
+            "Explore Our Services": "استكشف خدماتنا",
+            "Emergency Care": "الرعاية الطارئة",
+            "Surgical Excellence": "تميز جراحي",
+            "Advanced Diagnostics": "تشخيص متقدم",
+            "24/7 critical care services": "خدمات رعاية حرجة على مدار الساعة",
+            "Minimally invasive procedures": "إجراءات طفيفة التوغل",
+            "State-of-the-art imaging": "تصوير طبي متطور",
+            "Find A Doctor": "ابحث عن طبيب",
+            "Find Your Perfect Healthcare Provider": "ابحث عن مقدم الرعاية المناسب لك",
+            "Find Doctors": "ابحث عن الأطباء",
+            "View All Doctors": "عرض كل الأطباء",
+            "Trusted Medical Care, Every Day": "رعاية طبية موثوقة كل يوم",
+            "Advanced Technology": "تقنيات متقدمة",
+            "24/7 Availability": "توفر على مدار الساعة",
+            "Expert Team": "فريق خبير",
+            "Need Immediate Medical Assistance?": "هل تحتاج مساعدة طبية فورية؟",
+            "Find Location": "اعرف الموقع",
+            "Clinic": "العيادة",
+            "Care Approach": "نهج الرعاية",
+            "Patient Stories": "قصص المرضى",
+            "Accreditations": "الاعتمادات",
+            "Primary Care": "الرعاية الأولية",
+            "Specialist Care": "رعاية تخصصية",
+            "Consultations": "الاستشارات",
+            "Health Articles": "مقالات صحية",
+            "Health Updates": "تحديثات صحية",
+            "Visit Preparation": "التحضير للزيارة",
+            "Connect": "تواصل",
+            "Call Vayo Clinic": "اتصل بفايو كلينك",
+            "Follow Us": "تابعنا",
+            "Partner With Us": "تعاون معنا",
+            "Privacy Policy": "سياسة الخصوصية",
+            "Terms of Service": "شروط الخدمة",
+            "Cookie Policy": "سياسة ملفات الارتباط",
+            "All rights reserved.": "جميع الحقوق محفوظة.",
+            "Designed by": "تصميم"
+          },
+          phrases: {
+            "Vayo Clinic brings together experienced physicians, advanced diagnostics, and a calm patient journey designed around clear answers and confident care.": "تجمع فايو كلينك بين أطباء ذوي خبرة وتشخيص متقدم وتجربة علاجية هادئة مبنية على الوضوح والثقة.",
+            "At Vayo Clinic, every visit is built around attentive listening, precise diagnosis, and a care plan that feels practical, transparent, and personal.": "في فايو كلينك، تبدأ كل زيارة بالاستماع الجيد، والتشخيص الدقيق، وخطة رعاية واضحة وعملية ومناسبة لكل مريض.",
+            "Integrated medical services delivered with clarity, comfort, and clinical excellence": "خدمات طبية متكاملة تقدم بوضوح وراحة وتميز سريري.",
+            "From routine checkups to specialist consultations, our team coordinates the details so patients can focus on getting better.": "من الفحوصات الروتينية إلى الاستشارات التخصصية، ينسق فريقنا التفاصيل ليتمكن المريض من التركيز على التحسن.",
+            "Vayo Clinic provides clear, coordinated medical care with experienced clinicians, modern diagnostics, and follow-up that keeps patients informed at every step.": "تقدم فايو كلينك رعاية طبية واضحة ومنسقة مع أطباء ذوي خبرة وتشخيص حديث ومتابعة تبقي المريض مطلعاً في كل خطوة.",
+            "Modern diagnostic tools support faster decisions and more personalized treatment plans.": "تدعم أدوات التشخيص الحديثة قرارات أسرع وخطط علاج أكثر تخصيصاً.",
+            "Experienced clinicians work together across departments to keep care connected.": "يتعاون الأطباء والخبراء بين الأقسام لضمان رعاية مترابطة وواضحة.",
+            "Providing modern, patient-centered healthcare through trusted specialists, clear communication, and coordinated care for every stage of life.": "نقدم رعاية صحية حديثة تتمحور حول المريض عبر اختصاصيين موثوقين وتواصل واضح ورعاية منسقة لكل مراحل الحياة."
+          }
+        },
+        fr: {
+          title: "Vayo Clinic - Soins médicaux de confiance",
+          dir: "ltr",
+          text: {
+            "Home": "Accueil",
+            "About": "À propos",
+            "Departments": "Départements",
+            "Services": "Services",
+            "Doctors": "Médecins",
+            "Patient Pages": "Pages patients",
+            "Department Details": "Détails du département",
+            "Service Details": "Détails du service",
+            "Book Appointment": "Prendre rendez-vous",
+            "Book Book Appointment": "Prendre rendez-vous",
+            "Testimonials": "Témoignages",
+            "Frequently Asked Questions": "Questions fréquentes",
+            "Gallery": "Galerie",
+            "Terms": "Conditions",
+            "Privacy": "Confidentialité",
+            "Resources": "Ressources",
+            "Patient Guide": "Guide patient",
+            "Health Programs": "Programmes de santé",
+            "Preventive Care": "Soins préventifs",
+            "Family Medicine": "Médecine familiale",
+            "Diagnostics": "Diagnostics",
+            "Chronic Care": "Soins chroniques",
+            "Wellness Plans": "Plans bien-être",
+            "Insurance Support": "Support assurance",
+            "Patient Forms": "Formulaires patients",
+            "Visit Preparation": "Préparer la visite",
+            "Contact": "Contact",
+            "Accredited": "Accrédité",
+            "24/7 Emergency": "Urgence 24/7",
+            "4.9/5 Rating": "Note 4.9/5",
+            "Modern": "Soins",
+            "Healthcare": "modernes",
+            "With Compassionate Care": "avec une attention humaine",
+            "Years Experience": "Années d'expérience",
+            "Patients Treated": "Patients accompagnés",
+            "Medical Experts": "Experts médicaux",
+            "Watch Our Story": "Découvrir notre histoire",
+            "Emergency Hotline": "Ligne d'urgence",
+            "Next Available": "Prochain créneau",
+            "Today 2:30 PM": "Aujourd'hui 14:30",
+            "1,234 Reviews": "1 234 avis",
+            "Personal Care, Advanced Medicine": "Soins personnalisés, médecine avancée",
+            "Always here when you need us most": "Toujours présents quand vous en avez besoin",
+            "Featured Departments": "Départements clés",
+            "Cardiovascular Medicine": "Médecine cardiovasculaire",
+            "Neurological Sciences": "Sciences neurologiques",
+            "Orthopedic Surgery": "Chirurgie orthopédique",
+            "Pediatric Care": "Soins pédiatriques",
+            "Oncology Center": "Centre d'oncologie",
+            "Emergency Services Available 24/7": "Services d'urgence disponibles 24/7",
+            "Featured Services": "Services clés",
+            "Comprehensive Care at Vayo Clinic": "Soins complets chez Vayo Clinic",
+            "Explore Our Services": "Découvrir nos services",
+            "Emergency Care": "Soins d'urgence",
+            "Surgical Excellence": "Excellence chirurgicale",
+            "Advanced Diagnostics": "Diagnostics avancés",
+            "24/7 critical care services": "Soins critiques 24/7",
+            "Minimally invasive procedures": "Procédures mini-invasives",
+            "State-of-the-art imaging": "Imagerie médicale avancée",
+            "Find A Doctor": "Trouver un médecin",
+            "Find Your Perfect Healthcare Provider": "Trouvez le professionnel adapté",
+            "Find Doctors": "Rechercher des médecins",
+            "View All Doctors": "Voir tous les médecins",
+            "Trusted Medical Care, Every Day": "Des soins médicaux fiables, chaque jour",
+            "Advanced Technology": "Technologie avancée",
+            "24/7 Availability": "Disponibilité 24/7",
+            "Expert Team": "Équipe experte",
+            "Need Immediate Medical Assistance?": "Besoin d'une aide médicale immédiate ?",
+            "Find Location": "Trouver l'adresse",
+            "Clinic": "Clinique",
+            "Care Approach": "Approche de soins",
+            "Patient Stories": "Histoires de patients",
+            "Accreditations": "Accréditations",
+            "Primary Care": "Soins primaires",
+            "Specialist Care": "Soins spécialisés",
+            "Consultations": "Consultations",
+            "Health Articles": "Articles santé",
+            "Health Updates": "Actualités santé",
+            "Connect": "Contact",
+            "Call Vayo Clinic": "Appeler Vayo Clinic",
+            "Follow Us": "Nous suivre",
+            "Partner With Us": "Devenir partenaire",
+            "Privacy Policy": "Politique de confidentialité",
+            "Terms of Service": "Conditions d'utilisation",
+            "Cookie Policy": "Politique des cookies",
+            "All rights reserved.": "Tous droits réservés.",
+            "Designed by": "Conçu par"
+          },
+          phrases: {
+            "Vayo Clinic brings together experienced physicians, advanced diagnostics, and a calm patient journey designed around clear answers and confident care.": "Vayo Clinic réunit des médecins expérimentés, des diagnostics avancés et un parcours patient clair, calme et rassurant.",
+            "At Vayo Clinic, every visit is built around attentive listening, precise diagnosis, and a care plan that feels practical, transparent, and personal.": "Chez Vayo Clinic, chaque visite repose sur l'écoute, un diagnostic précis et un plan de soins pratique, transparent et personnalisé.",
+            "Integrated medical services delivered with clarity, comfort, and clinical excellence": "Des services médicaux intégrés, présentés avec clarté, confort et excellence clinique.",
+            "From routine checkups to specialist consultations, our team coordinates the details so patients can focus on getting better.": "Des bilans de routine aux consultations spécialisées, notre équipe coordonne les détails pour aider les patients à se concentrer sur leur rétablissement.",
+            "Vayo Clinic provides clear, coordinated medical care with experienced clinicians, modern diagnostics, and follow-up that keeps patients informed at every step.": "Vayo Clinic propose des soins coordonnés avec des cliniciens expérimentés, des diagnostics modernes et un suivi clair à chaque étape.",
+            "Modern diagnostic tools support faster decisions and more personalized treatment plans.": "Les outils diagnostiques modernes facilitent des décisions plus rapides et des plans de traitement plus personnalisés.",
+            "Experienced clinicians work together across departments to keep care connected.": "Des cliniciens expérimentés collaborent entre les départements pour maintenir une prise en charge cohérente.",
+            "Providing modern, patient-centered healthcare through trusted specialists, clear communication, and coordinated care for every stage of life.": "Des soins modernes centrés sur le patient, portés par des spécialistes de confiance, une communication claire et une coordination à chaque étape de la vie."
+          }
+        }
+      };
+
+
+      const vayoExtraTranslations = {
+        ar: {
+          text: {
+            "Patients Served": "مرضى تمت خدمتهم",
+            "Years of Excellence": "سنوات من التميز",
+            "Medical Specialists": "اختصاصيون طبيون",
+            "Learn More About Us": "اعرف المزيد عنا",
+            "24/7 Emergency Care": "رعاية طوارئ 24/7",
+            "Years of Trusted Care": "سنوات من الرعاية الموثوقة",
+            "Specialized Care": "رعاية تخصصية",
+            "Expert Care": "رعاية خبيرة",
+            "24/7 Emergency Cardiac Care": "رعاية قلبية طارئة 24/7",
+            "Advanced Brain Imaging": "تصوير دماغ متقدم",
+            "Robotic Surgery": "جراحة روبوتية",
+            "Sports Medicine": "طب رياضي",
+            "Joint Replacement": "تبديل مفاصل",
+            "Spine Surgery": "جراحة العمود الفقري",
+            "Neonatal Intensive Care": "عناية مركزة لحديثي الولادة",
+            "Developmental Pediatrics": "طب نمو الأطفال",
+            "Pediatric Surgery": "جراحة الأطفال",
+            "Cancer Treatment": "علاج السرطان",
+            "Precision Medicine": "طب دقيق",
+            "Immunotherapy": "علاج مناعي",
+            "Radiation Oncology": "علاج الأورام بالأشعة",
+            "Learn More": "اعرف المزيد",
+            "Call Emergency: +90 555 057 65 55": "اتصل بالطوارئ: +90 555 057 65 55",
+            "Dermatology Clinic": "عيادة الجلدية",
+            "Surgery Center": "مركز الجراحة",
+            "Maternal Care": "رعاية الأمومة",
+            "Expert pregnancy & delivery support": "دعم متخصص للحمل والولادة",
+            "Vaccination": "اللقاحات",
+            "Complete immunization programs": "برامج تطعيم متكاملة",
+            "State-of-the-art medical equipment": "معدات طبية متطورة",
+            "Search through our comprehensive directory of experienced medical professionals": "ابحث ضمن دليل شامل من الأطباء والخبراء الطبيين ذوي الخبرة",
+            "All Specialties": "كل الاختصاصات",
+            "Cardiology": "أمراض القلب",
+            "Neurology": "الأعصاب",
+            "Orthopedics": "العظام",
+            "Pediatrics": "الأطفال",
+            "Dermatology": "الجلدية",
+            "Oncology": "الأورام",
+            "Cardiology Specialist": "اختصاصي أمراض القلب",
+            "Neurology Expert": "خبير أعصاب",
+            "Pediatrics Care": "رعاية الأطفال",
+            "Dermatology Care": "رعاية الجلدية",
+            "Oncology Treatment": "علاج الأورام",
+            "14 years experience": "14 سنة خبرة",
+            "16 years experience": "16 سنة خبرة",
+            "11 years experience": "11 سنة خبرة",
+            "22 years experience": "22 سنة خبرة",
+            "9 years experience": "9 سنوات خبرة",
+            "19 years experience": "19 سنة خبرة",
+            "(127 reviews)": "(127 تقييم)",
+            "(89 reviews)": "(89 تقييم)",
+            "(203 reviews)": "(203 تقييم)",
+            "(156 reviews)": "(156 تقييم)",
+            "(74 reviews)": "(74 تقييم)",
+            "(194 reviews)": "(194 تقييم)",
+            "View Details": "عرض التفاصيل",
+            "Book Now": "احجز الآن",
+            "Schedule": "جدولة موعد",
+            "Schedule Consultations": "جدولة استشارة",
+            "Explore Services": "استكشف الخدمات",
+            "Medical Excellence": "تميز طبي",
+            "Preventive Health": "الصحة الوقائية",
+            "Insurance Info": "معلومات التأمين",
+            "FAQs": "الأسئلة الشائعة",
+            "About Vayo": "عن فايو"
+          },
+          phrases: {
+            "Our multidisciplinary team of specialists works collaboratively to ensure every patient receives comprehensive care tailored to their unique needs. From preventive services to complex procedures, we maintain the highest standards of medical excellence while fostering an environment of trust and healing.": "يعمل فريقنا متعدد الاختصاصات بتعاون لضمان حصول كل مريض على رعاية شاملة تناسب احتياجاته، من الوقاية إلى الإجراءات المتقدمة، ضمن بيئة مبنية على الثقة والشفاء.",
+            "Advanced diagnostic imaging and interventional procedures for comprehensive heart health management with personalized treatment protocols.": "تصوير تشخيصي متقدم وإجراءات علاجية داعمة لإدارة صحة القلب ضمن خطط علاج شخصية.",
+            "Cutting-edge neuroimaging and neurosurgical expertise for complex brain and spinal cord conditions with innovative treatment approaches.": "تصوير عصبي متطور وخبرة في جراحة الأعصاب لحالات الدماغ والعمود الفقري المعقدة ضمن أساليب علاج حديثة.",
+            "Comprehensive musculoskeletal care utilizing advanced arthroscopic techniques and joint replacement procedures.": "رعاية شاملة للجهاز العضلي الهيكلي باستخدام تقنيات تنظير متقدمة وإجراءات تبديل المفاصل.",
+            "Child-centered healthcare services from newborn to adolescence with family-focused treatment approaches.": "خدمات صحية للأطفال من حديثي الولادة حتى المراهقة مع نهج علاجي يراعي العائلة.",
+            "Multidisciplinary oncology program offering personalized cancer care with latest therapeutic innovations.": "برنامج أورام متعدد الاختصاصات يقدم رعاية شخصية للسرطان مع أحدث الابتكارات العلاجية.",
+            "Our emergency department is equipped with state-of-the-art technology and staffed by board-certified emergency physicians ready to provide immediate care.": "قسم الطوارئ مجهز بتقنيات حديثة ويضم أطباء طوارئ مؤهلين لتقديم رعاية فورية.",
+            "Our emergency response team is available around the clock to provide immediate medical support when you need it most.": "فريق الاستجابة الطبية متاح على مدار الساعة لتقديم الدعم الفوري عندما تحتاج إليه."
+          },
+          attrs: {
+            "Enter doctor name": "أدخل اسم الطبيب"
+          }
+        },
+        fr: {
+          text: {
+            "Patients Served": "Patients accompagnés",
+            "Years of Excellence": "Années d'excellence",
+            "Medical Specialists": "Spécialistes médicaux",
+            "Learn More About Us": "En savoir plus",
+            "24/7 Emergency Care": "Urgences 24/7",
+            "Years of Trusted Care": "Années de soins de confiance",
+            "Specialized Care": "Soins spécialisés",
+            "Expert Care": "Soins experts",
+            "24/7 Emergency Cardiac Care": "Urgences cardiaques 24/7",
+            "Advanced Brain Imaging": "Imagerie cérébrale avancée",
+            "Robotic Surgery": "Chirurgie robotisée",
+            "Sports Medicine": "Médecine du sport",
+            "Joint Replacement": "Remplacement articulaire",
+            "Spine Surgery": "Chirurgie de la colonne",
+            "Neonatal Intensive Care": "Soins intensifs néonatals",
+            "Developmental Pediatrics": "Pédiatrie du développement",
+            "Pediatric Surgery": "Chirurgie pédiatrique",
+            "Cancer Treatment": "Traitement du cancer",
+            "Precision Medicine": "Médecine de précision",
+            "Immunotherapy": "Immunothérapie",
+            "Radiation Oncology": "Radiothérapie oncologique",
+            "Learn More": "En savoir plus",
+            "Call Emergency: +90 555 057 65 55": "Appel d'urgence : +90 555 057 65 55",
+            "Dermatology Clinic": "Clinique dermatologique",
+            "Surgery Center": "Centre de chirurgie",
+            "Maternal Care": "Soins maternité",
+            "Expert pregnancy & delivery support": "Accompagnement grossesse et accouchement",
+            "Vaccination": "Vaccination",
+            "Complete immunization programs": "Programmes complets de vaccination",
+            "State-of-the-art medical equipment": "Équipement médical de pointe",
+            "Search through our comprehensive directory of experienced medical professionals": "Recherchez dans notre annuaire de professionnels médicaux expérimentés",
+            "All Specialties": "Toutes les spécialités",
+            "Cardiology": "Cardiologie",
+            "Neurology": "Neurologie",
+            "Orthopedics": "Orthopédie",
+            "Pediatrics": "Pédiatrie",
+            "Dermatology": "Dermatologie",
+            "Oncology": "Oncologie",
+            "Cardiology Specialist": "Spécialiste en cardiologie",
+            "Neurology Expert": "Expert en neurologie",
+            "Pediatrics Care": "Soins pédiatriques",
+            "Dermatology Care": "Soins dermatologiques",
+            "Oncology Treatment": "Traitement oncologique",
+            "14 years experience": "14 ans d'expérience",
+            "16 years experience": "16 ans d'expérience",
+            "11 years experience": "11 ans d'expérience",
+            "22 years experience": "22 ans d'expérience",
+            "9 years experience": "9 ans d'expérience",
+            "19 years experience": "19 ans d'expérience",
+            "(127 reviews)": "(127 avis)",
+            "(89 reviews)": "(89 avis)",
+            "(203 reviews)": "(203 avis)",
+            "(156 reviews)": "(156 avis)",
+            "(74 reviews)": "(74 avis)",
+            "(194 reviews)": "(194 avis)",
+            "View Details": "Voir les détails",
+            "Book Now": "Réserver",
+            "Schedule": "Planifier",
+            "Schedule Consultations": "Planifier une consultation",
+            "Explore Services": "Découvrir les services",
+            "Medical Excellence": "Excellence médicale",
+            "Preventive Health": "Santé préventive",
+            "Insurance Info": "Informations assurance",
+            "FAQs": "FAQ",
+            "About Vayo": "À propos de Vayo"
+          },
+          phrases: {
+            "Our multidisciplinary team of specialists works collaboratively to ensure every patient receives comprehensive care tailored to their unique needs. From preventive services to complex procedures, we maintain the highest standards of medical excellence while fostering an environment of trust and healing.": "Notre équipe pluridisciplinaire collabore pour offrir à chaque patient des soins complets adaptés à ses besoins, de la prévention aux procédures complexes, dans un environnement de confiance.",
+            "Advanced diagnostic imaging and interventional procedures for comprehensive heart health management with personalized treatment protocols.": "Imagerie diagnostique avancée et procédures interventionnelles pour une prise en charge complète du cœur avec des protocoles personnalisés.",
+            "Cutting-edge neuroimaging and neurosurgical expertise for complex brain and spinal cord conditions with innovative treatment approaches.": "Neuro-imagerie avancée et expertise neurochirurgicale pour les affections complexes du cerveau et de la colonne vertébrale.",
+            "Comprehensive musculoskeletal care utilizing advanced arthroscopic techniques and joint replacement procedures.": "Soins musculo-squelettiques complets avec techniques arthroscopiques avancées et remplacement articulaire.",
+            "Child-centered healthcare services from newborn to adolescence with family-focused treatment approaches.": "Soins centrés sur l'enfant, du nouveau-né à l'adolescent, avec une approche tournée vers la famille.",
+            "Multidisciplinary oncology program offering personalized cancer care with latest therapeutic innovations.": "Programme d'oncologie pluridisciplinaire proposant des soins personnalisés avec les dernières innovations thérapeutiques.",
+            "Our emergency department is equipped with state-of-the-art technology and staffed by board-certified emergency physicians ready to provide immediate care.": "Notre service d'urgence est équipé de technologies de pointe et animé par des médecins urgentistes qualifiés.",
+            "Our emergency response team is available around the clock to provide immediate medical support when you need it most.": "Notre équipe d'urgence est disponible jour et nuit pour fournir une aide médicale immédiate."
+          },
+          attrs: {
+            "Enter doctor name": "Nom du médecin"
+          }
+        }
+      };
+
+      Object.keys(vayoExtraTranslations).forEach((lang) => {
+        Object.assign(vayoTranslations[lang].text, vayoExtraTranslations[lang].text);
+        Object.assign(vayoTranslations[lang].phrases, vayoExtraTranslations[lang].phrases);
+        vayoTranslations[lang].attrs = vayoExtraTranslations[lang].attrs;
+      });
+      const originalText = new WeakMap();
+      const originalAttrs = new WeakMap();
+      const ignoredTags = new Set(["SCRIPT", "STYLE", "NOSCRIPT"]);
+
+      function visibleTextNodes() {
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+          acceptNode(node) {
+            if (!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+            if (ignoredTags.has(node.parentElement.tagName)) return NodeFilter.FILTER_REJECT;
+            if (node.parentElement.closest('.vayo-language-switcher')) return NodeFilter.FILTER_REJECT;
+            return NodeFilter.FILTER_ACCEPT;
+          }
+        });
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        return nodes;
+      }
+
+      function rememberOriginals() {
+        visibleTextNodes().forEach((node) => {
+          if (!originalText.has(node)) originalText.set(node, node.nodeValue);
+        });
+
+        document.querySelectorAll('[placeholder]').forEach((element) => {
+          if (!originalAttrs.has(element)) originalAttrs.set(element, { placeholder: element.getAttribute('placeholder') });
+        });
+      }
+
+      function translateTextNode(node, langData) {
+        const original = originalText.get(node);
+        const trimmed = original.trim();
+        const normalized = trimmed.replace(/\s+/g, ' ');
+        if (!trimmed) return;
+
+        let translated = trimmed;
+        if (langData) {
+          translated = langData.text[trimmed] || langData.text[normalized] || langData.phrases[trimmed] || langData.phrases[normalized] || trimmed;
+        }
+
+        node.nodeValue = original.replace(trimmed, translated);
+      }
+
+      function setLanguage(lang) {
+        const langData = vayoTranslations[lang];
+        document.documentElement.lang = lang;
+        document.documentElement.dir = langData ? langData.dir : 'ltr';
+        document.title = langData ? langData.title : 'Vayo Clinic - Trusted Medical Care';
+
+        visibleTextNodes().forEach((node) => translateTextNode(node, langData));
+        document.querySelectorAll('[placeholder]').forEach((element) => {
+          const original = originalAttrs.get(element);
+          if (!original) return;
+          element.setAttribute('placeholder', langData && langData.attrs[original.placeholder] ? langData.attrs[original.placeholder] : original.placeholder);
+        });
+
+        document.querySelectorAll('[data-vayo-lang]').forEach((button) => {
+          button.classList.toggle('active', button.dataset.vayoLang === lang);
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        rememberOriginals();
+        document.querySelectorAll('[data-vayo-lang]').forEach((button) => {
+          button.addEventListener('click', function () {
+            setLanguage(button.dataset.vayoLang);
+          });
+        });
+      });
+    })();
+  </script>
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
 
 </body>
 
 </html>
-
-
-
-
-
 
