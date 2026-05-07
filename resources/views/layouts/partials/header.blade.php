@@ -33,6 +33,10 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
+                    @auth
+                        <li><a href="{{ route('dashboard') }}"
+                                class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">{{ __t('dashboard') }}</a></li>
+                    @endauth
                     <li><a href="{{ route('home') }}"
                             class="{{ request()->routeIs('home') ? 'active' : '' }}">{{ __t('home') }}</a></li>
                     <li><a href="{{ route('about') }}"
@@ -68,14 +72,14 @@
                     </li>
                     {{-- Dropdown for dynamic pages --}}
                     {{-- @if(isset($dynamicPages) && $dynamicPages->count())
-                        <li class="dropdown">
-                            <a href="#"><span>{{ __t('pages') }}</span> <i class="bi bi-chevron-down"></i></a>
-                            <ul>
-                                @foreach($dynamicPages as $page)
-                                    <li><a href="{{ route('page.show', $page->slug) }}">{{ $page->title }}</a></li>
-                                @endforeach
-                            </ul>
-                        </li>
+                    <li class="dropdown">
+                        <a href="#"><span>{{ __t('pages') }}</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            @foreach($dynamicPages as $page)
+                            <li><a href="{{ route('page.show', $page->slug) }}">{{ $page->title }}</a></li>
+                            @endforeach
+                        </ul>
+                    </li>
                     @endif --}}
 
                     <li><a href="{{ route('contact') }}"
