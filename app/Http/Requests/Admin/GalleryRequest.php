@@ -21,19 +21,17 @@ class GalleryRequest extends FormRequest
         ];
 
         if ($this->input('type') == 'image') {
-            $rules['image']        = 'required|image|mimes:jpeg,png,jpg,webp|max:5120'; // up to 5MB
+            // قواعد الصور (كلها اختيارية)
+            $rules['image']        = 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120';
             $rules['before_image'] = 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120';
             $rules['after_image']  = 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120';
-        } else { // video
-            $rules['video_url'] = 'required|url|regex:/^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/';
-        }
-
-        if ($this->isMethod('PUT') || $this->isMethod('PATCH')) {
-            if ($this->input('type') == 'image') {
-                $rules['image']        = 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120';
-                $rules['before_image'] = 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120';
-                $rules['after_image']  = 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120';
-            }
+        } else {
+            // قواعد الفيديو: الرابط مطلوب ويُستخدم تعبير منتظم صحيح
+            $rules['video_url'] = [
+                'required',
+                'url',
+                'regex:/(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+/',
+            ];
         }
 
         return $rules;
