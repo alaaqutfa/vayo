@@ -48,7 +48,9 @@
                                     alt="{{ $settings['site_name'] ?? 'Vayo Clinic' }}" class="auth-logo mb-3"
                                     style="max-height: 60px;">
                             @else
-                                <h2 class="text-primary fw-bold">{{ $settings['site_name'] ?? 'Vayo Clinic' }}</h2>
+                                {{-- <h2 class="text-primary fw-bold">{{ $settings['site_name'] ?? 'Vayo Clinic' }}</h2>
+                                --}}
+                                <img src="{{ asset('assets/img/logo.png') }}" class="h-8 w-auto" alt="Logo">
                             @endif
                         </a>
                     </div>
