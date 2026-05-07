@@ -42,7 +42,7 @@
             <div class="col-lg-5 col-md-7">
                 <div class="auth-card p-4 p-md-5">
                     <div class="text-center mb-4">
-                        <a href="{{ route('home') }}">
+                        <a href="{{ route('home') }}" class="flex justify-center items-center">
                             @if(isset($settings['site_logo']) && $settings['site_logo'])
                                 <img src="{{ asset($settings['site_logo']) }}"
                                     alt="{{ $settings['site_name'] ?? 'Vayo Clinic' }}" class="auth-logo mb-3"
@@ -50,7 +50,7 @@
                             @else
                                 {{-- <h2 class="text-primary fw-bold">{{ $settings['site_name'] ?? 'Vayo Clinic' }}</h2>
                                 --}}
-                                <img src="{{ asset('assets/img/logo.png') }}" class="h-8 w-auto" alt="Logo">
+                                <img src="{{ asset('assets/img/logo.png') }}" class="h-16 w-auto" alt="Logo">
                             @endif
                         </a>
                     </div>
