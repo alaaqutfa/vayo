@@ -65,7 +65,7 @@ Route::get('lang/{locale}', [LanguageController::class, 'switch'])->name('lang.s
 require __DIR__ . '/auth.php';
 
 // Admin Dashboard
-Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
