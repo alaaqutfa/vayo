@@ -1,5 +1,5 @@
 <!-- Featured Services Section -->
-<section id="featured-services" class="featured-services section">
+<section id="featured-services" class="featured-services section dark-background">
 
     <div class="container section-title" data-aos="fade-up">
         <h2>{{ __t('featured_services_title') }}</h2>

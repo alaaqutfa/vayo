@@ -35,7 +35,8 @@
                 <ul>
                     @auth
                         <li><a href="{{ route('dashboard') }}"
-                                class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">{{ __t('dashboard') }}</a></li>
+                                class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">{{ __t('dashboard') }}</a>
+                        </li>
                     @endauth
                     <li><a href="{{ route('home') }}"
                             class="{{ request()->routeIs('home') ? 'active' : '' }}">{{ __t('home') }}</a></li>
@@ -95,12 +96,26 @@
                     <i class="bi bi-chevron-down"></i>
                 </div>
                 <ul class="lang-dropdown">
-                    <li><a href="{{ route('lang.switch', 'en') }}"
-                            class="{{ $currentLocale == 'en' ? 'active' : '' }}">🇬🇧 English</a></li>
-                    <li><a href="{{ route('lang.switch', 'ar') }}"
-                            class="{{ $currentLocale == 'ar' ? 'active' : '' }}">🇸🇦 العربية</a></li>
-                    <li><a href="{{ route('lang.switch', 'fr') }}"
-                            class="{{ $currentLocale == 'fr' ? 'active' : '' }}">🇫🇷 Français</a></li>
+                    <li>
+                        <a href="{{ route('lang.switch', 'en') }}" class="{{ $currentLocale == 'en' ? 'active' : '' }}">
+                            <img src="{{ asset('assets/img/flags/uk.png') }}" alt="English"
+                                class="lang-flag w-4 h-4 object-contain" />
+                            English
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('lang.switch', 'ar') }}" class="{{ $currentLocale == 'ar' ? 'active' : '' }}">
+                            <img src="{{ asset('assets/img/flags/sa.png') }}" alt="Arabic"
+                                class="lang-flag w-4 h-4 object-contain" />
+                            العربية
+                        </a>
+                    </li>
+                    <li><a href="{{ route('lang.switch', 'fr') }}" class="{{ $currentLocale == 'fr' ? 'active' : '' }}">
+                            <img src="{{ asset('assets/img/flags/fr.png') }}" alt="French"
+                                class="lang-flag w-4 h-4 object-contain" />
+                            Français
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

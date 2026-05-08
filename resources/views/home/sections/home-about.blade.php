@@ -1,5 +1,5 @@
 <!-- Home About Section -->
-<section id="home-about" class="home-about section">
+<section id="home-about" class="home-about section dark-background">
     <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row align-items-center">
             <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right" data-aos-delay="200">
@@ -57,3 +57,5 @@
         </div>
     </div>
 </section>
+
+

@@ -40,7 +40,7 @@
 @endif
 
 <!-- Find A Doctor Section (ديناميكي من قاعدة البيانات) -->
-<section id="find-a-doctor" class="find-a-doctor section">
+<section id="find-a-doctor" class="find-a-doctor section dark-background">
     <div class="container section-title" data-aos="fade-up">
         <h2>{{ __t('find_doctor_title') }}</h2>
         <p>{{ __t('featured_departments_subtitle') }}</p>

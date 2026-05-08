@@ -1,4 +1,4 @@
-<footer id="footer" class="footer-16 footer position-relative">
+<footer id="footer" class="footer-16 footer position-relative dark-background">
     <div class="container">
         <div class="footer-main" data-aos="fade-up" data-aos-delay="100">
             <div class="row align-items-start">

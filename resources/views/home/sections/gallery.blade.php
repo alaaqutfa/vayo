@@ -1,5 +1,5 @@
 @if($galleryItems->count())
-    <section id="gallery" class="gallery section">
+    <section id="gallery" class="gallery section light-background">
         <div class="container section-title" data-aos="fade-up">
             <h2>{{ __t('gallery_title') }}</h2>
             <p>{{ __t('gallery_subtitle') }}</p>
