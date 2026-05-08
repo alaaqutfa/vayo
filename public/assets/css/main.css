@@ -457,7 +457,6 @@ h6 {
 
     .navmenu {
         order: 3;
-        width: 100%;
         margin-top: 15px;
     }
 }
@@ -753,6 +752,8 @@ h6 {
     }
 
     .mobile-nav-active .navmenu {
+        height: 100vh;
+        margin: 0;
         position: fixed;
         overflow: hidden;
         inset: 0;
@@ -1292,7 +1293,7 @@ section,
 }
 
 .dark-background .section-title h2 {
-    background: color-mix(in srgb, var(--accent-color), transparent 92%);
+    background: var(--accent-color);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1382,7 +1383,7 @@ section,
 }
 
 .hero .hero-content {
-    padding: 2rem 0;
+    padding: 3rem 0;
     animation: fadeInUp 1s ease-out 0.3s both;
 }
 
