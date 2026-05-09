@@ -15,6 +15,7 @@ class Gallery extends Model
         'after_image',
         'type',
         'video_url',
+        'embed_code',
         'description',
         'is_active',
         'order',
@@ -69,7 +70,7 @@ class Gallery extends Model
 
     public function getEmbedUrlAttribute(): ?string
     {
-        if (!$this->video_url) {
+        if (! $this->video_url) {
             return null;
         }
 
@@ -79,10 +80,24 @@ class Gallery extends Model
 
         if (str_contains($this->video_url, 'vimeo.com/')) {
             $path = trim(parse_url($this->video_url, PHP_URL_PATH) ?? '', '/');
-            $id = explode('/', $path)[0] ?? null;
+            $id   = explode('/', $path)[0] ?? null;
             return $id ? 'https://player.vimeo.com/video/' . $id : null;
         }
 
+        return null;
+    }
+
+    // إرجاع كود التضمين إذا كان موجوداً، وإلا الـ embed_url المحسوب
+    public function getEmbedHtmlAttribute(): ?string
+    {
+        if ($this->embed_code) {
+            // يمكن تنقية الكود (اختياري)
+            return $this->embed_code;
+        }
+        if ($this->embed_url) {
+            // إذا كان embed_url موجوداً (من youtube/vimeo) نستخدم iframe مباشر
+            return '<iframe src="' . e($this->embed_url) . '" allowfullscreen></iframe>';
+        }
         return null;
     }
 

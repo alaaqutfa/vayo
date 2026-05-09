@@ -34,7 +34,7 @@
                             <div class="info-icon"><i class="bi bi-geo-alt"></i></div>
                             <div class="info-content">
                                 <h3>{{ __t('our_address') }}</h3>
-                                <p>{{ $settings['contact_address'] ?? 'Vayo Clinic Medical Center, Beirut, Lebanon' }}</p>
+                                <p>{{ $settings['contact_address'] ?? 'Vayo Clinic Medical Center, Istanbul, Türkiye' }}</p>
                             </div>
                         </div>
                         <div class="contact-info-item" data-aos="fade-up">

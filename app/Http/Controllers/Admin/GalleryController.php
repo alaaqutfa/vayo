@@ -34,7 +34,8 @@ class GalleryController extends Controller
             if ($request->hasFile('after_image')) {
                 $data['after_image'] = $this->uploadBeforeAfterImage($request->file('after_image'), 'gallery/beforeafter');
             }
-            $data['video_url'] = null;
+            $data['video_url']  = null;
+            $data['embed_code'] = null;
         } else {
             $data['image']        = null;
             $data['before_image'] = null;
@@ -74,7 +75,8 @@ class GalleryController extends Controller
                 $data['after_image'] = $gallery->after_image;
             }
 
-            $data['video_url'] = null;
+            $data['video_url']  = null;
+            $data['embed_code'] = null;
         } else {
             // عند تغيير النوع إلى فيديو، احذف جميع الصور القديمة
             $this->deleteMultipleImages([$gallery->image, $gallery->before_image, $gallery->after_image]);

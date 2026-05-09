@@ -18,7 +18,7 @@
                         </p>
                         <div class="contact-info mt-5">
                             <div class="contact-item"><i
-                                    class="bi bi-geo-alt"></i><span>{{ $settings['contact_address'] ?? 'Vayo Clinic Medical Center, Beirut, Lebanon' }}</span>
+                                    class="bi bi-geo-alt"></i><span>{{ $settings['contact_address'] ?? 'Vayo Clinic Medical Center, Istanbul, Türkiye' }}</span>
                             </div>
                             <div class="contact-item"><i
                                     class="bi bi-telephone"></i><span>{{ $settings['contact_phone'] ?? '+90 555 057 65 55' }}</span>

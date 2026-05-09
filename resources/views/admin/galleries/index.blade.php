@@ -9,7 +9,7 @@
             <div class="sm:flex sm:items-center sm:justify-between">
                 <div>
                     <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Gallery</h1>
-                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Manage images, before/after results, reels, and video links.</p>
+                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Manage images, before/after results, reels, and video links (Embed Code supported).</p>
                 </div>
                 <div class="mt-4 sm:mt-0">
                     <a href="{{ route('admin.galleries.create') }}"
@@ -51,33 +51,35 @@
                                 <td class="whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-900 dark:text-white sm:pl-6">{{ $item->id }}</td>
                                 <td class="whitespace-nowrap px-4 py-4 text-sm">
                                     @if($item->type == 'image')
-                                        <span class="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-gray-800 dark:bg-blue-900/30 dark:text-gray-300" style="color: #33FF99 !important;">
+                                        <span class="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900/30 dark:text-green-300">
                                             <i class="bi bi-image mr-1 text-xs"></i> Image
                                         </span>
                                     @else
                                         <span class="inline-flex items-center rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-medium text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
-                                            <i class="bi bi-youtube mr-1 text-xs"></i> Video
+                                            <i class="bi bi-play-circle mr-1 text-xs"></i> Video
                                         </span>
                                     @endif
                                 </td>
                                 <td class="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
                                     @if($item->type == 'image')
                                         @if($item->image)
-                                            <img src="{{ asset($item->image) }}" loading="lazy"
+                                            <img src="{{ asset('storage/'.$item->image) }}" loading="lazy"
                                                  class="h-10 w-10 rounded-lg object-cover shadow-sm">
                                         @elseif($item->before_image)
                                             <div class="flex items-center gap-1">
-                                                <img src="{{ asset($item->before_image) }}" loading="lazy"
+                                                <img src="{{ asset('storage/'.$item->before_image) }}" loading="lazy"
                                                      class="h-8 w-8 rounded object-cover">
                                                 <i class="bi bi-arrow-right-short text-gray-500"></i>
-                                                <img src="{{ asset($item->after_image) }}" loading="lazy"
+                                                <img src="{{ asset('storage/'.$item->after_image) }}" loading="lazy"
                                                      class="h-8 w-8 rounded object-cover">
                                             </div>
                                         @else
                                             <span class="text-gray-400">—</span>
                                         @endif
                                     @else
-                                        <i class="bi bi-youtube text-2xl text-red-600 dark:text-red-400"></i>
+                                        <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-700">
+                                            <i class="bi bi-play-circle text-2xl text-primary/70 dark:text-primary/80"></i>
+                                        </div>
                                     @endif
                                 </td>
                                 <td class="whitespace-nowrap px-4 py-4 text-sm text-gray-900 dark:text-white">{{ $item->title ?? '—' }}</td>

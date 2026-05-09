@@ -27,7 +27,9 @@
                         @foreach($videos->take(4) as $item)
                             <article class="reel-card">
                                 <div class="reel-frame">
-                                    @if($item->youtube_id || $item->embed_url)
+                                    @if($item->embed_html)
+                                        {!! $item->embed_html !!}
+                                    @elseif($item->youtube_id || $item->embed_url)
                                         <iframe src="{{ $item->embed_url }}" title="{{ $item->title ?: 'Vayo Clinic video' }}"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                             allowfullscreen loading="lazy"></iframe>
@@ -67,12 +69,14 @@
                         @foreach($beforeAfter->take(6) as $item)
                             <article class="result-card">
                                 <div class="result-images">
-                                    <a href="{{ asset($item->before_image) }}" class="result-image glightbox" data-gallery="before-after-{{ $item->id }}">
-                                        <img src="{{ asset($item->before_image) }}" alt="{{ $item->title }} before" loading="lazy">
+                                    <a href="{{ asset('storage/'.$item->before_image) }}" class="result-image glightbox"
+                                        data-gallery="before-after-{{ $item->id }}">
+                                        <img src="{{ asset('storage/'.$item->before_image) }}" alt="{{ $item->title }} before" loading="lazy">
                                         <span>Before</span>
                                     </a>
-                                    <a href="{{ asset($item->after_image) }}" class="result-image glightbox" data-gallery="before-after-{{ $item->id }}">
-                                        <img src="{{ asset($item->after_image) }}" alt="{{ $item->title }} after" loading="lazy">
+                                    <a href="{{ asset('storage/'.$item->after_image) }}" class="result-image glightbox"
+                                        data-gallery="before-after-{{ $item->id }}">
+                                        <img src="{{ asset('storage/'.$item->after_image) }}" alt="{{ $item->title }} after" loading="lazy">
                                         <span>After</span>
                                     </a>
                                 </div>
@@ -99,8 +103,9 @@
 
                     <div class="single-gallery-grid">
                         @foreach($singleImages->take(8) as $item)
-                            <a href="{{ asset($item->image) }}" class="single-gallery-card glightbox" data-gallery="single-gallery">
-                                <img src="{{ asset($item->image) }}" alt="{{ $item->title ?: 'Vayo Clinic gallery image' }}" loading="lazy">
+                            <a href="{{ asset('storage/'.$item->image) }}" class="single-gallery-card glightbox" data-gallery="single-gallery">
+                                <img src="{{ asset('storage/'.$item->image) }}" alt="{{ $item->title ?: 'Vayo Clinic gallery image' }}"
+                                    loading="lazy">
                                 <span>
                                     <strong>{{ $item->title ?: 'Vayo Clinic' }}</strong>
                                     @if($item->description)

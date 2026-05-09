@@ -95,7 +95,7 @@
                                         <i class="bi bi-geo-alt text-gray-400"></i>
                                     </div>
                                     <input type="text" name="contact_address" id="contact_address"
-                                           value="{{ old('contact_address', $settings['contact_address'] ?? 'Vayo Clinic Medical Center, Beirut, Lebanon') }}"
+                                           value="{{ old('contact_address', $settings['contact_address'] ?? 'Vayo Clinic Medical Center, Istanbul, Türkiye') }}"
                                            class="block w-full rounded-lg border-gray-300 pl-10 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">
                                 </div>
                             </div>
