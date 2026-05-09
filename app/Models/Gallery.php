@@ -58,8 +58,32 @@ class Gallery extends Model
             return null;
         }
 
-        preg_match('/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&]+)/', $this->video_url, $matches);
+        preg_match('/(?:youtube\.com\/watch\?v=|youtube\.com\/shorts\/|youtu\.be\/)([^&?\/]+)/', $this->video_url, $matches);
         return $matches[1] ?? null;
+    }
+
+    public function getIsDirectVideoAttribute(): bool
+    {
+        return (bool) preg_match('/\.(mp4|webm|ogg|mov)(\?.*)?$/i', $this->video_url ?? '');
+    }
+
+    public function getEmbedUrlAttribute(): ?string
+    {
+        if (!$this->video_url) {
+            return null;
+        }
+
+        if ($this->youtube_id) {
+            return 'https://www.youtube.com/embed/' . $this->youtube_id;
+        }
+
+        if (str_contains($this->video_url, 'vimeo.com/')) {
+            $path = trim(parse_url($this->video_url, PHP_URL_PATH) ?? '', '/');
+            $id = explode('/', $path)[0] ?? null;
+            return $id ? 'https://player.vimeo.com/video/' . $id : null;
+        }
+
+        return null;
     }
 
     public function getBeforeAfterImages()

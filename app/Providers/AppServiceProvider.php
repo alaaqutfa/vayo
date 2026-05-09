@@ -31,7 +31,9 @@ class AppServiceProvider extends ServiceProvider
         }
 
         View::composer('*', function ($view) {
-            $guideCategories = GuideCategory::with('children')->whereNull('parent_id')->active()->orderBy('order')->get();
+            $guideCategories = Schema::hasTable('guide_categories')
+                ? GuideCategory::with('children')->whereNull('parent_id')->active()->orderBy('order')->get()
+                : collect();
             $view->with('guideCategories', $guideCategories);
         });
     }

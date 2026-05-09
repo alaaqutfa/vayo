@@ -50,6 +50,17 @@
 
     @include('layouts.partials.footer')
 
+    @php
+        $whatsappNumber = preg_replace('/\D+/', '', $settings['whatsapp_number'] ?? $settings['contact_phone'] ?? '+905550576555');
+        $whatsappMessage = rawurlencode('Hello Vayo Clinic, I would like to book an appointment.');
+    @endphp
+    <a href="https://wa.me/{{ $whatsappNumber }}?text={{ $whatsappMessage }}" class="whatsapp-float"
+        target="_blank" rel="noopener" aria-label="Contact Vayo Clinic on WhatsApp">
+        <span class="whatsapp-float-pulse"></span>
+        <i class="bi bi-whatsapp"></i>
+        <span class="whatsapp-float-text">WhatsApp</span>
+    </a>
+
     <!-- Scroll Top -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>

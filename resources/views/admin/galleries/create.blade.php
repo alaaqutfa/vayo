@@ -9,7 +9,7 @@
             <div>
                 <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Add New Gallery Item</h1>
                 <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Upload image (standard or before/after) or embed a
-                    YouTube video</p>
+                    video link</p>
             </div>
             <a href="{{ route('admin.galleries.index') }}"
                 class="inline-flex items-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700">
@@ -46,7 +46,7 @@
                                     <input type="radio" name="type" value="video"
                                         class="form-radio text-primary focus:ring-primary" {{ old('type') == 'video' ? 'checked' : '' }}>
                                     <span class="ml-2 text-sm text-gray-700 dark:text-gray-300">
-                                        <i class="bi bi-youtube mr-1 text-red-600"></i> YouTube Video
+                                        <i class="bi bi-youtube mr-1 text-red-600"></i> video link
                                     </span>
                                 </label>
                             </div>
@@ -127,18 +127,18 @@
                         {{-- Video Fields (shown when type = video) --}}
                         <div id="video-fields" class="{{ old('type', 'image') == 'image' ? 'hidden' : '' }}">
                             <label for="video_url"
-                                class="block text-sm font-medium text-gray-700 dark:text-gray-300">YouTube URL <span
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300">Video URL <span
                                     class="text-red-500">*</span></label>
                             <div class="relative mt-1">
                                 <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                     <i class="bi bi-youtube text-red-600 dark:text-red-400"></i>
                                 </div>
                                 <input type="url" name="video_url" id="video_url" value="{{ old('video_url') }}"
-                                    placeholder="https://www.youtube.com/watch?v=..."
+                                    placeholder="https://example.com/video.mp4 or https://youtu.be/..."
                                     class="block w-full rounded-lg border-gray-300 pl-10 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 sm:text-sm">
                             </div>
-                            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Only YouTube URLs are accepted (e.g.,
-                                https://youtu.be/... or https://www.youtube.com/watch?v=...)</p>
+                            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Only Video URLs are accepted (e.g.,
+                                https://youtu.be/... or https://example.com/video.mp4 or https://youtu.be/...)</p>
                             @error('video_url') <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                             @enderror
                         </div>

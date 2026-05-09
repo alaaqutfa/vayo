@@ -1,291 +1,117 @@
 @if($galleryItems->count())
-    <section id="gallery" class="gallery section light-background">
+    @php
+        $videos = $galleryItems->where('type', 'video');
+        $beforeAfter = $galleryItems->filter(fn($item) => $item->type === 'image' && $item->before_image && $item->after_image);
+        $singleImages = $galleryItems->filter(fn($item) => $item->type === 'image' && !$item->before_image && !$item->after_image);
+    @endphp
+
+    <section id="gallery" class="gallery section vayo-gallery">
         <div class="container section-title" data-aos="fade-up">
+            <span class="section-kicker">Visual results</span>
             <h2>{{ __t('gallery_title') }}</h2>
             <p>{{ __t('gallery_subtitle') }}</p>
         </div>
 
-        {{-- Filter Buttons --}}
-        <div class="container text-center mb-5" data-aos="fade-up" data-aos-delay="100">
-            <div class="btn-group flex-wrap gap-2 justify-content-center">
-                <button type="button" class="filter-btn btn btn-outline-primary active" data-filter="all">
-                    {{ __t('all') ?? 'All' }}
-                </button>
-                <button type="button" class="filter-btn btn btn-outline-primary" data-filter="image">
-                    {{ __t('images') ?? 'Images' }}
-                </button>
-                <button type="button" class="filter-btn btn btn-outline-primary" data-filter="before-after">
-                    {{ __t('before_after') ?? 'Before & After' }}
-                </button>
-                <button type="button" class="filter-btn btn btn-outline-primary" data-filter="video">
-                    {{ __t('videos') ?? 'Videos' }}
-                </button>
-            </div>
-        </div>
+        <div class="container">
+            @if($videos->count())
+                <div class="gallery-block gallery-videos" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-block-head">
+                        <div>
+                            <span>Reels & videos</span>
+                            <h3>Clinic stories in motion</h3>
+                        </div>
+                        <a href="{{ route('gallery') }}">View all <i class="bi bi-arrow-right"></i></a>
+                    </div>
 
-        <div class="container" data-aos="fade-up" data-aos-delay="200">
-            <div class="row g-4" id="gallery-grid">
-                @foreach($galleryItems as $item)
-                    @php
-                        $itemType = $item->type;
-                        // تحديد فئة إضافية لعرض قبل/بعد
-                        $subType = ($item->type == 'image' && $item->before_image && $item->after_image) ? 'before-after' : $item->type;
-                    @endphp
-                    <div class="gallery-card col-xl-3 col-lg-4 col-md-6" data-type="{{ $subType }}">
-                        <div class="gallery-item h-100">
-                            @if($item->type == 'image')
-                                @if($item->before_image && $item->after_image)
-                                    {{-- Before / After Card --}}
-                                    <div class="before-after-card">
-                                        <div class="ba-images">
-                                            <div class="ba-image ba-before">
-                                                <img src="{{ asset($item->before_image) }}" class="img-fluid" alt="{{ $item->title }} - Before">
-                                                <span class="ba-label">{{ __t('before') ?? 'Before' }}</span>
-                                            </div>
-                                            <div class="ba-arrow">
-                                                <i class="bi bi-arrow-right-short"></i>
-                                            </div>
-                                            <div class="ba-image ba-after">
-                                                <img src="{{ asset($item->after_image) }}" class="img-fluid" alt="{{ $item->title }} - After">
-                                                <span class="ba-label">{{ __t('after') ?? 'After' }}</span>
-                                            </div>
-                                        </div>
-                                        @if($item->title || $item->description)
-                                            <div class="gallery-caption mt-3 text-center">
-                                                <h5 class="mb-1">{{ $item->title }}</h5>
-                                                <p class="small text-muted">{{ $item->description }}</p>
-                                            </div>
-                                        @endif
-                                    </div>
-                                @else
-                                    {{-- Single Image Card --}}
-                                    <div class="single-image-card">
-                                        <img src="{{ asset($item->image) }}" class="img-fluid" alt="{{ $item->title }}">
-                                        @if($item->title || $item->description)
-                                            <div class="gallery-caption mt-2 text-center">
-                                                <h5 class="mb-0">{{ $item->title }}</h5>
-                                                <p class="small text-muted">{{ $item->description }}</p>
-                                            </div>
-                                        @endif
-                                    </div>
-                                @endif
-                            @else
-                                {{-- Video Card --}}
-                                <div class="video-card">
-                                    <div class="ratio ratio-16x9">
-                                        <iframe src="https://www.youtube.com/embed/{{ $item->youtube_id }}"
-                                                title="{{ $item->title }}"
-                                                frameborder="0"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                allowfullscreen></iframe>
-                                    </div>
-                                    @if($item->title || $item->description)
-                                        <div class="gallery-caption mt-2 text-center">
-                                            <h5 class="mb-0">{{ $item->title }}</h5>
-                                            <p class="small text-muted">{{ $item->description }}</p>
-                                        </div>
+                    <div class="reels-grid">
+                        @foreach($videos->take(4) as $item)
+                            <article class="reel-card">
+                                <div class="reel-frame">
+                                    @if($item->youtube_id || $item->embed_url)
+                                        <iframe src="{{ $item->embed_url }}" title="{{ $item->title ?: 'Vayo Clinic video' }}"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen loading="lazy"></iframe>
+                                    @elseif($item->is_direct_video)
+                                        <video controls playsinline preload="metadata">
+                                            <source src="{{ $item->video_url }}">
+                                        </video>
+                                    @else
+                                        <a href="{{ $item->video_url }}" target="_blank" rel="noopener" class="video-link-card">
+                                            <i class="bi bi-play-circle"></i>
+                                            <span>Open video</span>
+                                        </a>
                                     @endif
                                 </div>
-                            @endif
-
-                            {{-- Overlay Icons (glightbox) --}}
-                            <div class="gallery-links d-flex align-items-center justify-content-center">
-                                @if($item->type == 'image')
-                                    @if($item->before_image && $item->after_image)
-                                        <a href="{{ asset($item->after_image) }}" class="glightbox preview-link" data-gallery="gallery-{{ $item->id }}">
-                                            <i class="bi bi-arrows-angle-expand"></i>
-                                        </a>
-                                    @else
-                                        <a href="{{ asset($item->image) }}" class="glightbox preview-link" data-gallery="gallery-{{ $item->id }}">
-                                            <i class="bi bi-arrows-angle-expand"></i>
-                                        </a>
+                                <div class="gallery-card-copy">
+                                    <h4>{{ $item->title ?: 'Vayo Clinic Video' }}</h4>
+                                    @if($item->description)
+                                        <p>{{ Str::limit($item->description, 90) }}</p>
                                     @endif
-                                @else
-                                    <a href="https://www.youtube.com/watch?v={{ $item->youtube_id }}" class="glightbox preview-link" data-gallery="gallery-{{ $item->id }}">
-                                        <i class="bi bi-play-circle"></i>
+                                </div>
+                            </article>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+
+            @if($beforeAfter->count())
+                <div class="gallery-block gallery-before-after" data-aos="fade-up" data-aos-delay="150">
+                    <div class="gallery-block-head">
+                        <div>
+                            <span>Before & after</span>
+                            <h3>Real transformations, clearly shown</h3>
+                        </div>
+                    </div>
+
+                    <div class="before-after-grid">
+                        @foreach($beforeAfter->take(6) as $item)
+                            <article class="result-card">
+                                <div class="result-images">
+                                    <a href="{{ asset($item->before_image) }}" class="result-image glightbox" data-gallery="before-after-{{ $item->id }}">
+                                        <img src="{{ asset($item->before_image) }}" alt="{{ $item->title }} before" loading="lazy">
+                                        <span>Before</span>
                                     </a>
-                                @endif
-                                <a href="#" class="details-link" data-bs-toggle="modal" data-bs-target="#galleryModal{{ $item->id }}">
-                                    <i class="bi bi-link-45deg"></i>
-                                </a>
-                            </div>
+                                    <a href="{{ asset($item->after_image) }}" class="result-image glightbox" data-gallery="before-after-{{ $item->id }}">
+                                        <img src="{{ asset($item->after_image) }}" alt="{{ $item->title }} after" loading="lazy">
+                                        <span>After</span>
+                                    </a>
+                                </div>
+                                <div class="gallery-card-copy">
+                                    <h4>{{ $item->title ?: 'Treatment Result' }}</h4>
+                                    @if($item->description)
+                                        <p>{{ Str::limit($item->description, 100) }}</p>
+                                    @endif
+                                </div>
+                            </article>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+
+            @if($singleImages->count())
+                <div class="gallery-block gallery-singles" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-block-head">
+                        <div>
+                            <span>Photo gallery</span>
+                            <h3>Moments, spaces, and patient care</h3>
                         </div>
                     </div>
 
-                    {{-- Modal for details (optional) --}}
-                    <div class="modal fade" id="galleryModal{{ $item->id }}" tabindex="-1">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content bg-dark text-white">
-                                <div class="modal-header border-0">
-                                    <h5 class="modal-title">{{ $item->title }}</h5>
-                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                                </div>
-                                <div class="modal-body text-center">
-                                    @if($item->type == 'image')
-                                        <img src="{{ asset($item->image ?: $item->after_image) }}" class="img-fluid rounded">
-                                    @else
-                                        <div class="ratio ratio-16x9">
-                                            <iframe src="https://www.youtube.com/embed/{{ $item->youtube_id }}" allowfullscreen></iframe>
-                                        </div>
+                    <div class="single-gallery-grid">
+                        @foreach($singleImages->take(8) as $item)
+                            <a href="{{ asset($item->image) }}" class="single-gallery-card glightbox" data-gallery="single-gallery">
+                                <img src="{{ asset($item->image) }}" alt="{{ $item->title ?: 'Vayo Clinic gallery image' }}" loading="lazy">
+                                <span>
+                                    <strong>{{ $item->title ?: 'Vayo Clinic' }}</strong>
+                                    @if($item->description)
+                                        <small>{{ Str::limit($item->description, 70) }}</small>
                                     @endif
-                                    <p class="mt-3">{{ $item->description }}</p>
-                                </div>
-                            </div>
-                        </div>
+                                </span>
+                            </a>
+                        @endforeach
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endif
         </div>
     </section>
-
-    @push('styles')
-    <style>
-        /* Gallery filter buttons */
-        .filter-btn {
-            border-radius: 40px !important;
-            padding: 0.5rem 1.5rem;
-            margin: 0 0.25rem;
-            transition: all 0.3s ease;
-            border-width: 1px;
-            background-color: var(--surface-color, #fff);
-            color: var(--heading-color, #012119);
-            border-color: color-mix(in srgb, var(--accent-color, #012119), transparent 70%);
-        }
-        .filter-btn.active,
-        .filter-btn:hover {
-            background-color: var(--accent-color, #012119) !important;
-            color: var(--contrast-color, #33ff99) !important;
-            border-color: var(--accent-color, #012119) !important;
-        }
-        /* Before/After card styling */
-        .before-after-card .ba-images {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            background: var(--surface-color, #fff);
-            border-radius: 1rem;
-            overflow: hidden;
-            position: relative;
-        }
-        .ba-image {
-            flex: 1;
-            position: relative;
-            border-radius: 0.5rem;
-            overflow: hidden;
-        }
-        .ba-image img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-        .ba-label {
-            position: absolute;
-            bottom: 8px;
-            left: 8px;
-            background: rgba(0,0,0,0.6);
-            color: white;
-            padding: 2px 8px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 500;
-        }
-        .ba-arrow i {
-            font-size: 2rem;
-            color: var(--accent-color);
-        }
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 1rem;
-            background: var(--surface-color);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            transition: all 0.3s;
-        }
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
-        }
-        .gallery-links {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(1,33,25,0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            opacity: 0;
-            transition: 0.3s;
-            border-radius: 1rem;
-        }
-        .gallery-item:hover .gallery-links {
-            opacity: 1;
-        }
-        .gallery-links a {
-            color: white;
-            font-size: 1.5rem;
-            background: rgba(255,255,255,0.2);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.2s;
-        }
-        .gallery-links a:hover {
-            background: var(--contrast-color, #33ff99);
-            color: var(--accent-color, #012119);
-            transform: scale(1.1);
-        }
-        /* Hide items based on filter */
-        .gallery-card[data-type] {
-            display: block;
-        }
-        .gallery-card.filtered-out {
-            display: none !important;
-        }
-        @media (max-width: 768px) {
-            .ba-images {
-                flex-direction: column;
-            }
-            .ba-arrow {
-                transform: rotate(90deg);
-            }
-        }
-    </style>
-    @endpush
-
-    @push('scripts')
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Filter functionality
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const galleryItems = document.querySelectorAll('.gallery-card');
-
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const filter = this.dataset.filter;
-                    // update active state
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-
-                    galleryItems.forEach(item => {
-                        const type = item.dataset.type;
-                        if (filter === 'all' || filter === type) {
-                            item.classList.remove('filtered-out');
-                        } else {
-                            item.classList.add('filtered-out');
-                        }
-                    });
-                });
-            });
-            // Reinitialize glightbox after filters? Already existing.
-        });
-    </script>
-    @endpush
 @endif

@@ -65,8 +65,7 @@
                                 <select class="form-select" name="specialty">
                                     <option value="">{{ __t('all_specialties') }}</option>
                                     @php
-                                        // جلب التخصصات الفريدة من الأطباء الفعليين (اختياري)
-                                        $uniqueSpecialties = \App\Models\Doctor::active()->distinct()->pluck('specialty');
+                                        $uniqueSpecialties = isset($doctors) ? $doctors->pluck('specialty')->filter()->unique()->values() : collect();
                                     @endphp
                                     @foreach($uniqueSpecialties as $spec)
                                         <option value="{{ $spec }}" {{ request('specialty') == $spec ? 'selected' : '' }}>{{ $spec }}</option>

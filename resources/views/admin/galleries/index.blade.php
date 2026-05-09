@@ -9,7 +9,7 @@
             <div class="sm:flex sm:items-center sm:justify-between">
                 <div>
                     <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Gallery</h1>
-                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Manage images (before/after) and YouTube videos.</p>
+                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Manage images, before/after results, reels, and video links.</p>
                 </div>
                 <div class="mt-4 sm:mt-0">
                     <a href="{{ route('admin.galleries.create') }}"

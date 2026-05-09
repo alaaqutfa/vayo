@@ -60,7 +60,7 @@ class Doctor extends Model
     // مساعد للحصول على رابط الصورة
     public function getImageUrlAttribute()
     {
-        return $this->image ? asset($this->image) : asset('assets/img/health/default-doctor.jpg');
+        return $this->image ? asset($this->image) : asset('assets/img/health/default.jpg');
     }
 
     public function appointments()

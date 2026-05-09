@@ -2,23 +2,35 @@
 namespace App\Http\Controllers;
 
 use App\Models\Page;
+use Illuminate\Support\Facades\View;
 
 class PageController extends Controller
 {
-    /**
-     * Display a single page by its slug.
-     *
-     * @param string $slug
-     * @return \Illuminate\View\View
-     */
     public function show($slug)
     {
-        // جلب الصفحة النشطة فقط
         $page = Page::where('slug', $slug)
             ->where('is_active', true)
-            ->firstOrFail();
+            ->first();
 
-        // إرجاع العرض مع بيانات الصفحة
+        if (!$page && !in_array($slug, ['privacy', 'terms'], true)) {
+            abort(404);
+        }
+
+        if (!$page) {
+            $page = new Page([
+                'title' => $slug === 'privacy' ? 'Privacy Policy' : 'Terms and Conditions',
+                'slug' => $slug,
+                'meta_description' => $slug === 'privacy'
+                    ? 'How Vayo Clinic protects patient privacy, personal data, medical information, and digital communications.'
+                    : 'The terms that govern use of Vayo Clinic services, website content, appointments, and communications.',
+                'content' => '',
+            ]);
+        }
+
+        if (View::exists($slug)) {
+            return view($slug, compact('page'));
+        }
+
         return view('page', compact('page'));
     }
 }

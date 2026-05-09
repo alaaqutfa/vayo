@@ -1,11 +1,17 @@
 <!-- Hero Section -->
 <section id="hero" class="hero section">
+    <div class="hero-rhythm" aria-hidden="true"></div>
 
     <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="hero-content">
+                    <div class="hero-kicker" data-aos="fade-right" data-aos-delay="150">
+                        <i class="bi bi-activity"></i>
+                        <span>Advanced Dental & Medical Care</span>
+                    </div>
+
                     <div class="trust-badges mb-4" data-aos="fade-right" data-aos-delay="200">
                         <div class="badge-item">
                             <i class="bi bi-shield-check"></i>
@@ -29,6 +35,17 @@
                         {{ __t('hero_description') }}
                     </p>
 
+                    <div class="hero-actions" data-aos="fade-right" data-aos-delay="500">
+                        <a href="{{ url('appointment') }}" class="btn btn-primary">
+                            <span>Book Appointment</span>
+                            <i class="bi bi-arrow-right-short"></i>
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="btn btn-outline glightbox">
+                            <i class="bi bi-play-circle me-2"></i>
+                            Watch About Vayo
+                        </a>
+                    </div>
+
                     <div class="hero-stats mb-4" data-aos="fade-right" data-aos-delay="500">
                         <div class="stat-item">
                             <h3><span class="purecounter" data-purecounter-start="0"
@@ -50,14 +67,6 @@
                         </div>
                     </div>
 
-                    <div class="hero-actions" data-aos="fade-right" data-aos-delay="600">
-                        <a href="{{ url('appointment') }}" class="btn btn-primary">Book Appointment</a>
-                        <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="btn btn-outline glightbox">
-                            <i class="bi bi-play-circle me-2"></i>
-                            Watch About Vayo
-                        </a>
-                    </div>
-
                     <div class="emergency-contact" data-aos="fade-right" data-aos-delay="700">
                         <div class="emergency-icon">
                             <i class="bi bi-telephone-fill"></i>
@@ -72,9 +81,33 @@
 
             <div class="col-lg-6">
                 <div class="hero-visual" data-aos="fade-left" data-aos-delay="400">
+                    <div class="hero-visual-frame" aria-hidden="true"></div>
+                    <div class="hero-logo-mark">
+                        <span>Powered by</span>
+                        <img src="{{ isset($settings['site_logo']) && $settings['site_logo'] ? asset($settings['site_logo']) : asset('assets/img/logo.png') }}"
+                            alt="{{ $settings['site_name'] ?? 'Vayo Clinic' }}">
+                    </div>
                     <div class="main-image">
-                        <img src="{{ asset('assets/img/health/staff-10.webp') }}" alt="Vayo Clinic medical team"
-                            class="img-fluid">
+                        @if(isset($doctors) && $doctors->count())
+                            <div class="swiper hero-doctors-swiper">
+                                <div class="swiper-wrapper">
+                                    @foreach($doctors as $doctor)
+                                        <div class="swiper-slide">
+                                            <img src="{{ $doctor->image_url }}" alt="{{ $doctor->name }}" class="img-fluid">
+                                            <div class="hero-doctor-caption">
+                                                <span>{{ $doctor->specialty }}</span>
+                                                <strong>{{ $doctor->name }}</strong>
+                                                <small>{{ $doctor->years_experience }} years experience</small>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @else
+                            <img src="{{ asset('assets/img/health/staff-10.webp') }}" alt="Vayo Clinic medical team"
+                                class="img-fluid">
+                        @endif
+                        <div class="image-shine" aria-hidden="true"></div>
                         <div class="floating-card appointment-card">
                             <div class="card-icon">
                                 <i class="bi bi-calendar-check"></i>
@@ -82,7 +115,16 @@
                             <div class="card-content">
                                 <h6>Next Available</h6>
                                 <p>Today 2:30 PM</p>
-                                <small>Dr. Sarah Johnson</small>
+                                <small>{{ isset($doctors) && $doctors->count() ? $doctors->first()->name : 'Vayo Clinic' }}</small>
+                            </div>
+                        </div>
+                        <div class="floating-card care-card">
+                            <div class="care-pulse">
+                                <i class="bi bi-heart-pulse"></i>
+                            </div>
+                            <div>
+                                <span>Smile Design</span>
+                                <strong>98% Satisfaction</strong>
                             </div>
                         </div>
                         <div class="floating-card rating-card">
@@ -99,6 +141,11 @@
                             </div>
                         </div>
                     </div>
+                    <div class="hero-service-strip" aria-label="Featured treatments">
+                        <span><i class="bi bi-check2-circle"></i> Implants</span>
+                        <span><i class="bi bi-check2-circle"></i> Veneers</span>
+                        <span><i class="bi bi-check2-circle"></i> Emergency</span>
+                    </div>
                     <div class="background-elements">
                         <div class="element element-1"></div>
                         <div class="element element-2"></div>
@@ -111,3 +158,23 @@
     </div>
 
 </section><!-- /Hero Section -->
+
+@push('scripts')
+    <script>
+        window.addEventListener('load', function () {
+            const heroDoctors = document.querySelector('.hero-doctors-swiper');
+            if (heroDoctors && typeof Swiper !== 'undefined') {
+                new Swiper(heroDoctors, {
+                    loop: true,
+                    effect: 'fade',
+                    speed: 900,
+                    autoplay: {
+                        delay: 3600,
+                        disableOnInteraction: false
+                    },
+                    allowTouchMove: false
+                });
+            }
+        });
+    </script>
+@endpush

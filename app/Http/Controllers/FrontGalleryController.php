@@ -12,7 +12,7 @@ class FrontGalleryController extends Controller
     {
         $galleryItems = Gallery::where('is_active', true)
             ->orderBy('order')
-            ->paginate(12);
+            ->get();
 
         return view('gallery', compact('galleryItems'));
     }
