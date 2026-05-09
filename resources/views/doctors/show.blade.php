@@ -8,8 +8,8 @@
             {{-- Breadcrumb --}}
             <nav aria-label="breadcrumb" class="mb-4" data-aos="fade-up">
                 <ol class="breadcrumb bg-transparent p-0">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('Home') }}</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('doctors') }}">{{ __('Doctors') }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __t('home') }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('doctors') }}">{{ __t('doctors') }}</a></li>
                     <li class="breadcrumb-item active">{{ $doctor->name }}</li>
                 </ol>
             </nav>
@@ -18,9 +18,9 @@
                 {{-- Doctor Profile Card --}}
                 <div class="col-lg-4" data-aos="fade-right">
                     <div class="doctor-profile-card text-center">
-                        <div class="doctor-avatar">
+                            <div class="doctor-avatar">
                             <img src="{{ $doctor->image_url }}" alt="{{ $doctor->name }}" class="img-fluid rounded-circle">
-                            <div class="status-badge status-{{ $doctor->status }}">{{ __(ucfirst($doctor->status)) }}</div>
+                                <div class="status-badge status-{{ $doctor->status }}">{{ __t($doctor->status) }}</div>
                         </div>
                         <h2 class="mt-3">{{ $doctor->name }}</h2>
                         <p class="specialty-badge">{{ $doctor->specialty }}</p>
@@ -37,11 +37,11 @@
                                 @endfor
                             </span>
                             <span class="ms-2">{{ number_format($doctor->rating, 1) }} ({{ $doctor->reviews_count }}
-                                {{ __('reviews') }})</span>
+                                {{ __t('reviews') }})</span>
                         </div>
                         <div class="doctor-meta-details">
                             <div class="meta-item"><i class="bi bi-briefcase"></i> {{ $doctor->years_experience }}+
-                                {{ __('years experience') }}
+                                {{ __t('years_experience') }}
                             </div>
                             @if($doctor->email)
                                 <div class="meta-item"><i class="bi bi-envelope"></i> {{ $doctor->email }}</div>
@@ -52,8 +52,8 @@
                         </div>
                         <div class="action-buttons mt-4">
                             <a href="{{ route('appointment') }}?doctor_id={{ $doctor->id }}"
-                                class="btn btn-primary w-100 mb-2">{{ __('Book Appointment') }}</a>
-                            <a href="#contact" class="btn btn-outline-primary w-100">{{ __('Contact Doctor') }}</a>
+                                class="btn btn-primary w-100 mb-2">{{ __t('book_appointment') }}</a>
+                            <a href="#contact" class="btn btn-outline-primary w-100">{{ __t('contact_doctor') }}</a>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                 {{-- Doctor Bio & Services --}}
                 <div class="col-lg-8" data-aos="fade-left">
                     <div class="doctor-bio">
-                        <h3 class="section-title">{{ __('Biography') }}</h3>
+                        <h3 class="section-title">{{ __t('biography') }}</h3>
                         <div class="bio-content">
                             {!! nl2br(e($doctor->bio)) !!}
                         </div>
@@ -69,7 +69,7 @@
 
                     @if($doctor->services->count())
                         <div class="doctor-services mt-5">
-                            <h3 class="section-title">{{ __('Specialized Services') }}</h3>
+                            <h3 class="section-title">{{ __t('specialized_services') }}</h3>
                             <div class="row g-3">
                                 @foreach($doctor->services as $service)
                                     <div class="col-md-6">
@@ -84,7 +84,7 @@
 
                     @if($doctor->education || $doctor->certifications)
                         <div class="doctor-credentials mt-5">
-                            <h3 class="section-title">{{ __('Credentials') }}</h3>
+                            <h3 class="section-title">{{ __t('credentials') }}</h3>
                             @if($doctor->education)
                                 <div class="credential-item"><i class="bi bi-mortarboard"></i> {{ $doctor->education }}</div>
                             @endif

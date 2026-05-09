@@ -168,6 +168,97 @@
 
                     {{-- Footer Text (full width) --}}
                     <div class="mb-8">
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white border-l-4 border-primary pl-3 mb-4">Social Media Links</h3>
+                        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                            <div>
+                                <label for="social_facebook" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Facebook</label>
+                                <div class="relative mt-1">
+                                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                        <i class="bi bi-facebook text-gray-400"></i>
+                                    </div>
+                                    <input type="url" name="social_facebook" id="social_facebook"
+                                           placeholder="https://facebook.com/yourpage"
+                                           value="{{ old('social_facebook', $settings['social_facebook'] ?? '') }}"
+                                           class="block w-full rounded-lg border-gray-300 pl-10 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="social_twitter" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Twitter/X</label>
+                                <div class="relative mt-1">
+                                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                        <i class="bi bi-twitter text-gray-400"></i>
+                                    </div>
+                                    <input type="url" name="social_twitter" id="social_twitter"
+                                           placeholder="https://twitter.com/yourhandle"
+                                           value="{{ old('social_twitter', $settings['social_twitter'] ?? '') }}"
+                                           class="block w-full rounded-lg border-gray-300 pl-10 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="social_instagram" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Instagram</label>
+                                <div class="relative mt-1">
+                                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                        <i class="bi bi-instagram text-gray-400"></i>
+                                    </div>
+                                    <input type="url" name="social_instagram" id="social_instagram"
+                                           placeholder="https://instagram.com/yourhandle"
+                                           value="{{ old('social_instagram', $settings['social_instagram'] ?? '') }}"
+                                           class="block w-full rounded-lg border-gray-300 pl-10 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="social_linkedin" class="block text-sm font-medium text-gray-700 dark:text-gray-300">LinkedIn</label>
+                                <div class="relative mt-1">
+                                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                        <i class="bi bi-linkedin text-gray-400"></i>
+                                    </div>
+                                    <input type="url" name="social_linkedin" id="social_linkedin"
+                                           placeholder="https://linkedin.com/company/yourcompany"
+                                           value="{{ old('social_linkedin', $settings['social_linkedin'] ?? '') }}"
+                                           class="block w-full rounded-lg border-gray-300 pl-10 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="social_youtube" class="block text-sm font-medium text-gray-700 dark:text-gray-300">YouTube</label>
+                                <div class="relative mt-1">
+                                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                        <i class="bi bi-youtube text-gray-400"></i>
+                                    </div>
+                                    <input type="url" name="social_youtube" id="social_youtube"
+                                           placeholder="https://youtube.com/yourhandle"
+                                           value="{{ old('social_youtube', $settings['social_youtube'] ?? '') }}"
+                                           class="block w-full rounded-lg border-gray-300 pl-10 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="social_tiktok" class="block text-sm font-medium text-gray-700 dark:text-gray-300">TikTok</label>
+                                <div class="relative mt-1">
+                                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                        <i class="bi bi-tiktok text-gray-400"></i>
+                                    </div>
+                                    <input type="url" name="social_tiktok" id="social_tiktok"
+                                           placeholder="https://tiktok.com/@yourhandle"
+                                           value="{{ old('social_tiktok', $settings['social_tiktok'] ?? '') }}"
+                                           class="block w-full rounded-lg border-gray-300 pl-10 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="social_whatsapp" class="block text-sm font-medium text-gray-700 dark:text-gray-300">WhatsApp</label>
+                                <div class="relative mt-1">
+                                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                        <i class="bi bi-whatsapp text-gray-400"></i>
+                                    </div>
+                                    <input type="text" name="social_whatsapp" id="social_whatsapp"
+                                           placeholder="+1234567890 (or https://wa.me/1234567890)"
+                                           value="{{ old('social_whatsapp', $settings['social_whatsapp'] ?? '') }}"
+                                           class="block w-full rounded-lg border-gray-300 pl-10 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Footer Text (full width) --}}
+                    <div class="mb-8">
                         <h3 class="text-lg font-medium text-gray-900 dark:text-white border-l-4 border-primary pl-3 mb-4">Footer Text</h3>
                         <textarea name="footer_text" rows="4"
                                   class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">{{ old('footer_text', $settings['footer_text'] ?? 'Providing modern, patient-centered healthcare...') }}</textarea>

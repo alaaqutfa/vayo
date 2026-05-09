@@ -40,7 +40,7 @@
                             <span>Book Appointment</span>
                             <i class="bi bi-arrow-right-short"></i>
                         </a>
-                        <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="btn btn-outline glightbox">
+                        <a href="#" class="btn btn-outline glightbox">
                             <i class="bi bi-play-circle me-2"></i>
                             Watch About Vayo
                         </a>
@@ -69,11 +69,11 @@
 
                     <div class="emergency-contact" data-aos="fade-right" data-aos-delay="700">
                         <div class="emergency-icon">
-                            <i class="bi bi-telephone-fill"></i>
+                            <i class="bi bi-whatsapp"></i>
                         </div>
                         <div class="emergency-info">
                             <small>Emergency Hotline</small>
-                            <strong>+90 555 057 65 55</strong>
+                            <strong><a href="https://wa.me/905550576555" target="_blank">+90 555 057 65 55</a></strong>
                         </div>
                     </div>
                 </div>

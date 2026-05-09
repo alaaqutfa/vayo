@@ -1129,8 +1129,8 @@ h6 {
     position: fixed;
     visibility: hidden;
     opacity: 0;
-    right: 15px;
-    bottom: -15px;
+    right: 20px;
+    bottom: -120px;
     z-index: 99999;
     background: linear-gradient(135deg, var(--accent-color), #1ae87f);
     width: 48px;
@@ -1154,7 +1154,7 @@ h6 {
 .scroll-top.active {
     visibility: visible;
     opacity: 1;
-    bottom: 15px;
+    bottom: 100px;
 }
 
 /*--------------------------------------------------------------
@@ -2183,7 +2183,7 @@ section,
         position: absolute;
         top: calc(100% + 12px);
         left: 50%;
-        width: min(920px, calc(100vw - 48px));
+        width: 100%;
         transform: translateX(-50%) translateY(12px);
         display: grid;
         grid-template-columns: 0.9fr 1.5fr;
@@ -2281,6 +2281,7 @@ section,
     margin-top: 0.25rem;
     color: #657986;
     line-height: 1.45;
+    text-wrap: wrap;
 }
 
 @media (max-width: 1199px) {

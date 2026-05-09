@@ -9,7 +9,7 @@
                                 <img src="{{ asset($settings['site_logo']) }}"
                                     alt="{{ $settings['site_name'] ?? 'Vayo Clinic' }}">
                             @else
-                                <img src="{{ asset('assets/img/logo.png') }}" class="h-8 w-auto" alt="Logo">
+                                <img src="{{ asset('assets/img/logo-dark.png') }}" class="h-16 w-auto" alt="Logo">
                                 {{-- <span class="sitename">{{ $settings['site_name'] ?? 'Vayo Clinic' }}</span> --}}
                             @endif
                         </a>

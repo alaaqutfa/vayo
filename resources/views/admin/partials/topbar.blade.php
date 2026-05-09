@@ -18,6 +18,29 @@
             </div>
 
             <div class="flex items-center gap-3">
+                <!-- Language Switcher -->
+                <div class="relative">
+                    <button type="button" id="langMenuButton"
+                        class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 transition-colors"
+                        title="Change Language">
+                        <i class="bi bi-globe text-xl"></i>
+                    </button>
+                    <div id="langDropdown"
+                        class="absolute right-0 z-50 hidden w-40 mt-2 bg-white rounded-md shadow-lg py-1 border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+                        @php
+                            $languages = \App\Models\Language::where('is_active', true)->get();
+                            $currentLocale = app()->getLocale();
+                        @endphp
+                        @foreach($languages as $lang)
+                            <a href="{{ route('lang.switch', $lang->code) }}"
+                                class="flex items-center px-4 py-2 text-sm {{ $currentLocale == $lang->code ? 'bg-primary/10 text-primary dark:bg-primary/20' : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700' }}">
+                                <span class="mr-2">{{ $lang->code === 'ar' ? '🇸🇦' : ($lang->code === 'en' ? '🇬🇧' : '🇫🇷') }}</span>
+                                {{ $lang->name }}
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+
                 <!-- Dark Mode Toggle (اختياري) -->
                 {{-- <button id="darkModeToggle"
                     class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700">
@@ -62,6 +85,21 @@
 @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Toggle language dropdown
+            const langBtn = document.getElementById('langMenuButton');
+            const langDropdown = document.getElementById('langDropdown');
+            if (langBtn && langDropdown) {
+                langBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    langDropdown.classList.toggle('hidden');
+                });
+                document.addEventListener('click', (e) => {
+                    if (!langBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+                        langDropdown.classList.add('hidden');
+                    }
+                });
+            }
+
             // Toggle user dropdown
             const userBtn = document.getElementById('userMenuButton');
             const userDropdown = document.getElementById('userDropdown');

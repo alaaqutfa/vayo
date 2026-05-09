@@ -12,10 +12,24 @@
                 </i>
             </div>
             <div class="social-links d-none d-md-flex align-items-center">
-                <a href="#" class="twitter" aria-label="X"><i class="bi bi-twitter-x"></i></a>
-                <a href="#" class="facebook" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="linkedin" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                @if(!empty($settings['social_twitter']))
+                    <a href="{{ $settings['social_twitter'] }}" class="twitter" aria-label="X" target="_blank" rel="noopener"><i class="bi bi-twitter-x"></i></a>
+                @endif
+                @if(!empty($settings['social_facebook']))
+                    <a href="{{ $settings['social_facebook'] }}" class="facebook" aria-label="Facebook" target="_blank" rel="noopener"><i class="bi bi-facebook"></i></a>
+                @endif
+                @if(!empty($settings['social_instagram']))
+                    <a href="{{ $settings['social_instagram'] }}" class="instagram" aria-label="Instagram" target="_blank" rel="noopener"><i class="bi bi-instagram"></i></a>
+                @endif
+                @if(!empty($settings['social_linkedin']))
+                    <a href="{{ $settings['social_linkedin'] }}" class="linkedin" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i></a>
+                @endif
+                @if(!empty($settings['social_youtube']))
+                    <a href="{{ $settings['social_youtube'] }}" class="youtube" aria-label="YouTube" target="_blank" rel="noopener"><i class="bi bi-youtube"></i></a>
+                @endif
+                @if(!empty($settings['social_tiktok']))
+                    <a href="{{ $settings['social_tiktok'] }}" class="tiktok" aria-label="TikTok" target="_blank" rel="noopener"><i class="bi bi-tiktok"></i></a>
+                @endif
             </div>
         </div>
     </div>
@@ -41,15 +55,15 @@
 
                     <li class="dropdown guide-mega">
                         <a href="{{ route('guide.index') }}" class="{{ request()->routeIs('guide.*') ? 'active' : '' }}">
-                            <span>{{ __('Guide Menu') }}</span>
+                            <span>{{ __t('guide_menu') }}</span>
                             <i class="bi bi-grid-3x3-gap"></i>
                         </a>
                         <div class="guide-panel">
                             <div class="guide-panel-intro">
-                                <span>Patient Guide</span>
-                                <h3>Find the right path before you visit</h3>
-                                <p>Browse treatments, preparation tips, and patient resources by category.</p>
-                                <a href="{{ route('guide.index') }}">Open full guide <i class="bi bi-arrow-right"></i></a>
+                                <span>{{ __t('patient_guide') }}</span>
+                                <h3>{{ __t('guide_intro_title') }}</h3>
+                                <p>{{ __t('guide_intro_description') }}</p>
+                                <a href="{{ route('guide.index') }}">{{ __t('open_full_guide') }} <i class="bi bi-arrow-right"></i></a>
                             </div>
                             <div class="guide-panel-grid">
                                 @foreach($guideCategories->take(6) as $parent)

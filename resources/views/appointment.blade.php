@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('Book Appointment') . ' - ' . ($settings['site_name'] ?? 'Vayo Clinic'))
+@section('title', __t('book_appointment') . ' - ' . ($settings['site_name'] ?? 'Vayo Clinic'))
 
 @section('content')
     <section id="appointment-page" class="appointment-page section">
@@ -9,9 +9,9 @@
                 <div class="col-lg-8">
                     <div class="appointment-card" data-aos="fade-up">
                         <div class="appointment-header text-center">
-                            <h1 class="display-5 fw-bold gradient-text">{{ __('Schedule Your Visit') }}</h1>
+                            <h1 class="display-5 fw-bold gradient-text">{{ __t('schedule_your_appointment') }}</h1>
                             <p class="text-muted">
-                                {{ __('Fill out the form below and our team will confirm your appointment.') }}
+                                {{ __t('appointment_description') }}
                             </p>
                         </div>
 
@@ -25,14 +25,14 @@
                             @csrf
                             <div class="row g-4">
                                 <div class="col-md-6">
-                                    <label class="form-label">{{ __('Full Name') }} <span
+                                    <label class="form-label">{{ __t('full_name') }} <span
                                             class="text-danger">*</span></label>
                                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
                                         value="{{ old('name') }}" required>
                                     @error('name')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label">{{ __('Email Address') }} <span
+                                    <label class="form-label">{{ __t('email_address') }} <span
                                             class="text-danger">*</span></label>
                                     <input type="email" name="email"
                                         class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}"
@@ -40,46 +40,46 @@
                                     @error('email')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label">{{ __('Phone Number') }} <span
+                                    <label class="form-label">{{ __t('phone_number') }} <span
                                             class="text-danger">*</span></label>
                                     <input type="tel" name="phone" class="form-control @error('phone') is-invalid @enderror"
                                         value="{{ old('phone') }}" required>
                                     @error('phone')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label">{{ __('Preferred Date') }} <span
+                                    <label class="form-label">{{ __t('preferred_date') }} <span
                                             class="text-danger">*</span></label>
                                     <input type="date" name="date" class="form-control @error('date') is-invalid @enderror"
                                         value="{{ old('date') }}" required>
                                     @error('date')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label">{{ __('Department / Service') }}</label>
+                                    <label class="form-label">{{ __t('department_service') }}</label>
                                     <select name="department" class="form-select">
-                                        <option value="">{{ __('Select a service') }}</option>
+                                        <option value="">{{ __t('select_a_service') }}</option>
                                         @foreach($services as $service)
                                             <option value="{{ $service->id }}" {{ old('department') == $service->id ? 'selected' : '' }}>{{ $service->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label">{{ __('Preferred Doctor') }}</label>
+                                    <label class="form-label">{{ __t('preferred_doctor') }}</label>
                                     <select name="doctor_id" class="form-select">
-                                        <option value="">{{ __('Select a doctor') }}</option>
+                                        <option value="">{{ __t('select_a_doctor') }}</option>
                                         @foreach($doctors as $doctor)
                                             <option value="{{ $doctor->id }}" {{ old('doctor_id') == $doctor->id ? 'selected' : '' }}>{{ $doctor->name }} - {{ $doctor->specialty }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label">{{ __('Additional Message / Notes') }}</label>
+                                    <label class="form-label">{{ __t('additional_notes') }}</label>
                                     <textarea name="message" rows="4"
                                         class="form-control @error('message') is-invalid @enderror">{{ old('message') }}</textarea>
                                     @error('message')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                                 <div class="col-12">
                                     <button type="submit"
-                                        class="btn btn-primary btn-lg w-100">{{ __('Confirm Appointment') }}</button>
+                                        class="btn btn-primary btn-lg w-100">{{ __t('confirm_appointment') }}</button>
                                 </div>
                             </div>
                         </form>
