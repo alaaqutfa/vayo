@@ -96,7 +96,7 @@
                                 @error('image') <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <div class="flex justify-between items-start gap-4 flex-wrap lg:flex-nowrap">
+                            <div class="grid gap-6 sm:grid-cols-2">
                                 {{-- Before Image --}}
                                 <div>
                                     <label for="before_image"
