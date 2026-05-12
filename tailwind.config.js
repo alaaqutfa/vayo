@@ -21,8 +21,8 @@ export default {
                 arabic: ["Tajawal", ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                primary: "#012119",
-                secondary: "#33FF99",
+                primary: "#33FF99",
+                secondary: "#012119",
                 "gray-custom": "#DBDBDB",
                 accent: "#0033FF",
             },
