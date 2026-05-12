@@ -22,5 +22,5 @@
             </div>
         </nav>
     </div><!-- End Page Title -->
-    @include('home.sections.gallery')
+    @include('gallery.full-gallery')
 @endsection
