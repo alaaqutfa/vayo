@@ -21,8 +21,8 @@ class PageController extends Controller
                 'title' => $slug === 'privacy' ? 'Privacy Policy' : 'Terms and Conditions',
                 'slug' => $slug,
                 'meta_description' => $slug === 'privacy'
-                    ? 'How Vayo Clinic protects patient privacy, personal data, medical information, and digital communications.'
-                    : 'The terms that govern use of Vayo Clinic services, website content, appointments, and communications.',
+                    ? 'How Vayu Clinic protects patient privacy, personal data, medical information, and digital communications.'
+                    : 'The terms that govern use of Vayu Clinic services, website content, appointments, and communications.',
                 'content' => '',
             ]);
         }

@@ -14,7 +14,7 @@ class TestimonialsTableSeeder extends Seeder
                 'name'      => 'Sarah Johnson',
                 'image'     => 'assets/img/person/person-f-11.webp',   // أنثى
                 'position'  => 'Mother of 2',
-                'content'   => 'The care I received at Vayo Clinic was exceptional. The doctors took time to explain everything and made me feel comfortable throughout my treatment.',
+                'content'   => 'The care I received at Vayu Clinic was exceptional. The doctors took time to explain everything and made me feel comfortable throughout my treatment.',
                 'rating'    => 5,
                 'is_active' => true,
                 'order'     => 1,
@@ -41,7 +41,7 @@ class TestimonialsTableSeeder extends Seeder
                 'name'      => 'Emily Rodriguez',
                 'image'     => 'assets/img/person/person-f-12.webp',   // أنثى
                 'position'  => 'Fitness Trainer',
-                'content'   => 'Vayo Clinic provides clear, coordinated medical care with experienced clinicians and modern diagnostics. The staff is friendly and professional.',
+                'content'   => 'Vayu Clinic provides clear, coordinated medical care with experienced clinicians and modern diagnostics. The staff is friendly and professional.',
                 'rating'    => 4,
                 'is_active' => true,
                 'order'     => 4,

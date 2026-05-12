@@ -23,8 +23,8 @@
                         <a href="{{ route('gallery') }}">{{ __t('View all') }} <i class="bi bi-arrow-right"></i></a>
                     </div>
 
-                    <div class="reels-grid swiper reels-swiper">
-                        <div class="swiper-wrapper">
+                    <div class="swiper reels-swiper">
+                        <div class="reels-grid swiper-wrapper">
                             @foreach($videos->take(4) as $item)
                                 <article class="reel-card swiper-slide">
                                     <div class="reel-frame">
@@ -67,8 +67,8 @@
                         </div>
                     </div>
 
-                    <div class="before-after-grid swiper before-after-swiper">
-                        <div class="swiper-wrapper">
+                    <div class="swiper before-after-swiper">
+                        <div class="before-after-grid swiper-wrapper">
                             @foreach($beforeAfter->take(6) as $item)
                                 <article class="result-card swiper-slide">
                                     <div class="result-images">
@@ -107,8 +107,8 @@
                         </div>
                     </div>
 
-                    <div class="single-gallery-grid swiper single-gallery-swiper">
-                        <div class="swiper-wrapper">
+                    <div class="swiper single-gallery-swiper">
+                        <div class="single-gallery-grid swiper-wrapper">
                             @foreach($singleImages->take(8) as $item)
                                 <a href="{{ asset('storage/' . $item->image) }}" class="single-gallery-card glightbox  swiper-slide"
                                     data-gallery="single-gallery">
