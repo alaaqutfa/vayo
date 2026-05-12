@@ -56,6 +56,7 @@
 
                         {{-- Image Fields (shown when type = image) --}}
                         <div id="image-fields" class="{{ old('type', 'image') == 'video' ? 'hidden' : '' }} space-y-6">
+                            {{-- Main Image --}}
                             <div>
                                 <label for="image" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Main
                                     Image <span class="text-red-500">*</span></label>
@@ -74,10 +75,16 @@
                                         <p class="text-xs text-gray-500 dark:text-gray-400">JPG, PNG, WEBP up to 5MB</p>
                                     </div>
                                 </div>
+                                {{-- Preview area --}}
+                                <div id="image-preview" class="mt-3 hidden">
+                                    <img id="image-preview-img" class="h-24 w-24 rounded-lg object-cover shadow-sm">
+                                    <button type="button" id="clear-image" class="text-xs text-red-600 mt-1">Remove</button>
+                                </div>
                                 @error('image') <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                                 @enderror
                             </div>
 
+                            {{-- Before/After Images --}}
                             <div class="grid gap-6 sm:grid-cols-2">
                                 <div>
                                     <label for="before_image"
@@ -97,8 +104,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div id="before-preview" class="mt-3 hidden">
+                                        <img id="before-preview-img" class="h-20 w-20 rounded object-cover shadow-sm">
+                                        <button type="button" id="clear-before"
+                                            class="text-xs text-red-600 mt-1">Remove</button>
+                                    </div>
                                     @error('before_image') <p class="mt-1 text-sm text-red-600 dark:text-red-400">
-                                    {{ $message }}</p> @enderror
+                                        {{ $message }}
+                                    </p> @enderror
                                 </div>
                                 <div>
                                     <label for="after_image"
@@ -118,8 +131,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div id="after-preview" class="mt-3 hidden">
+                                        <img id="after-preview-img" class="h-20 w-20 rounded object-cover shadow-sm">
+                                        <button type="button" id="clear-after"
+                                            class="text-xs text-red-600 mt-1">Remove</button>
+                                    </div>
                                     @error('after_image') <p class="mt-1 text-sm text-red-600 dark:text-red-400">
-                                    {{ $message }}</p> @enderror
+                                        {{ $message }}
+                                    </p> @enderror
                                 </div>
                             </div>
                         </div>
@@ -205,6 +224,7 @@
     @push('scripts')
         <script>
             document.addEventListener('DOMContentLoaded', function () {
+                // Toggle between image/video fields
                 const radios = document.querySelectorAll('input[name="type"]');
                 const imageFields = document.getElementById('image-fields');
                 const videoFields = document.getElementById('video-fields');
@@ -221,7 +241,45 @@
                 }
 
                 radios.forEach(radio => radio.addEventListener('change', toggleFields));
-                toggleFields(); // initial state
+                toggleFields();
+
+                // Preview function for file input
+                function setupPreview(inputId, previewContainerId, imgId, clearBtnId) {
+                    const input = document.getElementById(inputId);
+                    const container = document.getElementById(previewContainerId);
+                    const img = document.getElementById(imgId);
+                    const clearBtn = document.getElementById(clearBtnId);
+
+                    if (!input) return;
+
+                    input.addEventListener('change', function (e) {
+                        const file = e.target.files[0];
+                        if (file) {
+                            const reader = new FileReader();
+                            reader.onload = function (ev) {
+                                img.src = ev.target.result;
+                                container.classList.remove('hidden');
+                            }
+                            reader.readAsDataURL(file);
+                        } else {
+                            container.classList.add('hidden');
+                            img.src = '';
+                        }
+                    });
+
+                    if (clearBtn) {
+                        clearBtn.addEventListener('click', function () {
+                            input.value = '';
+                            container.classList.add('hidden');
+                            img.src = '';
+                        });
+                    }
+                }
+
+                // Setup previews for each image field
+                setupPreview('image', 'image-preview', 'image-preview-img', 'clear-image');
+                setupPreview('before_image', 'before-preview', 'before-preview-img', 'clear-before');
+                setupPreview('after_image', 'after-preview', 'after-preview-img', 'clear-after');
             });
         </script>
     @endpush
