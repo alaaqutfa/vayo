@@ -39,7 +39,7 @@
                     </thead>
                     <tbody class="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-gray-900">
                         @foreach($messages as $msg)
-                            <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/50 {{ !$msg->is_read ? 'bg-blue-50/30 dark:bg-blue-900/10' : '' }}">
+                            <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/50 {{ !$msg->is_read ? 'bg-green-50 dark:bg-green-600' : '' }}">
                                 <td class="whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-900 dark:text-white sm:pl-6">{{ $msg->id }}</td>
                                 <td class="whitespace-nowrap px-4 py-4 text-sm text-gray-900 dark:text-white">{{ $msg->name }}</td>
                                 <td class="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-400">{{ $msg->email }}</td>
