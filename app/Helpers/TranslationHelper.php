@@ -52,6 +52,20 @@ class TranslationHelper
             self::loadTranslations($locale);
         }
 
+        if (! isset(self::$translations[$locale][$key])) {
+            // إنشاء الترجمة بقاعدة البيانات
+            Translation::create([
+                'locale'     => $locale,
+                'key'        => $key,
+                'value'      => $key,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            // إضافتها للكاش المحلي
+            self::$translations[$locale][$key] = $key;
+        }
+
         $text = self::$translations[$locale][$key] ?? $key;
 
         // استبدال المتغيرات مثل :name
