@@ -97,7 +97,7 @@
                                 <span class="specialty-tag">{{ $doctor->specialty }}</span>
                                 <div class="experience-info">
                                     <i class="bi bi-award"></i>
-                                    <span>{{ $doctor->years_experience }} {{ __('years experience') }}</span>
+                                    <span>{{ $doctor->years_experience }} {{ __t('years experience') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -114,7 +114,7 @@
                                 @endfor
                             </div>
                             <span class="rating-score">{{ number_format($doctor->rating, 1) }}</span>
-                            <span class="review-count">({{ $doctor->reviews_count }} {{ __('reviews') }})</span>
+                            <span class="review-count">({{ $doctor->reviews_count }} {{ __t('reviews') }})</span>
                         </div>
                         <div class="action-buttons">
                             <a href="{{ route('doctors.show', $doctor->id) }}" class="btn-secondary">{{ __t('view_details') }}</a>

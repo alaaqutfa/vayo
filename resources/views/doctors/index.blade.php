@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('Doctors') . ' - ' . ($settings['site_name'] ?? 'Vayu Clinic'))
+@section('title', __t('Doctors') . ' - ' . ($settings['site_name'] ?? 'Vayu Clinic'))
 
 @section('content')
     <section id="doctors-page" class="doctors-page section">
@@ -8,9 +8,9 @@
         <div class="container py-24">
             {{-- Hero Header --}}
             <div class="text-center mb-5" data-aos="fade-up">
-                <h1 class="display-4 fw-bold gradient-text">{{ __('Our Expert Doctors') }}</h1>
+                <h1 class="display-4 fw-bold gradient-text">{{ __t('Our Expert Doctors') }}</h1>
                 <p class="lead text-muted">
-                    {{ __('Meet our team of specialized medical professionals dedicated to your health.') }}
+                    {{ __t('Meet our team of specialized medical professionals dedicated to your health.') }}
                 </p>
             </div>
 
@@ -24,12 +24,12 @@
                                     <span class="input-group-text bg-transparent border-end-0"><i
                                             class="bi bi-search"></i></span>
                                     <input type="text" name="name" class="form-control border-start-0"
-                                        placeholder="{{ __('Search by name...') }}" value="{{ request('name') }}">
+                                        placeholder="{{ __t('Search by name...') }}" value="{{ request('name') }}">
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <select name="specialty" class="form-select">
-                                    <option value="">{{ __('All Specialties') }}</option>
+                                    <option value="">{{ __t('All Specialties') }}</option>
                                     @foreach($specialties as $spec)
                                         <option value="{{ $spec }}" {{ request('specialty') == $spec ? 'selected' : '' }}>
                                             {{ $spec }}
@@ -38,7 +38,7 @@
                                 </select>
                             </div>
                             <div class="col-md-2">
-                                <button type="submit" class="btn btn-primary w-100">{{ __('Filter') }}</button>
+                                <button type="submit" class="btn btn-primary w-100">{{ __t('Filter') }}</button>
                             </div>
                         </div>
                     </form>
@@ -53,7 +53,7 @@
                             <div class="doctor-image">
                                 <img src="{{ asset($doctor->image_url) }}" alt="{{ $doctor->name }}" class="img-fluid">
                                 <div class="status-badge status-{{ $doctor->status }}">
-                                    {{ __(ucfirst($doctor->status)) }}
+                                    {{ __t(ucfirst($doctor->status)) }}
                                 </div>
                             </div>
                             <div class="doctor-info">
@@ -61,16 +61,16 @@
                                 <p class="doctor-specialty">{{ $doctor->specialty }}</p>
                                 <div class="doctor-meta">
                                     <span><i class="bi bi-briefcase"></i> {{ $doctor->years_experience }}+
-                                        {{ __('years') }}</span>
+                                        {{ __t('years') }}</span>
                                     <span><i class="bi bi-star-fill text-warning"></i>
                                         {{ number_format($doctor->rating, 1) }}</span>
-                                    <span><i class="bi bi-chat"></i> {{ $doctor->reviews_count }} {{ __('reviews') }}</span>
+                                    <span><i class="bi bi-chat"></i> {{ $doctor->reviews_count }} {{ __t('reviews') }}</span>
                                 </div>
                                 <div class="doctor-actions">
                                     <a href="{{ route('doctors.show', $doctor->id) }}"
-                                        class="btn btn-outline-primary btn-sm">{{ __('View Profile') }}</a>
+                                        class="btn btn-outline-primary btn-sm">{{ __t('View Profile') }}</a>
                                     <a href="{{ route('appointment') }}?doctor_id={{ $doctor->id }}"
-                                        class="btn btn-primary btn-sm">{{ __('Book Now') }}</a>
+                                        class="btn btn-primary btn-sm">{{ __t('Book Now') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                 @empty
                     <div class="col-12 text-center py-5">
                         <i class="bi bi-emoji-frown display-1 text-muted"></i>
-                        <p class="mt-3">{{ __('No doctors found.') }}</p>
+                        <p class="mt-3">{{ __t('No doctors found.') }}</p>
                     </div>
                 @endforelse
             </div>

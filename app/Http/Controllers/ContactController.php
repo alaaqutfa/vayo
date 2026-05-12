@@ -37,6 +37,6 @@ class ContactController extends Controller
 
         return redirect()
             ->route('contact')
-            ->with('success', __('contact_success_message'));
+            ->with('success', __t('contact_success_message'));
     }
 }

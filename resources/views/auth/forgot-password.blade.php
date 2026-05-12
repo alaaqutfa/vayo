@@ -3,8 +3,8 @@
 @section('title', 'Reset Password - Vayu Clinic')
 
 @section('content')
-    <h3 class="text-center mb-3">{{ __('Forgot Password?') }}</h3>
-    <p class="text-center text-muted mb-4">{{ __('Enter your email and we will send you a reset link.') }}</p>
+    <h3 class="text-center mb-3">{{ __t('Forgot Password?') }}</h3>
+    <p class="text-center text-muted mb-4">{{ __t('Enter your email and we will send you a reset link.') }}</p>
 
     @if(session('status'))
         <div class="alert alert-success mb-3">{{ session('status') }}</div>
@@ -14,7 +14,7 @@
         @csrf
 
         <div class="mb-4">
-            <label for="email" class="form-label">{{ __('Email Address') }}</label>
+            <label for="email" class="form-label">{{ __t('Email Address') }}</label>
             <div class="input-group">
                 <span class="input-group-text bg-transparent"><i class="bi bi-envelope"></i></span>
                 <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror"
@@ -26,11 +26,11 @@
         </div>
 
         <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-primary py-2">{{ __('Send Reset Link') }}</button>
+            <button type="submit" class="btn btn-primary py-2">{{ __t('Send Reset Link') }}</button>
         </div>
 
         <div class="text-center mt-3">
-            <a href="{{ route('login') }}" class="text-decoration-none small">{{ __('Back to Login') }}</a>
+            <a href="{{ route('login') }}" class="text-decoration-none small">{{ __t('Back to Login') }}</a>
         </div>
     </form>
 @endsection

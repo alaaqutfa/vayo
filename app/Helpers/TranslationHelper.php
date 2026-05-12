@@ -77,9 +77,9 @@ class TranslationHelper
     }
 
     /**
-     * مساعدة سريعة كـ function __()
+     * مساعدة سريعة كـ function __t()
      */
-    public static function __($key, $replace = [], $locale = null)
+    public static function __t($key, $replace = [], $locale = null)
     {
         return self::trans($key, $replace, $locale);
     }

@@ -11,7 +11,7 @@
                     <div class="col-lg-8">
                         <span class="badge bg-primary-soft text-primary mb-3 px-3 py-1 rounded-pill">
                             @if($category->parent_id) {{ $category->parent->name ?? 'Subcategory' }} @else
-                            {{ __('Main Category') }} @endif
+                            {{ __t('Main Category') }} @endif
                         </span>
                         <h1 class="heading-title">{{ $category->name }}</h1>
                         @if($category->description)
@@ -23,11 +23,11 @@
                             <div class="stat-item text-center">
                                 <span
                                     class="stat-number">{{ $services->count() + $category->children->sum(fn($c) => $c->services->count()) }}</span>
-                                <span class="stat-label">{{ __('Treatments') }}</span>
+                                <span class="stat-label">{{ __t('Treatments') }}</span>
                             </div>
                             <div class="stat-item text-center">
                                 <span class="stat-number">{{ $category->children->count() }}</span>
-                                <span class="stat-label">{{ __('Subcategories') }}</span>
+                                <span class="stat-label">{{ __t('Subcategories') }}</span>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
             <div class="container">
                 <ol>
                     <li><a href="{{ route('home') }}">{{ __t('home') }}</a></li>
-                    <li><a href="{{ route('guide.index') }}">{{ __('Guide') }}</a></li>
+                    <li><a href="{{ route('guide.index') }}">{{ __t('Guide') }}</a></li>
                     <li class="current">{{ $category->name }}</li>
                 </ol>
             </div>
@@ -51,7 +51,7 @@
                 <div class="mb-5" data-aos="fade-up">
                     <div class="d-flex align-items-center gap-3 mb-4">
                         <div class="flex-grow-1 border-bottom border-2 border-primary" style="max-width: 60px;"></div>
-                        <h3 class="h4 mb-0 text-uppercase fw-light">{{ __('Specialties') }}</h3>
+                        <h3 class="h4 mb-0 text-uppercase fw-light">{{ __t('Specialties') }}</h3>
                         <div class="flex-grow-1 border-bottom"></div>
                     </div>
                     <div class="row g-4">
@@ -84,11 +84,11 @@
                                         </ul>
                                         @if($child->services->count() > 4)
                                             <a href="{{ route('guide.category', $child->slug) }}" class="btn-link mt-2 d-inline-block">
-                                                {{ __('See all') }} <i class="bi bi-arrow-right-short"></i>
+                                                {{ __t('See all') }} <i class="bi bi-arrow-right-short"></i>
                                             </a>
                                         @endif
                                     @else
-                                        <p class="text-muted small mt-2">{{ __('No services yet') }}</p>
+                                        <p class="text-muted small mt-2">{{ __t('No services yet') }}</p>
                                     @endif
                                 </div>
                             </div>
@@ -102,7 +102,7 @@
                 <div data-aos="fade-up">
                     <div class="d-flex align-items-center gap-3 mb-4">
                         <div class="flex-grow-1 border-bottom border-2 border-primary" style="max-width: 60px;"></div>
-                        <h3 class="h4 mb-0 text-uppercase fw-light">{{ __('Treatments & Procedures') }}</h3>
+                        <h3 class="h4 mb-0 text-uppercase fw-light">{{ __t('Treatments & Procedures') }}</h3>
                         <div class="flex-grow-1 border-bottom"></div>
                     </div>
                     <div class="row g-4">
@@ -117,7 +117,7 @@
                                         <p class="card-text small text-muted">{{ Str::limit($service->description, 90) }}</p>
                                         <a href="{{ route('services.show', $service->slug) }}"
                                             class="btn btn-sm btn-outline-primary rounded-pill mt-2">
-                                            {{ __('Learn More') }} <i class="bi bi-arrow-right-short"></i>
+                                            {{ __t('Learn More') }} <i class="bi bi-arrow-right-short"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -130,7 +130,7 @@
             @if($category->children->isEmpty() && $services->isEmpty())
                 <div class="alert alert-info text-center py-5" data-aos="fade-up">
                     <i class="bi bi-info-circle display-6"></i>
-                    <p class="mt-3">{{ __('No content available in this category yet. Check back soon.') }}</p>
+                    <p class="mt-3">{{ __t('No content available in this category yet. Check back soon.') }}</p>
                 </div>
             @endif
         </div>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $page->title ?? __('Vayu Dental Clinic - About Us'))
+@section('title', $page->title ?? __t('Vayu Dental Clinic - About Us'))
 
 @section('body-class', 'about-page')
 
@@ -11,8 +11,8 @@
             <div class="container">
                 <div class="row d-flex justify-content-center text-center">
                     <div class="col-lg-8">
-                        <h1 class="heading-title">{{ $page->title ?? __('About Vayu Dental Clinic') }}</h1>
-                        <p class="mb-0">{{ Str::limit($page->meta_description ?? __('Your smile is our passion. Advanced cosmetic dentistry, gentle care, and exceptional results at Vayu Clinic.'), 160) }}</p>
+                        <h1 class="heading-title">{{ $page->title ?? __t('About Vayu Dental Clinic') }}</h1>
+                        <p class="mb-0">{{ Str::limit($page->meta_description ?? __t('Your smile is our passion. Advanced cosmetic dentistry, gentle care, and exceptional results at Vayu Clinic.'), 160) }}</p>
                     </div>
                 </div>
             </div>
@@ -20,8 +20,8 @@
         <nav class="breadcrumbs">
             <div class="container">
                 <ol>
-                    <li><a href="{{ route('home') }}">{{ __('Home') }}</a></li>
-                    <li class="current">{{ $page->title ?? __('About Us') }}</li>
+                    <li><a href="{{ route('home') }}">{{ __t('Home') }}</a></li>
+                    <li class="current">{{ $page->title ?? __t('About Us') }}</li>
                 </ol>
             </div>
         </nav>
@@ -36,14 +36,14 @@
                         @if(empty($page->content))
                             {!! $page->content !!}
                         @else
-                            <h2>{{ __('Modern Dentistry, Beautiful Smiles') }}</h2>
-                            <p class="lead">{{ __('At Vayu Clinic, we combine state-of-the-art technology with a gentle, patient‑first approach to transform your dental experience.') }}</p>
-                            <p>{{ __('Whether you need a Hollywood smile makeover, dental implants, Invisalign, or routine preventive care, our team of specialist dentists and hygienists works closely with you to achieve natural, long‑lasting results.') }}</p>
-                            <p>{{ __('We believe that a healthy, confident smile changes lives – and we’re here to make that journey comfortable, transparent, and tailored to you.') }}</p>
+                            <h2>{{ __t('Modern Dentistry, Beautiful Smiles') }}</h2>
+                            <p class="lead">{{ __t('At Vayu Clinic, we combine state-of-the-art technology with a gentle, patient‑first approach to transform your dental experience.') }}</p>
+                            <p>{{ __t('Whether you need a Hollywood smile makeover, dental implants, Invisalign, or routine preventive care, our team of specialist dentists and hygienists works closely with you to achieve natural, long‑lasting results.') }}</p>
+                            <p>{{ __t('We believe that a healthy, confident smile changes lives – and we’re here to make that journey comfortable, transparent, and tailored to you.') }}</p>
                             <div class="stats-grid mt-4">
-                                <div class="stat-item"><div class="stat-number">5000+</div><div class="stat-label">{{ __('Smiles Transformed') }}</div></div>
-                                <div class="stat-item"><div class="stat-number">15+</div><div class="stat-label">{{ __('Years of Excellence') }}</div></div>
-                                <div class="stat-item"><div class="stat-number">8</div><div class="stat-label">{{ __('Specialist Dentists') }}</div></div>
+                                <div class="stat-item"><div class="stat-number">5000+</div><div class="stat-label">{{ __t('Smiles Transformed') }}</div></div>
+                                <div class="stat-item"><div class="stat-number">15+</div><div class="stat-label">{{ __t('Years of Excellence') }}</div></div>
+                                <div class="stat-item"><div class="stat-number">8</div><div class="stat-label">{{ __t('Specialist Dentists') }}</div></div>
                             </div>
                         @endif
                     </div>
@@ -72,29 +72,29 @@
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="value-item">
                             <div class="value-icon"><i class="bi bi-heart-pulse"></i></div>
-                            <h4>{{ __('Gentle Compassion') }}</h4>
-                            <p>{{ __('We listen, explain, and treat you like family – anxiety‑free dentistry with genuine empathy.') }}</p>
+                            <h4>{{ __t('Gentle Compassion') }}</h4>
+                            <p>{{ __t('We listen, explain, and treat you like family – anxiety‑free dentistry with genuine empathy.') }}</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="value-item">
                             <div class="value-icon"><i class="bi bi-shield-check"></i></div>
-                            <h4>{{ __('Clinical Excellence') }}</h4>
-                            <p>{{ __('Continuous training, modern equipment, and evidence‑based protocols for predictable, superior outcomes.') }}</p>
+                            <h4>{{ __t('Clinical Excellence') }}</h4>
+                            <p>{{ __t('Continuous training, modern equipment, and evidence‑based protocols for predictable, superior outcomes.') }}</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
                         <div class="value-item">
                             <div class="value-icon"><i class="bi bi-brush"></i></div>
-                            <h4>{{ __('Aesthetic Artistry') }}</h4>
-                            <p>{{ __('We combine science with art to deliver natural, symmetrical smiles that suit your unique face.') }}</p>
+                            <h4>{{ __t('Aesthetic Artistry') }}</h4>
+                            <p>{{ __t('We combine science with art to deliver natural, symmetrical smiles that suit your unique face.') }}</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
                         <div class="value-item">
                             <div class="value-icon"><i class="bi bi-lightbulb"></i></div>
-                            <h4>{{ __('Advanced Innovation') }}</h4>
-                            <p>{{ __('Digital scanning, 3D imaging, laser dentistry, and pain‑free techniques for a modern experience.') }}</p>
+                            <h4>{{ __t('Advanced Innovation') }}</h4>
+                            <p>{{ __t('Digital scanning, 3D imaging, laser dentistry, and pain‑free techniques for a modern experience.') }}</p>
                         </div>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
                     </div>
                 </div>
                 <div class="row mt-4 text-center">
-                    <div class="col-12"><small class="text-muted">{{ __('American Dental Association · International Team for Implantology · British Dental Association') }}</small></div>
+                    <div class="col-12"><small class="text-muted">{{ __t('American Dental Association · International Team for Implantology · British Dental Association') }}</small></div>
                 </div>
             </div>
         </div>

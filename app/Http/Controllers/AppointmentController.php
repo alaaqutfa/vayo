@@ -35,6 +35,6 @@ class AppointmentController extends Controller
 
         Appointment::create($validated);
 
-        return redirect()->route('appointment')->with('success', __('appointment_success_message'));
+        return redirect()->route('appointment')->with('success', __t('appointment_success_message'));
     }
 }
