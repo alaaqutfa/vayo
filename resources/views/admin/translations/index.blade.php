@@ -69,7 +69,8 @@
                         <tbody class="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-gray-900">
                             @foreach($translations as $trans)
                                 <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/50">
-                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">
+                                    <td
+                                        class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white break-words max-w-xs">
                                         {{ $trans->key }}
                                     </td>
                                     <td class="px-6 py-4">
