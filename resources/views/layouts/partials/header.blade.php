@@ -56,7 +56,7 @@
                     <li class="dropdown guide-mega">
                         <a href="{{ route('guide.index') }}" class="{{ request()->routeIs('guide.*') ? 'active' : '' }}">
                             <span>{{ __t('guide_menu') }}</span>
-                            <i class="bi bi-grid-3x3-gap"></i>
+                            <i class="bi bi-chevron-down"></i>
                         </a>
                         <div class="guide-panel">
                             <div class="guide-panel-intro">

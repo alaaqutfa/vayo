@@ -1134,7 +1134,7 @@ h6 {
     right: 20px;
     bottom: -120px;
     z-index: 99999;
-    background: linear-gradient(135deg, var(--accent-color), #1ae87f);
+    background: linear-gradient(135deg, #128c7e, #25d366);
     width: 48px;
     height: 48px;
     border-radius: 50px;
@@ -1144,7 +1144,7 @@ h6 {
 
 .scroll-top i {
     font-size: 24px;
-    color: var(--dark-navy);
+    color: var(--contrast-color);
     line-height: 0;
 }
 
@@ -2244,7 +2244,7 @@ section,
 
     .guide-panel {
         position: absolute;
-        top: calc(100% + 12px);
+        top: calc(100% + 2px);
         left: 50%;
         width: 100%;
         transform: translateX(-50%) translateY(12px);
@@ -2313,7 +2313,7 @@ section,
     display: flex;
     gap: 0.8rem;
     align-items: flex-start;
-    padding: 0.9rem;
+    padding: 0.9rem !important;
     background: #f8fbfa;
     border: 1px solid rgba(1, 33, 25, 0.07);
     border-radius: 12px;
@@ -7343,7 +7343,7 @@ section,
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+    background: linear-gradient(135deg, #128c7e, #25d366);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7351,7 +7351,7 @@ section,
 
 .contact .contact-info-item .info-icon i {
     font-size: 24px;
-    color: var(--accent-color);
+    color: var(--contrast-color);
 }
 
 .contact .contact-info-item .info-content h3 {
@@ -7415,7 +7415,7 @@ section,
 }
 
 .contact .btn-submit {
-    background-color: var(--accent-color);
+    background: linear-gradient(135deg, #128c7e, #25d366);
     color: var(--contrast-color);
     border: none;
     padding: 15px 30px;
@@ -7427,7 +7427,7 @@ section,
 }
 
 .contact .btn-submit:hover {
-    background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
+    background: linear-gradient(-135deg, #128c7e, #25d366);
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }

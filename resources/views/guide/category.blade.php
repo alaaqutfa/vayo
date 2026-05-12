@@ -3,49 +3,49 @@
 @section('title', $category->name . ' - ' . ($settings['site_name'] ?? 'Vayu Clinic'))
 
 @section('content')
-<section id="guide-category-page" class="guide-category-page section light-background">
-    <div class="guide-category-page py-24">
-        <div class="container">
-            {{-- Breadcrumb --}}
-            <nav aria-label="breadcrumb" class="mb-4" data-aos="fade-up">
-                <ol class="breadcrumb bg-transparent p-0">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}" class="text-decoration-none"><i
-                                class="bi bi-house-door me-1"></i>{{ __('Home') }}</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('guide.index') }}"
-                            class="text-decoration-none">{{ __('Guide') }}</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ $category->name }}</li>
-                </ol>
-            </nav>
-
-            {{-- Category Header --}}
-            <div class="row align-items-center mb-5" data-aos="fade-up">
-                <div class="col-lg-8">
-                    <div class="category-header">
+    <!-- Page Title -->
+    <div class="page-title">
+        <div class="heading">
+            <div class="container">
+                <div class="row align-items-center" data-aos="fade-up">
+                    <div class="col-lg-8">
                         <span class="badge bg-primary-soft text-primary mb-3 px-3 py-1 rounded-pill">
                             @if($category->parent_id) {{ $category->parent->name ?? 'Subcategory' }} @else
                             {{ __('Main Category') }} @endif
                         </span>
-                        <h1 class="display-4 fw-bold mb-3">{{ $category->name }}</h1>
+                        <h1 class="heading-title">{{ $category->name }}</h1>
                         @if($category->description)
-                            <p class="lead text-muted">{{ $category->description }}</p>
+                            <p>{{ $category->description }}</p>
                         @endif
                     </div>
-                </div>
-                <div class="col-lg-4 text-lg-end">
-                    <div class="header-stats d-flex justify-content-lg-end gap-4">
-                        <div class="stat-item text-center">
-                            <span
-                                class="stat-number">{{ $services->count() + $category->children->sum(fn($c) => $c->services->count()) }}</span>
-                            <span class="stat-label">{{ __('Treatments') }}</span>
-                        </div>
-                        <div class="stat-item text-center">
-                            <span class="stat-number">{{ $category->children->count() }}</span>
-                            <span class="stat-label">{{ __('Subcategories') }}</span>
+                    <div class="col-lg-4 text-lg-end">
+                        <div class="header-stats d-flex justify-content-lg-center gap-4">
+                            <div class="stat-item text-center">
+                                <span
+                                    class="stat-number">{{ $services->count() + $category->children->sum(fn($c) => $c->services->count()) }}</span>
+                                <span class="stat-label">{{ __('Treatments') }}</span>
+                            </div>
+                            <div class="stat-item text-center">
+                                <span class="stat-number">{{ $category->children->count() }}</span>
+                                <span class="stat-label">{{ __('Subcategories') }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+        </div>
+        <nav class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li><a href="{{ route('home') }}">{{ __t('home') }}</a></li>
+                    <li><a href="{{ route('guide.index') }}">{{ __('Guide') }}</a></li>
+                    <li class="current">{{ $category->name }}</li>
+                </ol>
+            </div>
+        </nav>
+    </div><!-- End Page Title -->
+    <section id="guide-category-page" class="guide-category-page light-background">
+        <div class="container">
             {{-- Subcategories Section --}}
             @if($category->children->count())
                 <div class="mb-5" data-aos="fade-up">
@@ -134,12 +134,20 @@
                 </div>
             @endif
         </div>
-    </div>
-</section>
+    </section>
 @endsection
 
 @push('styles')
     <style>
+        .page-title .heading h1 {
+            font-size: 38px;
+            font-weight: 700;
+            background: linear-gradient(25deg, var(--dark-navy) 0%, var(--accent-color) 50%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
         /* Stats */
         .stat-number {
             font-size: 2rem;
@@ -174,7 +182,7 @@
         .subcategory-icon i {
             font-size: 2rem;
             color: var(--accent-color);
-            background: color-mix(in srgb, var(--accent-color), transparent 90%);
+            background: linear-gradient(135deg, #128c7e, #25d366);
             padding: 12px;
             border-radius: 16px;
         }
@@ -218,11 +226,11 @@
 
         .btn-outline-primary {
             border-color: color-mix(in srgb, var(--accent-color), transparent 70%);
-            color: var(--accent-color);
+            color: var(--heading-color);
         }
 
         .btn-outline-primary:hover {
-            background-color: var(--accent-color);
+            background-color: var(--heading-color);
             border-color: var(--accent-color);
             color: var(--contrast-color);
         }
