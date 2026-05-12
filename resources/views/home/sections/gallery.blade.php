@@ -67,31 +67,33 @@
                         </div>
                     </div>
 
-                    <div class="before-after-grid">
-                        @foreach($beforeAfter->take(6) as $item)
-                            <article class="result-card">
-                                <div class="result-images">
-                                    <a href="{{ asset('storage/' . $item->before_image) }}" class="result-image glightbox"
-                                        data-gallery="before-after-{{ $item->id }}">
-                                        <img src="{{ asset('storage/' . $item->before_image) }}" alt="{{ $item->title }} before"
-                                            loading="lazy">
-                                        <span>{{ __t('Before') }}</span>
-                                    </a>
-                                    <a href="{{ asset('storage/' . $item->after_image) }}" class="result-image glightbox"
-                                        data-gallery="before-after-{{ $item->id }}">
-                                        <img src="{{ asset('storage/' . $item->after_image) }}" alt="{{ $item->title }} after"
-                                            loading="lazy">
-                                        <span>{{ __t('After') }}</span>
-                                    </a>
-                                </div>
-                                <div class="gallery-card-copy">
-                                    <h4>{{ $item->title ?: 'Treatment Result' }}</h4>
-                                    @if($item->description)
-                                        <p>{{ Str::limit($item->description, 100) }}</p>
-                                    @endif
-                                </div>
-                            </article>
-                        @endforeach
+                    <div class="before-after-grid swiper before-after-swiper">
+                        <div class="swiper-wrapper">
+                            @foreach($beforeAfter->take(6) as $item)
+                                <article class="result-card swiper-slide">
+                                    <div class="result-images">
+                                        <a href="{{ asset('storage/' . $item->before_image) }}" class="result-image glightbox"
+                                            data-gallery="before-after-{{ $item->id }}">
+                                            <img src="{{ asset('storage/' . $item->before_image) }}" alt="{{ $item->title }} before"
+                                                loading="lazy">
+                                            <span>{{ __t('Before') }}</span>
+                                        </a>
+                                        <a href="{{ asset('storage/' . $item->after_image) }}" class="result-image glightbox"
+                                            data-gallery="before-after-{{ $item->id }}">
+                                            <img src="{{ asset('storage/' . $item->after_image) }}" alt="{{ $item->title }} after"
+                                                loading="lazy">
+                                            <span>{{ __t('After') }}</span>
+                                        </a>
+                                    </div>
+                                    <div class="gallery-card-copy">
+                                        <h4>{{ $item->title ?: 'Treatment Result' }}</h4>
+                                        @if($item->description)
+                                            <p>{{ Str::limit($item->description, 100) }}</p>
+                                        @endif
+                                    </div>
+                                </article>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             @endif
@@ -105,32 +107,48 @@
                         </div>
                     </div>
 
-                    <div class="single-gallery-grid">
-                        @foreach($singleImages->take(8) as $item)
-                            <a href="{{ asset('storage/' . $item->image) }}" class="single-gallery-card glightbox"
-                                data-gallery="single-gallery">
-                                <img src="{{ asset('storage/' . $item->image) }}"
-                                    alt="{{ $item->title ?: 'Vayu Clinic gallery image' }}" loading="lazy">
-                                <span>
-                                    <strong>{{ $item->title ?: 'Vayu Clinic' }}</strong>
-                                    @if($item->description)
-                                        <small>{{ Str::limit($item->description, 70) }}</small>
-                                    @endif
-                                </span>
-                            </a>
-                        @endforeach
+                    <div class="single-gallery-grid swiper single-gallery-swiper">
+                        <div class="swiper-wrapper">
+                            @foreach($singleImages->take(8) as $item)
+                                <a href="{{ asset('storage/' . $item->image) }}" class="single-gallery-card glightbox  swiper-slide"
+                                    data-gallery="single-gallery">
+                                    <img src="{{ asset('storage/' . $item->image) }}"
+                                        alt="{{ $item->title ?: 'Vayu Clinic gallery image' }}" loading="lazy">
+                                    <span>
+                                        <strong>{{ $item->title ?: 'Vayu Clinic' }}</strong>
+                                        @if($item->description)
+                                            <small>{{ Str::limit($item->description, 70) }}</small>
+                                        @endif
+                                    </span>
+                                </a>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             @endif
         </div>
     </section>
 
-    {{-- @push('scripts')
+    @push('scripts')
         <script>
 
             function mobileOnly() {
                 if (window.innerWidth <= 768) {
                     new Swiper('.reels-swiper', {
+                        loop: true,
+                        slidesPerView: 1,
+                        spaceBetween: 30,
+                        autoplay: { delay: 1000 },
+                        breakpoints: { 768: { slidesPerView: 1 }, 1200: { slidesPerView: 3 } }
+                    });
+                    new Swiper('.before-after-swiper', {
+                        loop: true,
+                        slidesPerView: 1,
+                        spaceBetween: 30,
+                        autoplay: { delay: 1000 },
+                        breakpoints: { 768: { slidesPerView: 1 }, 1200: { slidesPerView: 3 } }
+                    });
+                    new Swiper('.single-gallery-swiper', {
                         loop: true,
                         slidesPerView: 1,
                         spaceBetween: 30,
@@ -144,5 +162,5 @@
 
             window.addEventListener("resize", mobileOnly);
         </script>
-    @endpush --}}
+    @endpush
 @endif
