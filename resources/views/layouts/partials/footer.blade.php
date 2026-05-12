@@ -7,10 +7,10 @@
                         <a href="{{ route('home') }}" class="logo d-flex align-items-center mb-4">
                             @if(isset($settings['site_logo']) && $settings['site_logo'])
                                 <img src="{{ asset($settings['site_logo']) }}"
-                                    alt="{{ $settings['site_name'] ?? 'Vayo Clinic' }}">
+                                    alt="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
                             @else
                                 <img src="{{ asset('assets/img/logo-dark.png') }}" class="h-16 w-auto" alt="Logo">
-                                {{-- <span class="sitename">{{ $settings['site_name'] ?? 'Vayo Clinic' }}</span> --}}
+                                {{-- <span class="sitename">{{ $settings['site_name'] ?? 'Vayu Clinic' }}</span> --}}
                             @endif
                         </a>
                         <p class="brand-description">
@@ -18,13 +18,13 @@
                         </p>
                         <div class="contact-info mt-5">
                             <div class="contact-item"><i
-                                    class="bi bi-geo-alt"></i><span>{{ $settings['contact_address'] ?? 'Vayo Clinic Medical Center, Istanbul, Türkiye' }}</span>
+                                    class="bi bi-geo-alt"></i><span>{{ $settings['contact_address'] ?? 'Vayu Clinic Medical Center, Istanbul, Türkiye' }}</span>
                             </div>
                             <div class="contact-item"><i
                                     class="bi bi-telephone"></i><span>{{ $settings['contact_phone'] ?? '+90 555 057 65 55' }}</span>
                             </div>
                             <div class="contact-item"><i class="bi bi-envelope"></i><span>{{ $settings['contact_email']
-                                    ?? 'info@vayoclinic.com' }}</span></div>
+                                    ?? 'info@vayuclinic.com' }}</span></div>
                         </div>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                                 <div class="nav-column">
                                     <h6>{{ __t('clinic') }}</h6>
                                     <nav class="footer-nav">
-                                        <a href="{{ route('page.show', 'about') }}">{{ __t('about_vayo') }}</a>
+                                        <a href="{{ route('page.show', 'about') }}">{{ __t('about_vayu') }}</a>
                                         <a href="{{ route('departments') }}">{{ __t('departments_menu') }}</a>
                                         <a href="{{ route('doctors') }}">{{ __t('our_doctors') }}</a>
                                         <a href="{{ route('testimonials') }}">{{ __t('patient_stories') }}</a>
@@ -73,7 +73,7 @@
                                         <a href="{{ route('appointment') }}">{{ __t('book_appointment') }}</a>
                                         <a href="{{ route('contact') }}">{{ __t('contact_us') }}</a>
                                         <a
-                                            href="tel:{{ $settings['contact_phone'] ?? '+905550576555' }}">{{ __t('call_vayo') }}</a>
+                                            href="tel:{{ $settings['contact_phone'] ?? '+905550576555' }}">{{ __t('call_vayu') }}</a>
                                         <a href="#">{{ __t('newsletter') }}</a>
                                     </nav>
                                 </div>
@@ -106,7 +106,7 @@
                     <div class="col-lg-6">
                         <div class="copyright">
                             <p>&copy; {{ date('Y') }} <span
-                                    class="sitename">{{ $settings['site_name'] ?? 'Vayo Clinic' }}</span>.
+                                    class="sitename">{{ $settings['site_name'] ?? 'Vayu Clinic' }}</span>.
                                 {{ __t('all_rights_reserved') }}</p>
                         </div>
                     </div>

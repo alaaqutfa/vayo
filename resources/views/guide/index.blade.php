@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('Guide') . ' - ' . ($settings['site_name'] ?? 'Vayo Clinic'))
+@section('title', __('Guide') . ' - ' . ($settings['site_name'] ?? 'Vayu Clinic'))
 
 @section('content')
     <section id="guide-index-page" class="guide-index-page section light-background">

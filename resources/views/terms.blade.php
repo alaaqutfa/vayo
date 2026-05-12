@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Terms and Conditions | ' . ($settings['site_name'] ?? 'Vayo Clinic'))
-@section('description', 'Terms and Conditions for using Vayo Clinic website, appointment requests, digital content, communications, and clinic services.')
+@section('title', 'Terms and Conditions | ' . ($settings['site_name'] ?? 'Vayu Clinic'))
+@section('description', 'Terms and Conditions for using Vayu Clinic website, appointment requests, digital content, communications, and clinic services.')
 @section('body-class', 'legal-page terms-page')
 
 @section('content')
@@ -10,7 +10,7 @@
             <div class="legal-hero-content">
                 <span class="legal-eyebrow"><i class="bi bi-file-earmark-text"></i> Clear patient commitments</span>
                 <h1>Terms and Conditions</h1>
-                <p>These Terms govern your use of the {{ $settings['site_name'] ?? 'Vayo Clinic' }} website, appointment tools, online communications, and digital content. Clinical care is also subject to consent forms, medical policies, and applicable law.</p>
+                <p>These Terms govern your use of the {{ $settings['site_name'] ?? 'Vayu Clinic' }} website, appointment tools, online communications, and digital content. Clinical care is also subject to consent forms, medical policies, and applicable law.</p>
                 <div class="legal-meta">
                     <span>Effective date: {{ date('F d, Y') }}</span>
                     <span>Website, appointments, content, and communications</span>
@@ -62,7 +62,7 @@
 
                     <section id="content">
                         <h2>6. Intellectual Property and Website Content</h2>
-                        <p>All website text, graphics, layout, logos, photographs, videos, icons, and interface elements are owned by or licensed to {{ $settings['site_name'] ?? 'Vayo Clinic' }} unless otherwise stated. You may not copy, modify, reproduce, publish, or commercially use content without written permission.</p>
+                        <p>All website text, graphics, layout, logos, photographs, videos, icons, and interface elements are owned by or licensed to {{ $settings['site_name'] ?? 'Vayu Clinic' }} unless otherwise stated. You may not copy, modify, reproduce, publish, or commercially use content without written permission.</p>
                     </section>
 
                     <section>
@@ -72,7 +72,7 @@
 
                     <section id="liability">
                         <h2>8. Limitation of Liability</h2>
-                        <p>To the maximum extent permitted by law, {{ $settings['site_name'] ?? 'Vayo Clinic' }} is not liable for indirect, incidental, special, consequential, or punitive damages arising from website use, interrupted access, inaccurate user submissions, third-party services, or reliance on general content.</p>
+                        <p>To the maximum extent permitted by law, {{ $settings['site_name'] ?? 'Vayu Clinic' }} is not liable for indirect, incidental, special, consequential, or punitive damages arising from website use, interrupted access, inaccurate user submissions, third-party services, or reliance on general content.</p>
                         <p>Nothing in these Terms limits liability that cannot be limited under applicable law or changes obligations owed during direct clinical care.</p>
                     </section>
 
@@ -88,7 +88,7 @@
 
                     <section>
                         <h2>11. Contact</h2>
-                        <p>For questions about these Terms, contact <a href="mailto:{{ $settings['contact_email'] ?? 'info@vayoclinic.com' }}">{{ $settings['contact_email'] ?? 'info@vayoclinic.com' }}</a> or call <a href="tel:{{ preg_replace('/\D+/', '', $settings['contact_phone'] ?? '+905550576555') }}">{{ $settings['contact_phone'] ?? '+90 555 057 65 55' }}</a>.</p>
+                        <p>For questions about these Terms, contact <a href="mailto:{{ $settings['contact_email'] ?? 'info@vayuclinic.com' }}">{{ $settings['contact_email'] ?? 'info@vayuclinic.com' }}</a> or call <a href="tel:{{ preg_replace('/\D+/', '', $settings['contact_phone'] ?? '+905550576555') }}">{{ $settings['contact_phone'] ?? '+90 555 057 65 55' }}</a>.</p>
                     </section>
                 </article>
             </div>

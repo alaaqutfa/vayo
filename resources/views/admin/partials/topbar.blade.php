@@ -12,7 +12,7 @@
                     <img src="{{ asset('assets/img/logo.png') }}" class="h-8 w-auto" alt="Logo">
                     {{-- <span
                         class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-primary dark:text-primary/90 ml-2">
-                        {{ $settings['site_name'] ?? 'Vayo Clinic' }}
+                        {{ $settings['site_name'] ?? 'Vayu Clinic' }}
                     </span> --}}
                 </a>
             </div>

@@ -20,7 +20,7 @@
         <nav class="breadcrumbs">
             <div class="container">
                 <ol>
-                    <li><a href="{{ url('/') }}">{{ __t('home') }}</a></li>
+                    <li><a href="{{ route('home') }}">{{ __t('home') }}</a></li>
                     <li class="current">{{ $page->title ?? __t('about') }}</li>
                 </ol>
             </div>

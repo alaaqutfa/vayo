@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Vayo Clinic - Trusted Medical Care')
+@section('title', 'Vayu Clinic - Trusted Medical Care')
 @section('body-class', 'index-page')
 
 @section('content')

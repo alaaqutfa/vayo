@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('title', 'Confirm Password - Vayo Clinic')
+@section('title', 'Confirm Password - Vayu Clinic')
 
 @section('content')
     <h3 class="text-center mb-3">{{ __('Confirm Password') }}</h3>

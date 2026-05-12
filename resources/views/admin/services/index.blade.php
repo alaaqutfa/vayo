@@ -8,7 +8,7 @@
             <div class="sm:flex sm:items-center sm:justify-between">
                 <div>
                     <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Services</h1>
-                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Manage all medical services offered by Vayo Clinic.</p>
+                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Manage all medical services offered by Vayu Clinic.</p>
                 </div>
                 <div class="mt-4 sm:mt-0">
                     <a href="{{ route('admin.services.create') }}"

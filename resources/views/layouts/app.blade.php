@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}" dir="{{ $rtl ?? false ? 'rtl' : 'ltr' }}" class="{{ $darkMode ?? false ? 'dark' : '' }}>
+<html lang="{{ app()->getLocale() }}" dir="{{ $rtl ?? false ? 'rtl' : 'ltr' }}" class="{{ $darkMode ?? false ? 'dark' : '' }}">
 
 <head>
     <meta charset="utf-8">
@@ -8,7 +8,7 @@
     <meta name="description" content="@yield('description', '')">
     <meta name="keywords" content="@yield('keywords', '')">
 
-    <title>@yield('title', $settings['site_name'] ?? 'Vayo Clinic')</title>
+    <title>@yield('title', $settings['site_name'] ?? 'Vayu Clinic')</title>
 
     <!-- Favicons -->
     @if(isset($settings['favicon']))
@@ -44,7 +44,7 @@
     @include('layouts.partials.header')
 
     <!-- Page Content -->
-    <main>
+    <main class="main">
         @yield('content')
     </main>
 
@@ -52,10 +52,10 @@
 
     @php
         $whatsappNumber = preg_replace('/\D+/', '', $settings['whatsapp_number'] ?? $settings['contact_phone'] ?? '+905550576555');
-        $whatsappMessage = rawurlencode('Hello Vayo Clinic, I would like to book an appointment.');
+        $whatsappMessage = rawurlencode('Hello Vayu Clinic, I would like to book an appointment.');
     @endphp
     <a href="https://wa.me/{{ $whatsappNumber }}?text={{ $whatsappMessage }}" class="whatsapp-float"
-        target="_blank" rel="noopener" aria-label="Contact Vayo Clinic on WhatsApp">
+        target="_blank" rel="noopener" aria-label="Contact Vayu Clinic on WhatsApp">
         <span class="whatsapp-float-pulse"></span>
         <i class="bi bi-whatsapp"></i>
         <span class="whatsapp-float-text">WhatsApp</span>

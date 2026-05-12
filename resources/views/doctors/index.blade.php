@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('Doctors') . ' - ' . ($settings['site_name'] ?? 'Vayo Clinic'))
+@section('title', __('Doctors') . ' - ' . ($settings['site_name'] ?? 'Vayu Clinic'))
 
 @section('content')
     <section id="doctors-page" class="doctors-page section">

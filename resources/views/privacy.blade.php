@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Privacy Policy | ' . ($settings['site_name'] ?? 'Vayo Clinic'))
-@section('description', 'Privacy Policy for Vayo Clinic covering personal data, medical information, appointments, cookies, communications, and patient rights.')
+@section('title', 'Privacy Policy | ' . ($settings['site_name'] ?? 'Vayu Clinic'))
+@section('description', 'Privacy Policy for Vayu Clinic covering personal data, medical information, appointments, cookies, communications, and patient rights.')
 @section('body-class', 'legal-page privacy-page')
 
 @section('content')
@@ -10,7 +10,7 @@
             <div class="legal-hero-content">
                 <span class="legal-eyebrow"><i class="bi bi-shield-lock"></i> Patient privacy first</span>
                 <h1>Privacy Policy</h1>
-                <p>How {{ $settings['site_name'] ?? 'Vayo Clinic' }} collects, uses, protects, and shares personal information when you use our website, request appointments, contact our team, or receive care through our clinic.</p>
+                <p>How {{ $settings['site_name'] ?? 'Vayu Clinic' }} collects, uses, protects, and shares personal information when you use our website, request appointments, contact our team, or receive care through our clinic.</p>
                 <div class="legal-meta">
                     <span>Effective date: {{ date('F d, Y') }}</span>
                     <span>Applies to website visitors, patients, and prospective patients</span>
@@ -86,7 +86,7 @@
 
                     <section id="contact-privacy">
                         <h2>10. Contact Us</h2>
-                        <p>For privacy requests or questions, contact us at <a href="mailto:{{ $settings['contact_email'] ?? 'info@vayoclinic.com' }}">{{ $settings['contact_email'] ?? 'info@vayoclinic.com' }}</a> or call <a href="tel:{{ preg_replace('/\D+/', '', $settings['contact_phone'] ?? '+905550576555') }}">{{ $settings['contact_phone'] ?? '+90 555 057 65 55' }}</a>.</p>
+                        <p>For privacy requests or questions, contact us at <a href="mailto:{{ $settings['contact_email'] ?? 'info@vayuclinic.com' }}">{{ $settings['contact_email'] ?? 'info@vayuclinic.com' }}</a> or call <a href="tel:{{ preg_replace('/\D+/', '', $settings['contact_phone'] ?? '+905550576555') }}">{{ $settings['contact_phone'] ?? '+90 555 057 65 55' }}</a>.</p>
                     </section>
                 </article>
             </div>

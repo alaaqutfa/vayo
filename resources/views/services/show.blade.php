@@ -19,7 +19,7 @@
         <nav class="breadcrumbs">
             <div class="container">
                 <ol>
-                    <li><a href="{{ url('/') }}">{{ __t('home') }}</a></li>
+                    <li><a href="{{ route('home') }}">{{ __t('home') }}</a></li>
                     <li><a href="{{ route('services.index') }}">{{ __t('services') }}</a></li>
                     <li class="current">{{ $service->name }}</li>
                 </ol>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $category->name . ' - ' . ($settings['site_name'] ?? 'Vayo Clinic'))
+@section('title', $category->name . ' - ' . ($settings['site_name'] ?? 'Vayu Clinic'))
 
 @section('content')
 <section id="guide-category-page" class="guide-category-page section light-background">

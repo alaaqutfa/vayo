@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Authentication') | {{ $settings['site_name'] ?? 'Vayo Clinic' }}</title>
+    <title>@yield('title', 'Authentication') | {{ $settings['site_name'] ?? 'Vayu Clinic' }}</title>
 
     <!-- Favicons -->
     @if(isset($settings['favicon']))
@@ -45,10 +45,10 @@
                         <a href="{{ route('home') }}" class="flex justify-center items-center">
                             @if(isset($settings['site_logo']) && $settings['site_logo'])
                                 <img src="{{ asset($settings['site_logo']) }}"
-                                    alt="{{ $settings['site_name'] ?? 'Vayo Clinic' }}" class="auth-logo mb-3"
+                                    alt="{{ $settings['site_name'] ?? 'Vayu Clinic' }}" class="auth-logo mb-3"
                                     style="max-height: 60px;">
                             @else
-                                {{-- <h2 class="text-primary fw-bold">{{ $settings['site_name'] ?? 'Vayo Clinic' }}</h2>
+                                {{-- <h2 class="text-primary fw-bold">{{ $settings['site_name'] ?? 'Vayu Clinic' }}</h2>
                                 --}}
                                 <img src="{{ asset('assets/img/logo.png') }}" class="h-16 w-auto" alt="Logo">
                             @endif
@@ -57,7 +57,7 @@
                     @yield('content')
                 </div>
                 <div class="text-center mt-4 text-muted small">
-                    &copy; {{ date('Y') }} {{ $settings['site_name'] ?? 'Vayo Clinic' }}.
+                    &copy; {{ date('Y') }} {{ $settings['site_name'] ?? 'Vayu Clinic' }}.
                     {{ __t('all_rights_reserved') }}
                 </div>
             </div>

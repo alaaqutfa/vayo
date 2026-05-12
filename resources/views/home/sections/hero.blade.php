@@ -42,7 +42,7 @@
                         </a>
                         <a href="#" class="btn btn-outline glightbox">
                             <i class="bi bi-play-circle me-2"></i>
-                            Watch About Vayo
+                            Watch About Vayu
                         </a>
                     </div>
 
@@ -85,7 +85,7 @@
                     <div class="hero-logo-mark">
                         <span>Powered by</span>
                         <img src="{{ isset($settings['site_logo']) && $settings['site_logo'] ? asset($settings['site_logo']) : asset('assets/img/logo.png') }}"
-                            alt="{{ $settings['site_name'] ?? 'Vayo Clinic' }}">
+                            alt="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
                     </div>
                     <div class="main-image">
                         @if(isset($doctors) && $doctors->count())
@@ -108,7 +108,7 @@
                                 </div>
                             </div>
                         @else
-                            <img src="{{ asset('assets/img/health/staff-10.webp') }}" alt="Vayo Clinic medical team"
+                            <img src="{{ asset('assets/img/health/staff-10.webp') }}" alt="Vayu Clinic medical team"
                                 class="img-fluid">
                         @endif
 
@@ -123,7 +123,7 @@
                                 <h6>Next Available</h6>
                                 <p>Today 2:30 PM</p>
                                 <small class="doctor-name-placeholder">
-                                    {{ isset($doctors) && $doctors->count() ? $doctors->first()->name : 'Vayo Clinic' }}
+                                    {{ isset($doctors) && $doctors->count() ? $doctors->first()->name : 'Vayu Clinic' }}
                                 </small>
                             </div>
                         </div>

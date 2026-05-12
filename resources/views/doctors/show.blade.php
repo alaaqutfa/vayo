@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $doctor->name . ' - ' . ($settings['site_name'] ?? 'Vayo Clinic'))
+@section('title', $doctor->name . ' - ' . ($settings['site_name'] ?? 'Vayu Clinic'))
 
 @section('content')
     <section id="doctor-details-page" class="doctor-details-page section light-background">

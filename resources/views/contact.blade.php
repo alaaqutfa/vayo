@@ -18,7 +18,7 @@
         <nav class="breadcrumbs">
             <div class="container">
                 <ol>
-                    <li><a href="{{ url('/') }}">{{ __t('home') }}</a></li>
+                    <li><a href="{{ route('home') }}">{{ __t('home') }}</a></li>
                     <li class="current">{{ __t('contact') }}</li>
                 </ol>
             </div>
@@ -34,14 +34,14 @@
                             <div class="info-icon"><i class="bi bi-geo-alt"></i></div>
                             <div class="info-content">
                                 <h3>{{ __t('our_address') }}</h3>
-                                <p>{{ $settings['contact_address'] ?? 'Vayo Clinic Medical Center, Istanbul, Türkiye' }}</p>
+                                <p>{{ $settings['contact_address'] ?? 'Vayu Clinic Medical Center, Istanbul, Türkiye' }}</p>
                             </div>
                         </div>
                         <div class="contact-info-item" data-aos="fade-up">
                             <div class="info-icon"><i class="bi bi-envelope"></i></div>
                             <div class="info-content">
                                 <h3>{{ __t('email_address') }}</h3>
-                                <p>{{ $settings['contact_email'] ?? 'info@vayoclinic.com' }}</p>
+                                <p>{{ $settings['contact_email'] ?? 'info@vayuclinic.com' }}</p>
                                 <p>{{ $settings['contact_email2'] ?? '' }}</p>
                             </div>
                         </div>

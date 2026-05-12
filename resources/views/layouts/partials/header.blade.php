@@ -3,8 +3,8 @@
         <div class="container d-flex justify-content-between align-items-center flex-wrap">
             <div class="contact-info d-flex align-items-center flex-wrap">
                 <i class="bi bi-envelope d-flex align-items-center">
-                    <a href="mailto:{{ $settings['contact_email'] ?? 'info@vayoclinic.com' }}">
-                        {{ $settings['contact_email'] ?? 'info@vayoclinic.com' }}
+                    <a href="mailto:{{ $settings['contact_email'] ?? 'info@vayuclinic.com' }}">
+                        {{ $settings['contact_email'] ?? 'info@vayuclinic.com' }}
                     </a>
                 </i>
                 <i class="bi bi-phone d-flex align-items-center ms-4">
@@ -36,11 +36,11 @@
 
     <div class="branding d-flex align-items-center">
         <div class="container position-relative d-flex align-items-center justify-content-between">
-            <a href="{{ url('/') }}" class="logo d-flex align-items-center" aria-label="{{ $settings['site_name'] ?? 'Vayo Clinic' }}">
+            <a href="{{ url('/') }}" class="logo d-flex align-items-center" aria-label="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
                 @if(isset($settings['site_logo']) && $settings['site_logo'])
-                    <img src="{{ asset($settings['site_logo']) }}" alt="{{ $settings['site_name'] ?? 'Vayo Clinic' }}">
+                    <img src="{{ asset($settings['site_logo']) }}" alt="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
                 @else
-                    <img src="{{ asset('assets/img/logo.png') }}" alt="{{ $settings['site_name'] ?? 'Vayo Clinic' }}">
+                    <img src="{{ asset('assets/img/logo.png') }}" alt="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
                 @endif
             </a>
 

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __t('book_appointment') . ' - ' . ($settings['site_name'] ?? 'Vayo Clinic'))
+@section('title', __t('book_appointment') . ' - ' . ($settings['site_name'] ?? 'Vayu Clinic'))
 
 @section('content')
     <section id="appointment-page" class="appointment-page section">

@@ -39,7 +39,7 @@
                             <div>
                                 <label for="site_name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Site Name</label>
                                 <input type="text" name="site_name" id="site_name"
-                                       value="{{ old('site_name', $settings['site_name'] ?? 'Vayo Clinic') }}"
+                                       value="{{ old('site_name', $settings['site_name'] ?? 'Vayu Clinic') }}"
                                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">
                             </div>
                             <div>
@@ -84,7 +84,7 @@
                                         <i class="bi bi-envelope text-gray-400"></i>
                                     </div>
                                     <input type="email" name="contact_email" id="contact_email"
-                                           value="{{ old('contact_email', $settings['contact_email'] ?? 'info@vayoclinic.com') }}"
+                                           value="{{ old('contact_email', $settings['contact_email'] ?? 'info@vayuclinic.com') }}"
                                            class="block w-full rounded-lg border-gray-300 pl-10 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                                         <i class="bi bi-geo-alt text-gray-400"></i>
                                     </div>
                                     <input type="text" name="contact_address" id="contact_address"
-                                           value="{{ old('contact_address', $settings['contact_address'] ?? 'Vayo Clinic Medical Center, Istanbul, Türkiye') }}"
+                                           value="{{ old('contact_address', $settings['contact_address'] ?? 'Vayu Clinic Medical Center, Istanbul, Türkiye') }}"
                                            class="block w-full rounded-lg border-gray-300 pl-10 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">
                                 </div>
                             </div>

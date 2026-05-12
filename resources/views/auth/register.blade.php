@@ -1,10 +1,10 @@
 @extends('layouts.auth')
 
-@section('title', 'Register - Vayo Clinic')
+@section('title', 'Register - Vayu Clinic')
 
 @section('content')
     <h3 class="text-center mb-3">{{ __('Create Account') }}</h3>
-    <p class="text-center text-muted mb-4">{{ __('Join Vayo Clinic today') }}</p>
+    <p class="text-center text-muted mb-4">{{ __('Join Vayu Clinic today') }}</p>
 
     <form method="POST" action="{{ route('register') }}">
         @csrf
