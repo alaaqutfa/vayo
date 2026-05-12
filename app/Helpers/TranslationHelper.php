@@ -55,7 +55,7 @@ class TranslationHelper
         if (! isset(self::$translations[$locale][$key])) {
             // إنشاء الترجمة بقاعدة البيانات
             Translation::create([
-                'locale'     => $locale,
+                'lang'     => $locale,
                 'key'        => $key,
                 'value'      => $key,
                 'created_at' => now(),
