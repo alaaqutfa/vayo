@@ -1,21 +1,30 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\TranslationHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Language;
 use App\Models\Translation;
-use App\Helpers\TranslationHelper;
 use Illuminate\Http\Request;
 
 class TranslationController extends Controller
 {
     public function index(Request $request)
     {
-        $locale = $request->get('locale', app()->getLocale());
+        $locale    = $request->get('locale', app()->getLocale());
         $languages = Language::where('is_active', true)->get();
 
-        $translations = Translation::where('lang', $locale)->orderBy('key')->paginate(50);
+        $translations = Translation::where('lang', $locale)
+            ->orderByRaw("
+                CASE
+                    WHEN value IS NULL THEN 0
+                    WHEN value = '' THEN 0
+                    WHEN value = `key` THEN 0
+                    ELSE 1
+                END ASC
+            ")
+            ->orderBy('key')
+            ->paginate(50);
 
         return view('admin.translations.index', compact('translations', 'locale', 'languages'));
     }
@@ -23,9 +32,9 @@ class TranslationController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'translations' => 'required|array',
+            'translations'   => 'required|array',
             'translations.*' => 'nullable|string',
-            'locale' => 'required|string|exists:languages,code',
+            'locale'         => 'required|string|exists:languages,code',
         ]);
 
         foreach ($request->translations as $key => $value) {
@@ -46,13 +55,13 @@ class TranslationController extends Controller
     {
         $request->validate([
             'locale' => 'required|string|exists:languages,code',
-            'key' => 'required|string|unique:translations,key,NULL,id,lang,'.$request->input('locale'),
-            'value' => 'nullable|string',
+            'key'    => 'required|string|unique:translations,key,NULL,id,lang,' . $request->input('locale'),
+            'value'  => 'nullable|string',
         ]);
 
         Translation::create([
-            'lang' => $request->input('locale'),
-            'key' => $request->key,
+            'lang'  => $request->input('locale'),
+            'key'   => $request->key,
             'value' => $request->value,
         ]);
 
@@ -65,7 +74,7 @@ class TranslationController extends Controller
     public function destroy($id)
     {
         $translation = Translation::findOrFail($id);
-        $locale = $translation->lang;
+        $locale      = $translation->lang;
         $translation->delete();
         TranslationHelper::clearCache($locale);
         return redirect()->route('admin.translations.index', ['locale' => $locale])
