@@ -24,7 +24,7 @@
                     </div>
                     <div class="relative w-full">
                         <video class="bg-video" autoplay muted loop playsinline preload="none"
-                            poster="{{ asset('assets/videos/vayu-2-poster.jpg') ?? '' }}">
+                            poster="{{ asset('assets/videos/vayu-2.jpg') ?? '' }}">
                             <source src="{{ asset('assets/videos/vayu-2.mp4') }}" type="video/mp4">
                         </video>
                         <div class="video-overlay-light"></div>
@@ -43,7 +43,7 @@
 
         <div class="features-section">
 
-            <div class="row g-0">
+            <div class="row">
 
                 <div class="col-lg-4">
                     <div class="feature-block" data-aos="fade-up" data-aos-delay="200">
@@ -91,8 +91,9 @@
 
                 <div class="col-lg-4">
                     <div class="contact-actions" data-aos="fade-up" data-aos-delay="300">
-                        <a href="tel:{{ $settings['emergency_phone'] ?? '+905550576555' }}" class="emergency-call">
-                            <i class="bi bi-telephone"></i>
+                        <a href="{{ $settings['social_whatsapp'] ?? 'tel:' . $settings['emergency_phone'] ?? 'tel:+905550576555' }}"
+                            class="emergency-call" target="_blank">
+                            <i class="bi bi-{{ $settings['social_whatsapp'] ? 'whatsapp' : $settings['emergency_phone'] ?? 'telephone' }}"></i>
                             <span>{{ $settings['emergency_phone'] ?? '+90 555 057 65 55' }}</span>
                         </a>
                         <a href="{{ url('contact') }}" class="contact-link">{{ __t('find_location') }}</a>

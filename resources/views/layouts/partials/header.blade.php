@@ -15,6 +15,9 @@
                 @if(!empty($settings['social_twitter']))
                     <a href="{{ $settings['social_twitter'] }}" class="twitter" aria-label="X" target="_blank" rel="noopener"><i class="bi bi-twitter-x"></i></a>
                 @endif
+                @if(!empty($settings['social_whatsapp']))
+                    <a href="{{ $settings['social_whatsapp'] }}" class="whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i></a>
+                @endif
                 @if(!empty($settings['social_facebook']))
                     <a href="{{ $settings['social_facebook'] }}" class="facebook" aria-label="Facebook" target="_blank" rel="noopener"><i class="bi bi-facebook"></i></a>
                 @endif

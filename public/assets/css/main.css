@@ -2934,7 +2934,7 @@ section,
 }
 
 .home-about .about-content .cta-section .btn-primary {
-    background-color: var(--accent-color);
+    background: linear-gradient(135deg, #128c7e, #25d366);
     color: var(--contrast-color);
     padding: 12px 30px;
     font-size: 1rem;
@@ -3052,7 +3052,7 @@ section,
     position: absolute;
     top: 20px;
     right: -20px;
-    background-color: var(--accent-color);
+    background: linear-gradient(135deg, #128c7e, #25d366);
     color: var(--contrast-color);
     padding: 1.25rem;
     border-radius: 8px;
@@ -3151,8 +3151,8 @@ section,
 }
 
 .featured-departments .specialty-card:hover .specialty-label {
-    background: var(--accent-color);
-    color: var(--dark-navy);
+    background: linear-gradient(135deg, #128c7e, #25d366);
+    color: var(--contrast-color);
     border-color: var(--accent-color);
 }
 
@@ -3262,7 +3262,7 @@ section,
 }
 
 .featured-departments .specialty-card:hover .specialty-visual .visual-overlay {
-    background: var(--accent-color);
+    background: linear-gradient(135deg, #128c7e, #25d366);
 }
 
 .featured-departments
@@ -3292,7 +3292,7 @@ section,
 .featured-departments .highlight-icon {
     width: 90px;
     height: 90px;
-    background: linear-gradient(135deg, var(--accent-color), #1ae87f);
+    background: linear-gradient(135deg, #128c7e, #25d366);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -3308,7 +3308,7 @@ section,
 }
 
 .featured-departments .highlight-icon i {
-    color: var(--dark-navy);
+    color: var(--contrast-color);
     font-size: 36px;
 }
 
@@ -3327,6 +3327,7 @@ section,
 }
 
 .featured-departments .highlight-list {
+    min-height: 120px;
     list-style: none;
     padding: 0;
     margin: 0 0 30px 0;
@@ -4196,7 +4197,7 @@ section,
 }
 
 .find-a-doctor .search-section .search-form .search-btn {
-    background: var(--accent-color);
+    background: linear-gradient(135deg, #128c7e, #25d366);
     color: var(--contrast-color);
     border: none;
     border-radius: 50px;
@@ -4410,7 +4411,7 @@ section,
 }
 
 .find-a-doctor .doctor-profile .action-buttons .btn-primary {
-    background: var(--accent-color);
+    background: linear-gradient(135deg, #128c7e, #25d366);
     color: var(--contrast-color);
     border-color: var(--accent-color);
 }
@@ -4752,7 +4753,7 @@ section,
 .call-to-action .contact-block .contact-actions .emergency-call {
     display: inline-flex;
     align-items: center;
-    background-color: var(--accent-color);
+    background: linear-gradient(135deg, #128c7e, #25d366);
     color: var(--contrast-color);
     padding: 15px 25px;
     border-radius: 4px;
