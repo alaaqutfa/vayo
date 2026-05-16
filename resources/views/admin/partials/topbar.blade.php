@@ -19,7 +19,7 @@
 
             <div class="flex items-center gap-3">
                 <!-- Language Switcher -->
-                <div class="relative">
+                {{-- <div class="relative">
                     <button type="button" id="langMenuButton"
                         class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 transition-colors"
                         title="Change Language">
@@ -39,7 +39,7 @@
                             </a>
                         @endforeach
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Dark Mode Toggle (اختياري) -->
                 {{-- <button id="darkModeToggle"

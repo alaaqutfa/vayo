@@ -12,6 +12,14 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('admin.doctors.index') }}"
+                    class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 group {{ request()->routeIs('admin.services.*') ? 'sidebar-active' : '' }}">
+                    <i
+                        class="bi bi-person-badge w-5 h-5 text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"></i>
+                    <span class="ml-3">Doctors</span>
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('admin.services.index') }}"
                     class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 group {{ request()->routeIs('admin.services.*') ? 'sidebar-active' : '' }}">
                     <i
