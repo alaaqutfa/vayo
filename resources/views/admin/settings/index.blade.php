@@ -138,30 +138,17 @@
                         <h3 class="text-lg font-medium text-gray-900 dark:text-white border-l-4 border-primary pl-3 mb-4">Media</h3>
                         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                             <div>
-                                <label for="site_logo" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Site Logo</label>
-                                <input type="file" name="site_logo" id="site_logo" accept="image/*"
-                                       class="mt-1 block w-full text-sm text-gray-500 dark:text-gray-400
-                                              file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold
-                                              file:bg-primary/10 file:text-primary hover:file:bg-primary/20">
-                                @if(isset($settings['site_logo']) && $settings['site_logo'])
-                                    <div class="mt-3 flex items-center gap-3">
-                                        <img src="{{ asset('public/storage/'.$settings['site_logo']) }}" class="h-12 w-auto object-contain">
-                                        <span class="text-xs text-gray-500 dark:text-gray-400">Current logo</span>
-                                    </div>
-                                @endif
+                                <x-image-upload name="site_logo"
+                                               :currentImage="$settings['site_logo'] ?? null"
+                                               label="Site Logo"
+                                               size="h-12 w-auto" />
                             </div>
                             <div>
-                                <label for="favicon" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Favicon</label>
-                                <input type="file" name="favicon" id="favicon" accept="image/png,image/ico,image/x-icon"
-                                       class="mt-1 block w-full text-sm text-gray-500 dark:text-gray-400
-                                              file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold
-                                              file:bg-primary/10 file:text-primary hover:file:bg-primary/20">
-                                @if(isset($settings['favicon']) && $settings['favicon'])
-                                    <div class="mt-3 flex items-center gap-3">
-                                        <img src="{{ asset('public/storage/'.$settings['favicon']) }}" class="h-8 w-auto object-contain">
-                                        <span class="text-xs text-gray-500 dark:text-gray-400">Current favicon</span>
-                                    </div>
-                                @endif
+                                <x-image-upload name="favicon"
+                                               :currentImage="$settings['favicon'] ?? null"
+                                               label="Favicon"
+                                               accept="image/png,image/ico,image/x-icon"
+                                               size="h-8 w-auto" />
                             </div>
                         </div>
                     </div>

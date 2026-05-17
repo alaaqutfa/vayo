@@ -52,35 +52,10 @@
 
                         {{-- Featured Image --}}
                         <div>
-                            <label for="featured_image"
-                                class="block text-sm font-medium text-gray-700 dark:text-gray-300">Featured Image</label>
-                            @if($page->featured_image)
-                                <div class="mt-2 mb-3">
-                                    <img src="{{ asset('public/storage/'.$page->featured_image) }}"
-                                        class="h-20 w-auto rounded-lg object-cover shadow-sm">
-                                    <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Current image (leave empty to keep)
-                                    </p>
-                                </div>
-                            @endif
-                            <div
-                                class="mt-1 flex items-center justify-center rounded-lg border-2 border-dashed border-gray-300 px-6 pt-5 pb-6 dark:border-gray-600">
-                                <div class="space-y-1 text-center">
-                                    <i class="bi bi-cloud-upload text-3xl text-gray-400"></i>
-                                    <div class="flex text-sm text-gray-600 dark:text-gray-400">
-                                        <label for="featured_image"
-                                            class="relative cursor-pointer rounded-md font-medium text-primary hover:text-primary/80 focus-within:outline-none">
-                                            <span>Upload new image</span>
-                                            <input id="featured_image" name="featured_image" type="file" accept="image/*"
-                                                class="sr-only">
-                                        </label>
-                                        <p class="pl-1">or drag and drop</p>
-                                    </div>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">PNG, JPG, WEBP up to 2MB (leave
-                                        empty to keep current)</p>
-                                </div>
-                            </div>
-                            @error('featured_image') <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}
-                            </p> @enderror
+                            <x-image-upload name="featured_image"
+                                           :currentImage="$page->featured_image"
+                                           label="Featured Image"
+                                           size="h-20 w-auto" />
                         </div>
 
                         {{-- Content (CKEditor) --}}

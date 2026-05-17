@@ -58,87 +58,22 @@
                         <div id="image-fields" class="{{ old('type', 'image') == 'video' ? 'hidden' : '' }} space-y-6">
                             {{-- Main Image --}}
                             <div>
-                                <label for="image" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Main
-                                    Image <span class="text-red-500">*</span></label>
-                                <div
-                                    class="mt-1 flex items-center justify-center rounded-lg border-2 border-dashed border-gray-300 px-6 pt-5 pb-6 dark:border-gray-600">
-                                    <div class="space-y-1 text-center">
-                                        <i class="bi bi-cloud-upload text-3xl text-gray-400"></i>
-                                        <div class="flex text-sm text-gray-600 dark:text-gray-400">
-                                            <label for="image"
-                                                class="relative cursor-pointer rounded-md font-medium text-primary hover:text-primary/80 focus-within:outline-none">
-                                                <span>Upload main image</span>
-                                                <input id="image" name="image" type="file" accept="image/*" class="sr-only">
-                                            </label>
-                                            <p class="pl-1">or drag and drop</p>
-                                        </div>
-                                        <p class="text-xs text-gray-500 dark:text-gray-400">JPG, PNG, WEBP up to 5MB</p>
-                                    </div>
-                                </div>
-                                {{-- Preview area --}}
-                                <div id="image-preview" class="mt-3 hidden">
-                                    <img id="image-preview-img" class="h-24 w-24 rounded-lg object-cover shadow-sm">
-                                    <button type="button" id="clear-image" class="text-xs text-red-600 mt-1">Remove</button>
-                                </div>
-                                @error('image') <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
-                                @enderror
+                                <x-image-upload name="image"
+                                               label="Main Image"
+                                               size="h-24 w-24" />
                             </div>
 
                             {{-- Before/After Images --}}
                             <div class="grid gap-6 sm:grid-cols-2">
                                 <div>
-                                    <label for="before_image"
-                                        class="block text-sm font-medium text-gray-700 dark:text-gray-300">Before Image
-                                        (Optional)</label>
-                                    <div
-                                        class="mt-1 flex items-center justify-center rounded-lg border-2 border-dashed border-gray-300 px-4 pt-4 pb-4 dark:border-gray-600">
-                                        <div class="space-y-1 text-center">
-                                            <i class="bi bi-camera text-2xl text-gray-400"></i>
-                                            <div class="text-sm text-gray-600 dark:text-gray-400">
-                                                <label for="before_image"
-                                                    class="relative cursor-pointer rounded-md font-medium text-primary hover:text-primary/80">
-                                                    <span>Choose file</span>
-                                                    <input id="before_image" name="before_image" type="file"
-                                                        accept="image/*" class="sr-only">
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="before-preview" class="mt-3 hidden">
-                                        <img id="before-preview-img" class="h-20 w-20 rounded object-cover shadow-sm">
-                                        <button type="button" id="clear-before"
-                                            class="text-xs text-red-600 mt-1">Remove</button>
-                                    </div>
-                                    @error('before_image') <p class="mt-1 text-sm text-red-600 dark:text-red-400">
-                                        {{ $message }}
-                                    </p> @enderror
+                                    <x-image-upload name="before_image"
+                                                   label="Before Image (Optional)"
+                                                   size="h-20 w-20" />
                                 </div>
                                 <div>
-                                    <label for="after_image"
-                                        class="block text-sm font-medium text-gray-700 dark:text-gray-300">After Image
-                                        (Optional)</label>
-                                    <div
-                                        class="mt-1 flex items-center justify-center rounded-lg border-2 border-dashed border-gray-300 px-4 pt-4 pb-4 dark:border-gray-600">
-                                        <div class="space-y-1 text-center">
-                                            <i class="bi bi-camera text-2xl text-gray-400"></i>
-                                            <div class="text-sm text-gray-600 dark:text-gray-400">
-                                                <label for="after_image"
-                                                    class="relative cursor-pointer rounded-md font-medium text-primary hover:text-primary/80">
-                                                    <span>Choose file</span>
-                                                    <input id="after_image" name="after_image" type="file" accept="image/*"
-                                                        class="sr-only">
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="after-preview" class="mt-3 hidden">
-                                        <img id="after-preview-img" class="h-20 w-20 rounded object-cover shadow-sm">
-                                        <button type="button" id="clear-after"
-                                            class="text-xs text-red-600 mt-1">Remove</button>
-                                    </div>
-                                    @error('after_image') <p class="mt-1 text-sm text-red-600 dark:text-red-400">
-                                        {{ $message }}
-                                    </p> @enderror
+                                    <x-image-upload name="after_image"
+                                                   label="After Image (Optional)"
+                                                   size="h-20 w-20" />
                                 </div>
                             </div>
                         </div>

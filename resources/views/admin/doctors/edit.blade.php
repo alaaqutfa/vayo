@@ -114,31 +114,11 @@
                             @error('bio') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
                         </div>
                         <div class="sm:col-span-2">
-                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Profile Image</label>
-                            @if($doctor->image)
-                                <div class="mt-2 mb-3 flex items-center gap-3">
-                                    <img src="{{ asset('public/storage/'.$doctor->image) }}" class="h-16 w-16 rounded-full object-cover shadow-sm">
-                                    <span class="text-xs text-gray-500 dark:text-gray-400">Current image (leave empty to
-                                        keep)</span>
-                                </div>
-                            @endif
-                            <div
-                                class="mt-1 flex items-center justify-center rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600">
-                                <div class="space-y-1 text-center p-4">
-                                    <i class="bi bi-cloud-upload text-3xl text-gray-400"></i>
-                                    <div class="flex text-sm text-gray-600 dark:text-gray-400">
-                                        <label for="image"
-                                            class="relative cursor-pointer rounded-md font-medium text-primary hover:text-primary/80 focus-within:outline-none">
-                                            <span>Upload new file</span>
-                                            <input id="image" name="image" type="file" accept="image/*" class="sr-only">
-                                        </label>
-                                        <p class="pl-1">or drag and drop</p>
-                                    </div>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">Square image recommended (PNG, JPG,
-                                        WEBP up to 2MB, leave empty to keep current)</p>
-                                </div>
-                            </div>
-                            @error('image') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
+                            <x-image-upload name="image"
+                                           :currentImage="$doctor->image"
+                                           label="Profile Image"
+                                           shape="rounded-full"
+                                           size="h-16 w-16" />
                         </div>
                         <div class="flex items-center">
                             <input type="checkbox" name="is_active" id="is_active" value="1" {{ old('is_active', $doctor->is_active) ? 'checked' : '' }}

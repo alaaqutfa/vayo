@@ -49,8 +49,18 @@ class ServiceController extends Controller
     {
         $data = $request->validated();
 
-        if ($request->hasFile('image')) {
-            $data['image'] = $this->uploadServiceImage($request->file('image'), $service->image);
+        // Handle image deletion
+        if ($request->input('delete_image')) {
+            if ($service->image) {
+                $this->deleteImage($service->image);
+            }
+            $data['image'] = null;
+        } elseif ($request->hasFile('image')) {
+            // Upload new image
+            if ($service->image) {
+                $this->deleteImage($service->image);
+            }
+            $data['image'] = $this->uploadServiceImage($request->file('image'));
         }
 
         $data['features'] = $data['features'] ?? [];

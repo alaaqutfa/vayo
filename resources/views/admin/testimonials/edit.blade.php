@@ -105,29 +105,12 @@
                             </div>
 
                             <div>
-                                <label for="image"
-                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">Profile Image</label>
-                                @if($testimonial->image)
-                                    <div class="mt-2 mb-3">
-                                        <img src="{{ asset('public/storage/'.$testimonial->image) }}"
-                                            class="h-20 w-20 rounded-full object-cover shadow-sm">
-                                        <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Current image</p>
-                                    </div>
-                                @endif
-                                <div
-                                    class="mt-1 flex items-center justify-center rounded-lg border-2 border-dashed border-gray-300 px-6 pt-5 pb-6 dark:border-gray-600">
-                                    <div class="space-y-1 text-center">
-                                        <i class="bi bi-cloud-upload text-3xl text-gray-400"></i>
-                                        <div class="flex text-sm text-gray-600 dark:text-gray-400">
-                                            <label for="image"
-                                                class="relative cursor-pointer rounded-md font-medium text-primary hover:text-primary/80 focus-within:outline-none">
-                                                <span>Upload a new file</span>
-                                                <input id="image" name="image" type="file" accept="image/*" class="sr-only">
-                                            </label>
-                                            <p class="pl-1">or drag and drop</p>
-                                        </div>
-                                        <p class="text-xs text-gray-500 dark:text-gray-400">Square image recommended (PNG,
-                                            JPG, WEBP up to 2MB, leave empty to keep current)</p>
+                                <x-image-upload name="image"
+                                               :currentImage="$testimonial->image"
+                                               label="Profile Image"
+                                               shape="rounded-full"
+                                               size="h-20 w-20" />
+                            </div>
                                     </div>
                                 </div>
                                 @error('image') <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>

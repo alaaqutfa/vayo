@@ -48,7 +48,14 @@ class DoctorController extends Controller
     {
         $data = $request->validated();
 
-        if ($request->hasFile('image')) {
+        // Handle image deletion
+        if ($request->input('delete_image')) {
+            if ($doctor->image) {
+                $this->deleteImage($doctor->image);
+            }
+            $data['image'] = null;
+        } elseif ($request->hasFile('image')) {
+            // Upload new image
             if ($doctor->image) {
                 $this->deleteImage($doctor->image);
             }

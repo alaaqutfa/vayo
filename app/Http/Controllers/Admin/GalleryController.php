@@ -57,20 +57,47 @@ class GalleryController extends Controller
         $data = $request->validated();
 
         if ($data['type'] == 'image') {
-            if ($request->hasFile('image')) {
-                $data['image'] = $this->uploadImage($request->file('image'), 'gallery', 800, 600, $gallery->image);
+            // Handle main image
+            if ($request->input('delete_image')) {
+                if ($gallery->image) {
+                    $this->deleteImage($gallery->image);
+                }
+                $data['image'] = null;
+            } elseif ($request->hasFile('image')) {
+                if ($gallery->image) {
+                    $this->deleteImage($gallery->image);
+                }
+                $data['image'] = $this->uploadImage($request->file('image'), 'gallery', 800, 600);
             } else {
                 $data['image'] = $gallery->image;
             }
 
-            if ($request->hasFile('before_image')) {
-                $data['before_image'] = $this->uploadBeforeAfterImage($request->file('before_image'), 'gallery/beforeafter', $gallery->before_image);
+            // Handle before image
+            if ($request->input('delete_before_image')) {
+                if ($gallery->before_image) {
+                    $this->deleteImage($gallery->before_image);
+                }
+                $data['before_image'] = null;
+            } elseif ($request->hasFile('before_image')) {
+                if ($gallery->before_image) {
+                    $this->deleteImage($gallery->before_image);
+                }
+                $data['before_image'] = $this->uploadBeforeAfterImage($request->file('before_image'), 'gallery/beforeafter');
             } else {
                 $data['before_image'] = $gallery->before_image;
             }
 
-            if ($request->hasFile('after_image')) {
-                $data['after_image'] = $this->uploadBeforeAfterImage($request->file('after_image'), 'gallery/beforeafter', $gallery->after_image);
+            // Handle after image
+            if ($request->input('delete_after_image')) {
+                if ($gallery->after_image) {
+                    $this->deleteImage($gallery->after_image);
+                }
+                $data['after_image'] = null;
+            } elseif ($request->hasFile('after_image')) {
+                if ($gallery->after_image) {
+                    $this->deleteImage($gallery->after_image);
+                }
+                $data['after_image'] = $this->uploadBeforeAfterImage($request->file('after_image'), 'gallery/beforeafter');
             } else {
                 $data['after_image'] = $gallery->after_image;
             }
