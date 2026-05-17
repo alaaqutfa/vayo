@@ -13,7 +13,7 @@
             <div class="col-lg-8" data-aos="fade-right" data-aos-delay="200">
                 <div class="featured-service-main">
                     <div class="service-image-wrapper">
-                        <img src="{{ asset('assets/img/health/consultation-4.webp') }}"
+                        <img src="{{ asset('public/assets/img/health/consultation-4.webp') }}"
                             alt="{{ __t('comprehensive_care_title') }}" class="img-fluid" loading="lazy">
                         <div class="service-overlay">
                             <div class="service-badge">
@@ -58,7 +58,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="specialty-card">
                             <div class="specialty-image">
-                                <img src="{{ asset('assets/img/health/' . ['maternal-2', 'vaccination-3', 'emergency-1', 'facilities-6'][$index] . '.webp') }}"
+                                <img src="{{ asset('public/assets/img/health/' . ['maternal-2', 'vaccination-3', 'emergency-1', 'facilities-6'][$index] . '.webp') }}"
                                     alt="{{ __t($spec) }}" class="img-fluid" loading="lazy">
                             </div>
                             <div class="specialty-content">

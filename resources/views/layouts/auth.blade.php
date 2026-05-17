@@ -10,9 +10,9 @@
 
     <!-- Favicons -->
     @if(isset($settings['favicon']))
-        <link href="{{ asset($settings['favicon']) }}" rel="icon">
+        <link href="{{ asset('public/storage'.$settings['favicon']) }}" rel="icon">
     @else
-        <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
+        <link href="{{ asset('public/assets/img/favicon.png') }}" rel="icon">
     @endif
 
     <!-- Fonts -->
@@ -22,16 +22,16 @@
         rel="stylesheet">
 
     <!-- Vendor CSS -->
-    <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/assets/vendor/aos/aos.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
 
     <!-- Tailwind + Flowbite -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <!-- Main CSS -->
-    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/assets/css/main.css') }}" rel="stylesheet">
 
     @stack('styles')
 </head>
@@ -44,13 +44,13 @@
                     <div class="text-center mb-4">
                         <a href="{{ route('home') }}" class="flex justify-center items-center">
                             @if(isset($settings['site_logo']) && $settings['site_logo'])
-                                <img src="{{ asset($settings['site_logo']) }}"
+                                <img src="{{ asset('public/storage'.$settings['site_logo']) }}"
                                     alt="{{ $settings['site_name'] ?? 'Vayu Clinic' }}" class="auth-logo mb-3"
                                     style="max-height: 60px;">
                             @else
                                 {{-- <h2 class="text-primary fw-bold">{{ $settings['site_name'] ?? 'Vayu Clinic' }}</h2>
                                 --}}
-                                <img src="{{ asset('assets/img/logo.png') }}" class="h-16 w-auto" alt="Logo">
+                                <img src="{{ asset('public/assets/img/logo.png') }}" class="h-16 w-auto" alt="Logo">
                             @endif
                         </a>
                     </div>
@@ -65,8 +65,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
+    <script src="{{ asset('public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('public/assets/vendor/aos/aos.js') }}"></script>
     @stack('scripts')
 </body>
 

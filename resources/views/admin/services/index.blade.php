@@ -49,7 +49,7 @@
                             <td class="whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-900 dark:text-white sm:pl-6">{{ $service->id }}</td>
                             <td class="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
                                 @if($service->image)
-                                    <img src="{{ asset($service->image) }}" class="h-10 w-10 rounded-lg object-cover shadow-sm">
+                                    <img src="{{ asset('public/storage'.$service->image) }}" class="h-10 w-10 rounded-lg object-cover shadow-sm">
                                 @else
                                     <span class="inline-block h-10 w-10 rounded-lg bg-gray-100 dark:bg-gray-700"></span>
                                 @endif

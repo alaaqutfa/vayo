@@ -87,7 +87,7 @@
                                 </div>
                                 @if($gallery->image)
                                     <div class="mt-2 mb-3" id="current-image-container">
-                                        <img src="{{ asset('storage/' . $gallery->image) }}"
+                                        <img src="{{ asset('public/storage/' . $gallery->image) }}"
                                             class="h-20 w-20 rounded-lg object-cover shadow-sm">
                                         <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Current image (leave empty to
                                             keep)</p>
@@ -123,7 +123,7 @@
                                     </div>
                                     @if($gallery->before_image)
                                         <div class="mt-2 mb-2" id="current-before-container">
-                                            <img src="{{ asset('storage/' . $gallery->before_image) }}"
+                                            <img src="{{ asset('public/storage/' . $gallery->before_image) }}"
                                                 class="h-16 w-16 rounded object-cover shadow-sm">
                                             <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Current</p>
                                         </div>
@@ -159,7 +159,7 @@
                                     </div>
                                     @if($gallery->after_image)
                                         <div class="mt-2 mb-2" id="current-after-container">
-                                            <img src="{{ asset('storage/' . $gallery->after_image) }}"
+                                            <img src="{{ asset('public/storage/' . $gallery->after_image) }}"
                                                 class="h-16 w-16 rounded object-cover shadow-sm">
                                             <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Current</p>
                                         </div>

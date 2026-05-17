@@ -51,7 +51,7 @@
                                 <td class="whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-900 dark:text-white sm:pl-6">{{ $testimonial->id }}</td>
                                 <td class="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
                                     @if($testimonial->image)
-                                        <img src="{{ asset($testimonial->image) }}"
+                                        <img src="{{ asset('public/storage'.$testimonial->image) }}"
                                              class="h-10 w-10 rounded-full object-cover shadow-sm">
                                     @else
                                         <span class="flex items-center justify-center text-center text-bold h-10 w-10 rounded-full bg-gray-100 dark:bg-gray-700">{{ (substr($testimonial->name, 0, 1)) }}</span>

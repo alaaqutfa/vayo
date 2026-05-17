@@ -1,8 +1,8 @@
 {{-- Video Divider 1 - vayu-1.mp4 (full width, cinematic) --}}
 <section class="video-divider video-divider-1" data-aos="fade-up">
     <video class="background-video" autoplay muted loop playsinline preload="none"
-        poster="{{ asset('assets/videos/vayu-1.jpg') ?? '' }}">
-        <source src="{{ asset('assets/videos/vayu-1.mp4') }}" type="video/mp4">
+        poster="{{ asset('public/assets/videos/vayu-1.jpg') ?? '' }}">
+        <source src="{{ asset('public/assets/videos/vayu-1.mp4') }}" type="video/mp4">
     </video>
     <div class="video-overlay"></div>
 </section>

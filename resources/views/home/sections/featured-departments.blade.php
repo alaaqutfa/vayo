@@ -29,7 +29,7 @@
                                 </a>
                             </div>
                             <div class="specialty-visual">
-                                <img src="{{ $service->image ? asset($service->image) : asset('assets/img/health/default.webp') }}"
+                                <img src="{{ $service->image ? asset($service->image) : asset('public/assets/img/health/default.webp') }}"
                                     alt="{{ $service->name }}" class="img-fluid">
                                 <div class="visual-overlay">
                                     <i class="{{ $service->icon ?? 'bi bi-heart-pulse' }}"></i>

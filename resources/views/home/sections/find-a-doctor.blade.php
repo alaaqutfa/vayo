@@ -19,7 +19,7 @@
                                 <p class="testimonial-text">{{ $testimonial->content }}</p>
                                 <div class="d-flex align-items-center mt-4 gap-3">
                                     <div class="avatar-wrapper">
-                                        <img src="{{ $testimonial->image ? asset($testimonial->image) : asset('assets/img/avatar.jpg') }}"
+                                        <img src="{{ $testimonial->image ? asset($testimonial->image) : asset('public/assets/img/avatar.jpg') }}"
                                             class="testimonial-avatar" alt="{{ $testimonial->name }}">
                                     </div>
                                     <div>

@@ -50,11 +50,11 @@
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="image-wrapper">
-                        <img src="{{ $page->featured_image ? asset($page->featured_image) : asset('assets/img/health/facilities-6.webp') }}"
+                        <img src="{{ $page->featured_image ? asset($page->featured_image) : asset('public/assets/img/health/facilities-6.webp') }}"
                             class="img-fluid main-image" alt="Vayu Clinic modern dental facility"
                             onerror="this.src='https://placehold.co/600x400?text=Vayu+Dental'">
                         <div class="floating-image" data-aos="zoom-in" data-aos-delay="400">
-                            <img src="{{ asset('assets/img/health/staff-8.webp') }}" class="img-fluid" alt="Smile transformation"
+                            <img src="{{ asset('public/assets/img/health/staff-8.webp') }}" class="img-fluid" alt="Smile transformation"
                                 onerror="this.src='https://placehold.co/150x150?text=Smile'">
                         </div>
                     </div>
@@ -108,19 +108,19 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-lg-2 col-md-3 col-sm-4 col-6" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="certification-item"><img src="{{ asset('assets/img/clients/clients-1.webp') }}" alt="ADA Member"></div>
+                        <div class="certification-item"><img src="{{ asset('public/assets/img/clients/clients-1.webp') }}" alt="ADA Member"></div>
                     </div>
                     <div class="col-lg-2 col-md-3 col-sm-4 col-6" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="certification-item"><img src="{{ asset('assets/img/clients/clients-2.webp') }}" alt="ISO Certified"></div>
+                        <div class="certification-item"><img src="{{ asset('public/assets/img/clients/clients-2.webp') }}" alt="ISO Certified"></div>
                     </div>
                     <div class="col-lg-2 col-md-3 col-sm-4 col-6" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="certification-item"><img src="{{ asset('assets/img/clients/clients-3.webp') }}" alt="EAO Partner"></div>
+                        <div class="certification-item"><img src="{{ asset('public/assets/img/clients/clients-3.webp') }}" alt="EAO Partner"></div>
                     </div>
                     <div class="col-lg-2 col-md-3 col-sm-4 col-6" data-aos="zoom-in" data-aos-delay="400">
-                        <div class="certification-item"><img src="{{ asset('assets/img/clients/clients-4.webp') }}" alt="ITI Member"></div>
+                        <div class="certification-item"><img src="{{ asset('public/assets/img/clients/clients-4.webp') }}" alt="ITI Member"></div>
                     </div>
                     <div class="col-lg-2 col-md-3 col-sm-4 col-6" data-aos="zoom-in" data-aos-delay="500">
-                        <div class="certification-item"><img src="{{ asset('assets/img/clients/clients-5.webp') }}" alt="BDA Accredited"></div>
+                        <div class="certification-item"><img src="{{ asset('public/assets/img/clients/clients-5.webp') }}" alt="BDA Accredited"></div>
                     </div>
                 </div>
                 <div class="row mt-4 text-center">

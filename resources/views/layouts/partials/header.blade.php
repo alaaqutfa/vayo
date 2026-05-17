@@ -41,9 +41,9 @@
         <div class="container position-relative d-flex align-items-center justify-content-between">
             <a href="{{ url('/') }}" class="logo d-flex align-items-center" aria-label="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
                 @if(isset($settings['site_logo']) && $settings['site_logo'])
-                    <img src="{{ asset($settings['site_logo']) }}" alt="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
+                    <img src="{{ asset('public/storage'.$settings['site_logo']) }}" alt="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
                 @else
-                    <img src="{{ asset('assets/img/logo.png') }}" alt="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
+                    <img src="{{ asset('public/assets/img/logo.png') }}" alt="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
                 @endif
             </a>
 
@@ -106,19 +106,19 @@
                     <ul class="lang-dropdown">
                         <li>
                             <a href="{{ route('lang.switch', 'en') }}" class="{{ ($currentLocale ?? app()->getLocale()) == 'en' ? 'active' : '' }}">
-                                <img src="{{ asset('assets/img/flags/uk.png') }}" alt="English" class="lang-flag" />
+                                <img src="{{ asset('public/assets/img/flags/uk.png') }}" alt="English" class="lang-flag" />
                                 <span>English</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('lang.switch', 'ar') }}" class="{{ ($currentLocale ?? app()->getLocale()) == 'ar' ? 'active' : '' }}">
-                                <img src="{{ asset('assets/img/flags/sa.png') }}" alt="Arabic" class="lang-flag" />
+                                <img src="{{ asset('public/assets/img/flags/sa.png') }}" alt="Arabic" class="lang-flag" />
                                 <span>العربية</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('lang.switch', 'fr') }}" class="{{ ($currentLocale ?? app()->getLocale()) == 'fr' ? 'active' : '' }}">
-                                <img src="{{ asset('assets/img/flags/fr.png') }}" alt="French" class="lang-flag" />
+                                <img src="{{ asset('public/assets/img/flags/fr.png') }}" alt="French" class="lang-flag" />
                                 <span>Français</span>
                             </a>
                         </li>

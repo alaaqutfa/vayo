@@ -6,10 +6,10 @@
                     <div class="brand-section">
                         <a href="{{ route('home') }}" class="logo d-flex align-items-center mb-4">
                             @if(isset($settings['site_logo']) && $settings['site_logo'])
-                                <img src="{{ asset($settings['site_logo']) }}"
+                                <img src="{{ asset('public/storage'.$settings['site_logo']) }}"
                                     alt="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
                             @else
-                                <img src="{{ asset('assets/img/logo-dark.png') }}" class="h-16 w-auto" alt="Logo">
+                                <img src="{{ asset('public/assets/img/logo-dark.png') }}" class="h-16 w-auto" alt="Logo">
                                 {{-- <span class="sitename">{{ $settings['site_name'] ?? 'Vayu Clinic' }}</span> --}}
                             @endif
                         </a>

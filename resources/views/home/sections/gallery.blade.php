@@ -81,15 +81,15 @@
                                 <div class="swiper-slide">
                                     <div class="result-card">
                                         <div class="result-images">
-                                            <a href="{{ asset('storage/' . $item->before_image) }}" class="result-image glightbox"
+                                            <a href="{{ asset('public/storage/' . $item->before_image) }}" class="result-image glightbox"
                                                 data-gallery="before-after-{{ $item->id }}">
-                                                <img src="{{ asset('storage/' . $item->before_image) }}" alt="{{ $item->title }} before"
+                                                <img src="{{ asset('public/storage/' . $item->before_image) }}" alt="{{ $item->title }} before"
                                                     loading="lazy">
                                                 <span>{{ __t('Before') }}</span>
                                             </a>
-                                            <a href="{{ asset('storage/' . $item->after_image) }}" class="result-image glightbox"
+                                            <a href="{{ asset('public/storage/' . $item->after_image) }}" class="result-image glightbox"
                                                 data-gallery="before-after-{{ $item->id }}">
-                                                <img src="{{ asset('storage/' . $item->after_image) }}" alt="{{ $item->title }} after"
+                                                <img src="{{ asset('public/storage/' . $item->after_image) }}" alt="{{ $item->title }} after"
                                                     loading="lazy">
                                                 <span>{{ __t('After') }}</span>
                                             </a>
@@ -124,9 +124,9 @@
                         <div class="swiper-wrapper">
                             @foreach($singleImages->take(8) as $item)
                                 <div class="swiper-slide">
-                                    <a href="{{ asset('storage/' . $item->image) }}" class="single-gallery-card glightbox"
+                                    <a href="{{ asset('public/storage/' . $item->image) }}" class="single-gallery-card glightbox"
                                         data-gallery="single-gallery">
-                                        <img src="{{ asset('storage/' . $item->image) }}"
+                                        <img src="{{ asset('public/storage/' . $item->image) }}"
                                             alt="{{ $item->title ?: 'Vayu Clinic gallery image' }}" loading="lazy">
                                         <span>
                                             <strong>{{ $item->title ?: 'Vayu Clinic' }}</strong>

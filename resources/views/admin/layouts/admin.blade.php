@@ -12,11 +12,11 @@
 
     <!-- Favicons -->
     @if(isset($settings['favicon']))
-        <link href="{{ asset($settings['favicon']) }}" rel="icon">
+        <link href="{{ asset('public/storage'.$settings['favicon']) }}" rel="icon">
     @else
-        <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
+        <link href="{{ asset('public/assets/img/favicon.png') }}" rel="icon">
     @endif
-    <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('public/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
     <!-- Bootstrap Icons (CDN) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">

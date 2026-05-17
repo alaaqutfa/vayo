@@ -32,7 +32,7 @@
             <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
                 <div class="about-visual">
                     <div class="main-image">
-                        <img src="{{ asset('assets/img/health/facilities-9.webp') }}" alt="Modern medical facility"
+                        <img src="{{ asset('public/assets/img/health/facilities-9.webp') }}" alt="Modern medical facility"
                             class="img-fluid">
                     </div>
                     <div class="floating-card">
