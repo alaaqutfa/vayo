@@ -109,7 +109,7 @@
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-300">Profile Image</label>
                                 @if($testimonial->image)
                                     <div class="mt-2 mb-3">
-                                        <img src="src="{{ asset('public/storage'.$testimonial->image) }}"
+                                        <img src="{{ asset('public/storage'.$testimonial->image) }}"
                                             class="h-20 w-20 rounded-full object-cover shadow-sm">
                                         <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Current image</p>
                                     </div>

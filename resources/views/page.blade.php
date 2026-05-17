@@ -35,7 +35,7 @@
                 <div class="col-lg-12">
                     @if($page->featured_image)
                         <div class="featured-image mb-5 text-center">
-                            <img src="src="{{ asset('public/storage'.$page->featured_image) }}" alt="{{ $page->title }}"
+                            <img src="{{ asset('public/storage'.$page->featured_image) }}" alt="{{ $page->title }}"
                                 class="img-fluid rounded shadow-sm">
                         </div>
                     @endif

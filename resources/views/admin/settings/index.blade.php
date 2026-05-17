@@ -145,7 +145,7 @@
                                               file:bg-primary/10 file:text-primary hover:file:bg-primary/20">
                                 @if(isset($settings['site_logo']) && $settings['site_logo'])
                                     <div class="mt-3 flex items-center gap-3">
-                                        <img src="src="{{ asset('public/storage'.$settings['site_logo']) }}" class="h-12 w-auto object-contain">
+                                        <img src="{{ asset('public/storage'.$settings['site_logo']) }}" class="h-12 w-auto object-contain">
                                         <span class="text-xs text-gray-500 dark:text-gray-400">Current logo</span>
                                     </div>
                                 @endif
@@ -158,7 +158,7 @@
                                               file:bg-primary/10 file:text-primary hover:file:bg-primary/20">
                                 @if(isset($settings['favicon']) && $settings['favicon'])
                                     <div class="mt-3 flex items-center gap-3">
-                                        <img src="src="{{ asset('public/storage'.$settings['favicon']) }}" class="h-8 w-auto object-contain">
+                                        <img src="{{ asset('public/storage'.$settings['favicon']) }}" class="h-8 w-auto object-contain">
                                         <span class="text-xs text-gray-500 dark:text-gray-400">Current favicon</span>
                                     </div>
                                 @endif

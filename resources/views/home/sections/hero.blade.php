@@ -97,7 +97,7 @@
                                             data-doctor-rating="{{ $doctor->rating }}"
                                             data-doctor-reviews="{{ $doctor->reviews_count }}"
                                             data-doctor-years="{{ $doctor->years_experience }}">
-                                            <img src="{{ asset('public/storage'.$doctor->image_url }}" alt="{{ $doctor->name }}" class="img-fluid">
+                                            <img src="{{ asset('public/storage'.$doctor->image) }}" alt="{{ $doctor->name }}" class="img-fluid">
                                             <div class="hero-doctor-caption">
                                                 <span>{{ $doctor->specialty }}</span>
                                                 <strong>{{ $doctor->name }}</strong>

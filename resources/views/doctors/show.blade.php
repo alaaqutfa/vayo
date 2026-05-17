@@ -19,7 +19,7 @@
                 <div class="col-lg-4" data-aos="fade-right">
                     <div class="doctor-profile-card text-center">
                             <div class="doctor-avatar">
-                            <img src="{{ asset('public/storage'.$doctor->image_url }}" alt="{{ $doctor->name }}" class="img-fluid rounded-circle">
+                            <img src="{{ asset('public/storage'.$doctor->image }}" alt="{{ $doctor->name }}" class="img-fluid rounded-circle">
                                 <div class="status-badge status-{{ $doctor->status }}">{{ __t($doctor->status) }}</div>
                         </div>
                         <h2 class="mt-3">{{ $doctor->name }}</h2>

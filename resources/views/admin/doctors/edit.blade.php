@@ -117,7 +117,7 @@
                             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Profile Image</label>
                             @if($doctor->image)
                                 <div class="mt-2 mb-3 flex items-center gap-3">
-                                    <img src="{{ asset('public/storage'.$doctor->image_url }}" class="h-16 w-16 rounded-full object-cover shadow-sm">
+                                    <img src="{{ asset('public/storage'.$doctor->image) }}" class="h-16 w-16 rounded-full object-cover shadow-sm">
                                     <span class="text-xs text-gray-500 dark:text-gray-400">Current image (leave empty to
                                         keep)</span>
                                 </div>

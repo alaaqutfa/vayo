@@ -35,7 +35,7 @@
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ 100 + $loop->index * 50 }}">
                         <div class="service-item">
                             <div class="service-image">
-                                <img src="{{ asset('public/storage'.$service->image ? asset($service->image) : asset('public/assets/img/health/default.jpg') }}"
+                                <img src="{{ asset('public/storage'.$service->image) ? asset($service->image) : asset('public/assets/img/health/default.jpg') }}"
                                     alt="{{ $service->name }}" class="img-fluid">
                                 <div class="service-overlay">
                                     <i class="{{ $service->icon ?? 'fas fa-heartbeat' }}"></i>

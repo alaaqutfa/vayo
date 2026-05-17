@@ -58,7 +58,7 @@
                 </div>
                 <div class="col-lg-7" data-aos="fade-left">
                     <div class="service-visual">
-                        <img src="{{ asset('public/storage'.$service->image ? asset($service->image) : asset('public/assets/img/health/default-large.jpg') }}"
+                        <img src="{{ asset('public/storage'.$service->image) ? asset($service->image) : asset('public/assets/img/health/default-large.jpg') }}"
                             class="img-fluid">
                     </div>
                 </div>
