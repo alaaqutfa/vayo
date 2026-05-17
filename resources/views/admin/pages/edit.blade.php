@@ -56,7 +56,7 @@
                                 class="block text-sm font-medium text-gray-700 dark:text-gray-300">Featured Image</label>
                             @if($page->featured_image)
                                 <div class="mt-2 mb-3">
-                                    <img src="{{ asset('public/storage'.$page->featured_image) }}"
+                                    <img src="{{ asset('public/storage/'.$page->featured_image) }}"
                                         class="h-20 w-auto rounded-lg object-cover shadow-sm">
                                     <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Current image (leave empty to keep)
                                     </p>

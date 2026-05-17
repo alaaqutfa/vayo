@@ -51,7 +51,7 @@
                     <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="doctor-card h-100">
                             <div class="doctor-image">
-                                <img src="{{ asset('public/storage'.$doctor->image) }}" alt="{{ $doctor->name }}" class="img-fluid">
+                                <img src="{{ asset('public/storage/'.$doctor->image) }}" alt="{{ $doctor->name }}" class="img-fluid">
                                 <div class="status-badge status-{{ $doctor->status }}">
                                     {{ __t(ucfirst($doctor->status)) }}
                                 </div>

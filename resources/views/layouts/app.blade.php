@@ -12,7 +12,7 @@
 
     <!-- Favicons -->
     @if(isset($settings['favicon']))
-        <link href="{{ asset('public/storage'.$settings['favicon']) }}" rel="icon">
+        <link href="{{ asset('public/storage/'.$settings['favicon']) }}" rel="icon">
     @else
         <link href="{{ asset('public/assets/img/favicon.png') }}" rel="icon">
     @endif

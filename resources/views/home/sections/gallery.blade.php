@@ -35,12 +35,12 @@
                                             @if($item->embed_html)
                                                 {!! $item->embed_html !!}
                                             @elseif($item->youtube_id || $item->embed_url)
-                                                <iframe src="{{ asset('public/storage'.$item->embed_url) }}" title="{{ $item->title ?: 'Vayu Clinic video' }}"
+                                                <iframe src="{{ asset('public/storage/'.$item->embed_url) }}" title="{{ $item->title ?: 'Vayu Clinic video' }}"
                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                     allowfullscreen loading="lazy"></iframe>
                                             @elseif($item->is_direct_video)
                                                 <video controls playsinline preload="metadata">
-                                                    <source src="{{ asset('public/storage'.$item->video_url) }}">
+                                                    <source src="{{ asset('public/storage/'.$item->video_url) }}">
                                                 </video>
                                             @else
                                                 <a href="{{ $item->video_url }}" target="_blank" rel="noopener" class="video-link-card">

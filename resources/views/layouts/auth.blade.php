@@ -10,7 +10,7 @@
 
     <!-- Favicons -->
     @if(isset($settings['favicon']))
-        <link href="{{ asset('public/storage'.$settings['favicon']) }}" rel="icon">
+        <link href="{{ asset('public/storage/'.$settings['favicon']) }}" rel="icon">
     @else
         <link href="{{ asset('public/assets/img/favicon.png') }}" rel="icon">
     @endif
@@ -44,7 +44,7 @@
                     <div class="text-center mb-4">
                         <a href="{{ route('home') }}" class="flex justify-center items-center">
                             @if(isset($settings['site_logo']) && $settings['site_logo'])
-                                <img src="{{ asset('public/storage'.$settings['site_logo']) }}"
+                                <img src="{{ asset('public/storage/'.$settings['site_logo']) }}"
                                     alt="{{ $settings['site_name'] ?? 'Vayu Clinic' }}" class="auth-logo mb-3"
                                     style="max-height: 60px;">
                             @else

@@ -19,7 +19,7 @@
                                 <p class="testimonial-text">{{ $testimonial->content }}</p>
                                 <div class="d-flex align-items-center mt-4 gap-3">
                                     <div class="avatar-wrapper">
-                                        <img src="{{ $testimonial->image ? asset('public/storage'.$testimonial->image) : asset('public/assets/img/avatar.jpg') }}"
+                                        <img src="{{ $testimonial->image ? asset('public/storage/'.$testimonial->image) : asset('public/assets/img/avatar.jpg') }}"
                                             class="testimonial-avatar" alt="{{ $testimonial->name }}">
                                     </div>
                                     <div>
@@ -89,7 +89,7 @@
                     <div class="doctor-profile" data-aos="zoom-in" data-aos-delay="{{ 100 + $loop->index * 100 }}">
                         <div class="profile-header">
                             <div class="doctor-avatar">
-                                <img src="{{ asset('public/storage'.$doctor->image) }}" alt="{{ $doctor->name }}" class="img-fluid">
+                                <img src="{{ asset('public/storage/'.$doctor->image) }}" alt="{{ $doctor->name }}" class="img-fluid">
                                 <div class="status-indicator {{ $doctor->status }}"></div>
                             </div>
                             <div class="doctor-details">
