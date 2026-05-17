@@ -67,7 +67,7 @@
                                 <td class="whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-900 dark:text-white">
                                     {{ $doctor->id }}</td>
                                 <td class="whitespace-nowrap px-4 py-4">
-                                    <img src="{{ $doctor->image_url }}" class="h-10 w-10 rounded-full object-cover shadow-sm">
+                                    <img src="{{ asset('public/storage/'.$doctor->image_url) }}" class="h-10 w-10 rounded-full object-cover shadow-sm">
                                 </td>
                                 <td class="whitespace-nowrap px-4 py-4 text-sm font-medium text-gray-900 dark:text-white">
                                     {{ $doctor->name }}</td>
