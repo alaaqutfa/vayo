@@ -50,7 +50,7 @@
                                 <label for="image" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Service Image</label>
                                 @if($service->image)
                                     <div class="mt-2 mb-3">
-                                        <img src="{{ asset('public/storage'.$service->image) }}" class="h-24 w-24 rounded-lg object-cover shadow-sm">
+                                        <img src="src="{{ asset('public/storage'.$service->image) }}" class="h-24 w-24 rounded-lg object-cover shadow-sm">
                                         <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Current image</p>
                                     </div>
                                 @endif

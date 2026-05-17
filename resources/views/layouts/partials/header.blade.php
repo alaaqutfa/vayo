@@ -41,7 +41,7 @@
         <div class="container position-relative d-flex align-items-center justify-content-between">
             <a href="{{ url('/') }}" class="logo d-flex align-items-center" aria-label="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
                 @if(isset($settings['site_logo']) && $settings['site_logo'])
-                    <img src="{{ asset('public/storage'.$settings['site_logo']) }}" alt="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
+                    <img src="src="{{ asset('public/storage'.$settings['site_logo']) }}" alt="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
                 @else
                     <img src="{{ asset('public/assets/img/logo.png') }}" alt="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
                 @endif

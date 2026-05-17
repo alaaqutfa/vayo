@@ -50,7 +50,7 @@
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="image-wrapper">
-                        <img {{ asset('public/storage'.$page->featured_image ? asset($page->featured_image) : asset('public/assets/img/health/facilities-6.webp') }}"
+                        <img src="{{ asset('public/storage'.$page->featured_image ? asset($page->featured_image) : asset('public/assets/img/health/facilities-6.webp') }}"
                             class="img-fluid main-image" alt="Vayu Clinic modern dental facility"
                             onerror="this.src='https://placehold.co/600x400?text=Vayu+Dental'">
                         <div class="floating-image" data-aos="zoom-in" data-aos-delay="400">
