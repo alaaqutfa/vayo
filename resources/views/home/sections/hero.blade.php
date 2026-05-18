@@ -72,8 +72,8 @@
                             <i class="bi bi-whatsapp"></i>
                         </div>
                         <div class="emergency-info">
-                            <small>Emergency Hotline</small>
-                            <strong><a href="https://wa.me/905550576555" target="_blank">+90 555 057 65 55</a></strong>
+                            <small>{{ __t('Emergency Hotline') }}</small>
+                            <strong><a href="{{ $settings['social_whatsapp'] ?? 'tel:' . $settings['emergency_phone'] ?? 'tel:+905550576555' }}" target="_blank">{{ $settings['emergency_phone'] ?? '+90 555 057 65 55' }}</a></strong>
                         </div>
                     </div>
                 </div>
