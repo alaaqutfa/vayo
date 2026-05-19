@@ -16,14 +16,14 @@
         $metaImage = trim($__env->yieldContent('image', $siteUrl . '/public/assets/img/social-card.png'));
         $metaImage = str_starts_with($metaImage, 'http') ? $metaImage : $siteUrl . '/' . ltrim($metaImage, '/');
         $favicon48 = $siteUrl . '/public/assets/img/favicon-48.png';
-        $favicon192 = $siteUrl . '/public/assets/img/favicon-192.png';
+        $favicon192 = $siteUrl . '/favicon.png';
         $favicon512 = $siteUrl . '/public/assets/img/favicon-512.png';
         $faviconIco = $siteUrl . '/favicon.ico';
         $appleTouchIcon = $siteUrl . '/public/assets/img/apple-touch-icon.png';
         $manifestUrl = $siteUrl . '/public/site.webmanifest';
         $favicon = isset($settings['favicon'])
             ? asset('public/storage/' . $settings['favicon'])
-            : $favicon48;
+            : $favicon192;
         $schema = [
             '@context' => 'https://schema.org',
             '@type' => 'MedicalClinic',
@@ -83,8 +83,8 @@
     <title>{{ $metaTitle }}</title>
 
     <!-- Favicons -->
-    <link href="{{ $favicon }}" rel="icon" type="image/png" sizes="48x48">
-    <link href="{{ $favicon192 }}" rel="icon" type="image/png" sizes="192x192">
+    <link href="{{ $favicon }}" rel="icon" type="image/png" sizes="192x192">
+    <link href="{{ $favicon48 }}" rel="icon" type="image/png" sizes="48x48">
     <link href="{{ $faviconIco }}" rel="shortcut icon" sizes="48x48">
     <link href="{{ $appleTouchIcon }}" rel="apple-touch-icon" sizes="180x180">
     <link href="{{ $manifestUrl }}" rel="manifest">
