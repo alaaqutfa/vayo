@@ -2,21 +2,92 @@
 <html lang="{{ app()->getLocale() }}" dir="{{ $rtl ?? false ? 'rtl' : 'ltr' }}" class="{{ $darkMode ?? false ? 'dark' : '' }}">
 
 <head>
+    @php
+        $siteName = $settings['site_name'] ?? 'Vayu Clinic';
+        $configuredUrl = rtrim(config('app.url'), '/');
+        $siteUrl = in_array($configuredUrl, ['http://localhost', 'https://localhost'], true)
+            ? 'https://vayuclinic.com'
+            : $configuredUrl;
+        $currentPath = request()->getPathInfo();
+        $canonicalUrl = $siteUrl . ($currentPath === '/' ? '' : $currentPath);
+        $metaTitle = trim($__env->yieldContent('title', $siteName));
+        $metaDescription = trim($__env->yieldContent('description', $settings['footer_text'] ?? 'Vayu Clinic provides modern, patient-centered medical and dental care in Istanbul, Turkiye with trusted specialists and coordinated treatment services.'));
+        $metaKeywords = trim($__env->yieldContent('keywords', 'Vayu Clinic, medical clinic Istanbul, dental clinic Istanbul, healthcare Istanbul, doctors in Istanbul, dental implants Turkey, cosmetic dentistry Turkey'));
+        $metaImage = trim($__env->yieldContent('image', $siteUrl . '/public/assets/img/social-card.png'));
+        $metaImage = str_starts_with($metaImage, 'http') ? $metaImage : $siteUrl . '/' . ltrim($metaImage, '/');
+        $favicon48 = $siteUrl . '/public/assets/img/favicon-48.png';
+        $favicon192 = $siteUrl . '/public/assets/img/favicon-192.png';
+        $favicon512 = $siteUrl . '/public/assets/img/favicon-512.png';
+        $faviconIco = $siteUrl . '/favicon.ico';
+        $appleTouchIcon = $siteUrl . '/public/assets/img/apple-touch-icon.png';
+        $manifestUrl = $siteUrl . '/public/site.webmanifest';
+        $favicon = isset($settings['favicon'])
+            ? asset('public/storage/' . $settings['favicon'])
+            : $favicon48;
+        $schema = [
+            '@context' => 'https://schema.org',
+            '@type' => 'MedicalClinic',
+            'name' => $siteName,
+            'url' => $siteUrl,
+            'logo' => $favicon512,
+            'image' => $metaImage,
+            'description' => $metaDescription,
+            'telephone' => $settings['contact_phone'] ?? '+90 555 057 65 55',
+            'email' => $settings['contact_email'] ?? 'info@vayuclinic.com',
+            'address' => [
+                '@type' => 'PostalAddress',
+                'streetAddress' => $settings['contact_address'] ?? 'Istanbul, Turkiye',
+                'addressLocality' => 'Istanbul',
+                'addressCountry' => 'TR',
+            ],
+            'medicalSpecialty' => [
+                'Dentistry',
+                'GeneralPractice',
+            ],
+        ];
+    @endphp
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="@yield('description', '')">
-    <meta name="keywords" content="@yield('keywords', '')">
+    <meta name="description" content="{{ $metaDescription }}">
+    <meta name="keywords" content="{{ $metaKeywords }}">
+    <meta name="author" content="{{ $siteName }}">
+    <meta name="application-name" content="{{ $siteName }}">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="{{ $settings['secondary_color'] ?? '#012119' }}">
+    <meta name="format-detection" content="telephone=no">
 
-    <title>@yield('title', $settings['site_name'] ?? 'Vayu Clinic')</title>
+    <link rel="canonical" href="{{ $canonicalUrl }}">
+
+    <meta property="og:locale" content="{{ str_replace('-', '_', app()->getLocale()) }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ $siteName }}">
+    <meta property="og:title" content="{{ $metaTitle }}">
+    <meta property="og:description" content="{{ $metaDescription }}">
+    <meta property="og:url" content="{{ $canonicalUrl }}">
+    <meta property="og:image" content="{{ $metaImage }}">
+    <meta property="og:image:secure_url" content="{{ $metaImage }}">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{{ $siteName }} - modern medical and dental care in Istanbul">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ $canonicalUrl }}">
+    <meta name="twitter:title" content="{{ $metaTitle }}">
+    <meta name="twitter:description" content="{{ $metaDescription }}">
+    <meta name="twitter:image" content="{{ $metaImage }}">
+    <meta name="twitter:image:alt" content="{{ $siteName }} - modern medical and dental care in Istanbul">
+    <script type="application/ld+json">@json($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)</script>
+
+    <title>{{ $metaTitle }}</title>
 
     <!-- Favicons -->
-    @if(isset($settings['favicon']))
-        <link href="{{ asset('public/storage/'.$settings['favicon']) }}" rel="icon">
-    @else
-        <link href="{{ asset('public/assets/img/favicon.png') }}" rel="icon">
-    @endif
-    <link href="{{ asset('public/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ $favicon }}" rel="icon" type="image/png" sizes="48x48">
+    <link href="{{ $favicon192 }}" rel="icon" type="image/png" sizes="192x192">
+    <link href="{{ $faviconIco }}" rel="shortcut icon" sizes="48x48">
+    <link href="{{ $appleTouchIcon }}" rel="apple-touch-icon" sizes="180x180">
+    <link href="{{ $manifestUrl }}" rel="manifest">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
