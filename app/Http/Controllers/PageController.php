@@ -36,7 +36,7 @@ class PageController extends Controller
 
     public function showAbout()
     {
-        $page = Page::where('slug', 'about-us')
+        $page = Page::where('slug', 'about')
             ->where('is_active', true)
             ->first();
 
