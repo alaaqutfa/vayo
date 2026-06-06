@@ -3,7 +3,7 @@
 
 <head>
     @php
-        $siteName = $settings['site_name'] ?? 'Vayu Clinic';
+        $siteName = $settings['site_name'] ?? __t('Vayu Clinic');
         $configuredUrl = rtrim(config('app.url'), '/');
         $siteUrl = in_array($configuredUrl, ['http://localhost', 'https://localhost'], true)
             ? 'https://vayuclinic.com'
@@ -123,13 +123,13 @@
 
     @php
         $whatsappNumber = preg_replace('/\D+/', '', $settings['whatsapp_number'] ?? $settings['contact_phone'] ?? '+905550576555');
-        $whatsappMessage = rawurlencode('Hello Vayu Clinic, I would like to book an appointment.');
+        $whatsappMessage = rawurlencode(__t('Hello Vayu Clinic, I would like to book an appointment.'));
     @endphp
     <a href="https://wa.me/{{ $whatsappNumber }}?text={{ $whatsappMessage }}" class="whatsapp-float"
-        target="_blank" rel="noopener" aria-label="Contact Vayu Clinic on WhatsApp">
+        target="_blank" rel="noopener" aria-label="{{ __t('Contact Vayu Clinic on WhatsApp') }}">
         <span class="whatsapp-float-pulse"></span>
         <i class="bi bi-whatsapp"></i>
-        <span class="whatsapp-float-text">WhatsApp</span>
+        <span class="whatsapp-float-text">{{ __t('WhatsApp') }}</span>
     </a>
 
     <!-- Scroll Top -->
@@ -138,6 +138,33 @@
 
     <!-- Preloader -->
     <div id="preloader"></div>
+    <script>
+        (function() {
+            var preloader = document.getElementById('preloader');
+            var hidden = false;
+
+            function hidePreloader() {
+                if (hidden || !preloader) {
+                    return;
+                }
+
+                hidden = true;
+                preloader.remove();
+            }
+
+            document.addEventListener('DOMContentLoaded', hidePreloader, {
+                once: true
+            });
+            window.addEventListener('load', hidePreloader, {
+                once: true
+            });
+            window.setTimeout(hidePreloader, 2500);
+
+            if (document.readyState === 'interactive' || document.readyState === 'complete') {
+                hidePreloader();
+            }
+        })();
+    </script>
 
     <!-- Vendor JS Files -->
     <script src="{{ asset('public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

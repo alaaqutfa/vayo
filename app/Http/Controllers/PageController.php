@@ -41,7 +41,12 @@ class PageController extends Controller
             ->first();
 
         if (!$page) {
-            abort(404);
+            $page = new Page([
+                'title' => 'About Vayu Dental Clinic',
+                'slug' => 'about',
+                'meta_description' => 'Your smile is our passion. Advanced cosmetic dentistry, gentle care, and exceptional results at Vayu Clinic.',
+                'content' => '',
+            ]);
         }
 
         return view('about', compact('page'));

@@ -1,14 +1,14 @@
 @extends('admin.layouts.admin')
 
-@section('title', 'Website Settings')
+@section('title', __t('Website Settings'))
 
 @section('content')
     <div class="px-4 sm:px-6 lg:px-8 py-8">
         {{-- Header with gradient card --}}
         <div class="mb-8 rounded-2xl bg-gradient-to-r from-primary/5 to-primary/10 p-6 backdrop-blur-sm dark:from-primary/20 dark:to-primary/5">
             <div>
-                <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Settings</h1>
-                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Manage general website configuration</p>
+                <h1 class="text-3xl font-bold text-gray-900 dark:text-white">{{ __t('Settings') }}</h1>
+                <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">{{ __t('Manage general website configuration') }}</p>
             </div>
         </div>
 
@@ -25,8 +25,8 @@
         {{-- Settings Form Card --}}
         <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
             <div class="border-b border-gray-200 px-6 py-4 dark:border-gray-700">
-                <h2 class="text-xl font-semibold text-gray-800 dark:text-white">General Configuration</h2>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Update your website information below</p>
+                <h2 class="text-xl font-semibold text-gray-800 dark:text-white">{{ __t('General Configuration') }}</h2>
+                <p class="text-sm text-gray-500 dark:text-gray-400">{{ __t('Update your website information below') }}</p>
             </div>
             <div class="px-6 py-6">
                 <form action="{{ route('admin.settings.update') }}" method="POST" enctype="multipart/form-data">
@@ -34,16 +34,16 @@
 
                     {{-- Site Information Section --}}
                     <div class="mb-8">
-                        <h3 class="text-lg font-medium text-gray-900 dark:text-white border-l-4 border-primary pl-3 mb-4">Site Information</h3>
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white border-l-4 border-primary pl-3 mb-4">{{ __t('Site Information') }}</h3>
                         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                             <div>
-                                <label for="site_name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Site Name</label>
+                                <label for="site_name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __t('Site Name') }}</label>
                                 <input type="text" name="site_name" id="site_name"
                                        value="{{ old('site_name', $settings['site_name'] ?? 'Vayu Clinic') }}"
                                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">
                             </div>
                             <div>
-                                <label for="footer_text" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Footer Text</label>
+                                <label for="footer_text" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __t('Footer Text') }}</label>
                                 <input type="text" name="footer_text" id="footer_text"
                                        value="{{ old('footer_text', $settings['footer_text'] ?? 'Providing modern, patient-centered healthcare...') }}"
                                        class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">
@@ -53,10 +53,10 @@
 
                     {{-- Contact Details Section --}}
                     <div class="mb-8">
-                        <h3 class="text-lg font-medium text-gray-900 dark:text-white border-l-4 border-primary pl-3 mb-4">Contact Details</h3>
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white border-l-4 border-primary pl-3 mb-4">{{ __t('Contact Details') }}</h3>
                         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                             <div>
-                                <label for="contact_phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Contact Phone</label>
+                                <label for="contact_phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __t('Contact Phone') }}</label>
                                 <div class="relative mt-1">
                                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                         <i class="bi bi-telephone text-gray-400"></i>
@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                             <div>
-                                <label for="emergency_phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Emergency Phone</label>
+                                <label for="emergency_phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __t('Emergency Phone') }}</label>
                                 <div class="relative mt-1">
                                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                         <i class="bi bi-exclamation-triangle text-gray-400"></i>
@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                             <div>
-                                <label for="contact_email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Contact Email</label>
+                                <label for="contact_email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __t('Contact Email') }}</label>
                                 <div class="relative mt-1">
                                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                         <i class="bi bi-envelope text-gray-400"></i>
@@ -89,7 +89,7 @@
                                 </div>
                             </div>
                             <div class="sm:col-span-2">
-                                <label for="contact_address" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Address</label>
+                                <label for="contact_address" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __t('Address') }}</label>
                                 <div class="relative mt-1">
                                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                         <i class="bi bi-geo-alt text-gray-400"></i>
@@ -104,10 +104,10 @@
 
                     {{-- Colors Section --}}
                     <div class="mb-8">
-                        <h3 class="text-lg font-medium text-gray-900 dark:text-white border-l-4 border-primary pl-3 mb-4">Theme Colors</h3>
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white border-l-4 border-primary pl-3 mb-4">{{ __t('Theme Colors') }}</h3>
                         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                             <div>
-                                <label for="primary_color" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Primary Color</label>
+                                <label for="primary_color" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __t('Primary Color') }}</label>
                                 <div class="mt-1 flex items-center gap-3">
                                     <input type="color" name="primary_color" id="primary_color_picker"
                                            value="{{ old('primary_color', $settings['primary_color'] ?? '#33FF99') }}"
@@ -116,10 +116,10 @@
                                            value="{{ old('primary_color', $settings['primary_color'] ?? '#33FF99') }}"
                                            class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">
                                 </div>
-                                <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Used for buttons, links, and accents</p>
+                                <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">{{ __t('Used for buttons, links, and accents') }}</p>
                             </div>
                             <div>
-                                <label for="secondary_color" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Secondary Color</label>
+                                <label for="secondary_color" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __t('Secondary Color') }}</label>
                                 <div class="mt-1 flex items-center gap-3">
                                     <input type="color" name="secondary_color" id="secondary_color_picker"
                                            value="{{ old('secondary_color', $settings['secondary_color'] ?? '#012119') }}"
@@ -128,25 +128,25 @@
                                            value="{{ old('secondary_color', $settings['secondary_color'] ?? '#012119') }}"
                                            class="block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">
                                 </div>
-                                <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Used for backgrounds, footers, etc.</p>
+                                <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">{{ __t('Used for backgrounds, footers, etc.') }}</p>
                             </div>
                         </div>
                     </div>
 
                     {{-- Media Section --}}
                     <div class="mb-8">
-                        <h3 class="text-lg font-medium text-gray-900 dark:text-white border-l-4 border-primary pl-3 mb-4">Media</h3>
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white border-l-4 border-primary pl-3 mb-4">{{ __t('Media') }}</h3>
                         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                             <div>
                                 <x-image-upload name="site_logo"
                                                :currentImage="$settings['site_logo'] ?? null"
-                                               label="Site Logo"
+                                               label="{{ __t('Site Logo') }}"
                                                size="h-12 w-auto" />
                             </div>
                             <div>
                                 <x-image-upload name="favicon"
                                                :currentImage="$settings['favicon'] ?? null"
-                                               label="Favicon"
+                                               label="{{ __t('Favicon') }}"
                                                accept="image/png,image/ico,image/x-icon"
                                                size="h-8 w-auto" />
                             </div>
@@ -155,10 +155,10 @@
 
                     {{-- Footer Text (full width) --}}
                     <div class="mb-8">
-                        <h3 class="text-lg font-medium text-gray-900 dark:text-white border-l-4 border-primary pl-3 mb-4">Social Media Links</h3>
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white border-l-4 border-primary pl-3 mb-4">{{ __t('Social Media Links') }}</h3>
                         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                             <div>
-                                <label for="social_facebook" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Facebook</label>
+                                <label for="social_facebook" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __t('Facebook') }}</label>
                                 <div class="relative mt-1">
                                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                         <i class="bi bi-facebook text-gray-400"></i>
@@ -170,7 +170,7 @@
                                 </div>
                             </div>
                             <div>
-                                <label for="social_twitter" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Twitter/X</label>
+                                <label for="social_twitter" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __t('Twitter/X') }}</label>
                                 <div class="relative mt-1">
                                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                         <i class="bi bi-twitter text-gray-400"></i>
@@ -182,7 +182,7 @@
                                 </div>
                             </div>
                             <div>
-                                <label for="social_instagram" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Instagram</label>
+                                <label for="social_instagram" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __t('Instagram') }}</label>
                                 <div class="relative mt-1">
                                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                         <i class="bi bi-instagram text-gray-400"></i>
@@ -194,7 +194,7 @@
                                 </div>
                             </div>
                             <div>
-                                <label for="social_linkedin" class="block text-sm font-medium text-gray-700 dark:text-gray-300">LinkedIn</label>
+                                <label for="social_linkedin" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __t('LinkedIn') }}</label>
                                 <div class="relative mt-1">
                                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                         <i class="bi bi-linkedin text-gray-400"></i>
@@ -206,7 +206,7 @@
                                 </div>
                             </div>
                             <div>
-                                <label for="social_youtube" class="block text-sm font-medium text-gray-700 dark:text-gray-300">YouTube</label>
+                                <label for="social_youtube" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __t('YouTube') }}</label>
                                 <div class="relative mt-1">
                                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                         <i class="bi bi-youtube text-gray-400"></i>
@@ -218,7 +218,7 @@
                                 </div>
                             </div>
                             <div>
-                                <label for="social_tiktok" class="block text-sm font-medium text-gray-700 dark:text-gray-300">TikTok</label>
+                                <label for="social_tiktok" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __t('TikTok') }}</label>
                                 <div class="relative mt-1">
                                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                         <i class="bi bi-tiktok text-gray-400"></i>
@@ -230,7 +230,7 @@
                                 </div>
                             </div>
                             <div>
-                                <label for="social_whatsapp" class="block text-sm font-medium text-gray-700 dark:text-gray-300">WhatsApp</label>
+                                <label for="social_whatsapp" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __t('WhatsApp') }}</label>
                                 <div class="relative mt-1">
                                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                         <i class="bi bi-whatsapp text-gray-400"></i>
@@ -246,7 +246,7 @@
 
                     {{-- Footer Text (full width) --}}
                     <div class="mb-8">
-                        <h3 class="text-lg font-medium text-gray-900 dark:text-white border-l-4 border-primary pl-3 mb-4">Footer Text</h3>
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white border-l-4 border-primary pl-3 mb-4">{{ __t('Footer Text') }}</h3>
                         <textarea name="footer_text" rows="4"
                                   class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">{{ old('footer_text', $settings['footer_text'] ?? 'Providing modern, patient-centered healthcare...') }}</textarea>
                     </div>
@@ -255,7 +255,7 @@
                     <div class="mt-8 flex justify-end border-t border-gray-200 pt-6 dark:border-gray-700">
                         <button type="submit"
                                 class="inline-flex items-center rounded-lg bg-primary px-6 py-2.5 text-sm font-medium text-white shadow-sm shadow-primary/20 transition-all hover:bg-primary/90 hover:shadow-primary/30 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:ring-offset-gray-800">
-                            <i class="bi bi-save mr-2 text-lg"></i> Save All Settings
+                            <i class="bi bi-save mr-2 text-lg"></i> {{ __t('Save All Settings') }}
                         </button>
                     </div>
                 </form>

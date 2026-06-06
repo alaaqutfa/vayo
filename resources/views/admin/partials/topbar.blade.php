@@ -5,11 +5,11 @@
                 <button data-drawer-target="top-bar-sidebar" data-drawer-toggle="top-bar-sidebar"
                     aria-controls="top-bar-sidebar" type="button"
                     class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary dark:text-gray-400 dark:hover:bg-gray-700">
-                    <span class="sr-only">Open sidebar</span>
+                    <span class="sr-only">{{ __t('Open sidebar') }}</span>
                     <i class="bi bi-list text-2xl"></i>
                 </button>
                 <a href="{{ route('admin.dashboard') }}" class="flex ml-2 md:mr-24">
-                    <img src="{{ asset('public/assets/img/logo.png') }}" class="h-8 w-auto" alt="Logo">
+                    <img src="{{ asset('public/assets/img/logo.png') }}" class="h-8 w-auto" alt="{{ __t('Logo') }}">
                     {{-- <span
                         class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-primary dark:text-primary/90 ml-2">
                         {{ $settings['site_name'] ?? 'Vayu Clinic' }}
@@ -22,7 +22,7 @@
                 {{-- <div class="relative">
                     <button type="button" id="langMenuButton"
                         class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 transition-colors"
-                        title="Change Language">
+                        title="{{ __t('Change Language') }}">
                         <i class="bi bi-globe text-xl"></i>
                     </button>
                     <div id="langDropdown"
@@ -65,14 +65,14 @@
                             <p class="text-xs text-gray-500 dark:text-gray-400 truncate">{{ Auth::user()->email }}</p>
                         </div>
                         <a href="{{ route('admin.dashboard') }}"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">Dashboard</a>
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">{{ __t('Dashboard') }}</a>
                         <a href="{{ route('admin.settings.index') }}"
-                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">Settings</a>
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700">{{ __t('Settings') }}</a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit"
                                 class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:text-red-400 dark:hover:bg-gray-700">
-                                <i class="bi bi-box-arrow-right mr-2"></i> Logout
+                                <i class="bi bi-box-arrow-right mr-2"></i> {{ __t('Logout') }}
                             </button>
                         </form>
                     </div>

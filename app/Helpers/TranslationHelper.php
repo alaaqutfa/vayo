@@ -3,11 +3,13 @@ namespace App\Helpers;
 
 use App\Models\Translation;
 use Illuminate\Support\Facades\Cache;
+use Throwable;
 
 class TranslationHelper
 {
     protected static $translations = [];
-    protected static $loaded       = false;
+    protected static $loaded       = [];
+    protected static $autoCreated  = [];
 
     /**
      * تحميل جميع الترجمات من قاعدة البيانات وتخزينها في Cache
@@ -15,26 +17,32 @@ class TranslationHelper
     public static function loadTranslations($locale = null)
     {
         $locale = $locale ?? app()->getLocale();
+        $cacheKey = self::cacheKey($locale);
 
-        // استخدام Cache لتجنب الاستعلامات المتكررة
-        $cacheKey = "translations_{$locale}";
+        try {
+            $cachedTranslations = Cache::get($cacheKey);
+            if (is_array($cachedTranslations)) {
+                self::$translations[$locale] = $cachedTranslations;
+                self::$loaded[$locale] = true;
+                return;
+            }
 
-        if (Cache::has($cacheKey)) {
-            self::$translations[$locale] = Cache::get($cacheKey);
-            self::$loaded                = true;
-            return;
+            $translations = Translation::query()
+                ->where('lang', $locale)
+                ->get(['key', 'value']);
+
+            $items = [];
+            foreach ($translations as $trans) {
+                $items[$trans->key] = $trans->value;
+            }
+
+            self::$translations[$locale] = $items;
+            self::syncCache($locale);
+        } catch (Throwable $e) {
+            self::$translations[$locale] = self::$translations[$locale] ?? [];
         }
 
-        $translations = Translation::where('lang', $locale)->get();
-        $items        = [];
-
-        foreach ($translations as $trans) {
-            $items[$trans->key] = $trans->value;
-        }
-
-        Cache::put($cacheKey, $items, 60 * 24); // تخزين ليوم كامل
-        self::$translations[$locale] = $items;
-        self::$loaded                = true;
+        self::$loaded[$locale] = true;
     }
 
     /**
@@ -48,22 +56,14 @@ class TranslationHelper
     {
         $locale = $locale ?? app()->getLocale();
 
-        if (! isset(self::$translations[$locale]) || ! self::$loaded) {
+        if (! isset(self::$loaded[$locale])) {
             self::loadTranslations($locale);
         }
 
-        if (! isset(self::$translations[$locale][$key])) {
-            // إنشاء الترجمة بقاعدة البيانات
-            Translation::create([
-                'lang'     => $locale,
-                'key'        => $key,
-                'value'      => $key,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+        self::$translations[$locale] = self::$translations[$locale] ?? [];
 
-            // إضافتها للكاش المحلي
-            self::$translations[$locale][$key] = $key;
+        if (! array_key_exists($key, self::$translations[$locale])) {
+            self::$translations[$locale][$key] = self::resolveMissingTranslation($key, $locale);
         }
 
         $text = self::$translations[$locale][$key] ?? $key;
@@ -89,14 +89,80 @@ class TranslationHelper
      */
     public static function clearCache($locale = null)
     {
-        if ($locale) {
-            Cache::forget("translations_{$locale}");
-        } else {
-            $languages = \App\Models\Language::all();
-            foreach ($languages as $lang) {
-                Cache::forget("translations_{$lang->code}");
+        try {
+            if ($locale) {
+                Cache::forget(self::cacheKey($locale));
+                unset(self::$translations[$locale], self::$loaded[$locale], self::$autoCreated[$locale]);
+                return;
             }
+
+            $loadedLocales = array_keys(self::$translations);
+            foreach ($loadedLocales as $loadedLocale) {
+                Cache::forget(self::cacheKey($loadedLocale));
+            }
+        } catch (Throwable $e) {
+            // تجاهل مشاكل الكاش حتى لا يتعطل الموقع
         }
-        self::$loaded = false;
+
+        self::$translations = [];
+        self::$loaded = [];
+        self::$autoCreated = [];
+    }
+
+    protected static function resolveMissingTranslation(string $key, string $locale): string
+    {
+        if (isset(self::$autoCreated[$locale][$key])) {
+            return self::$autoCreated[$locale][$key];
+        }
+
+        if (! self::shouldAutoCreate()) {
+            self::$autoCreated[$locale][$key] = $key;
+            return $key;
+        }
+
+        try {
+            $translation = Translation::query()->firstOrCreate(
+                ['lang' => $locale, 'key' => $key],
+                ['value' => $key]
+            );
+
+            $value = $translation->value ?? $key;
+            self::$translations[$locale][$key] = $value;
+            self::$autoCreated[$locale][$key] = $value;
+            self::syncCache($locale);
+
+            return $value;
+        } catch (Throwable $e) {
+            self::$autoCreated[$locale][$key] = $key;
+            return $key;
+        }
+    }
+
+    protected static function syncCache(string $locale): void
+    {
+        try {
+            Cache::put(self::cacheKey($locale), self::$translations[$locale] ?? [], 60 * 24);
+        } catch (Throwable $e) {
+            // تجاهل مشاكل الكاش حتى لا يتعطل الموقع
+        }
+    }
+
+    protected static function cacheKey(string $locale): string
+    {
+        return "translations_{$locale}";
+    }
+
+    protected static function shouldAutoCreate(): bool
+    {
+        $configured = config('app.translations_auto_create');
+        if ($configured !== null) {
+            return (bool) $configured;
+        }
+
+        $value = $_ENV['TRANSLATIONS_AUTO_CREATE']
+            ?? $_SERVER['TRANSLATIONS_AUTO_CREATE']
+            ?? true;
+
+        return filter_var($value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE) ?? true;
     }
 }

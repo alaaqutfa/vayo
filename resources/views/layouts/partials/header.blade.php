@@ -13,25 +13,25 @@
             </div>
             <div class="social-links d-none d-md-flex align-items-center">
                 @if(!empty($settings['social_twitter']))
-                    <a href="{{ $settings['social_twitter'] }}" class="twitter" aria-label="X" target="_blank" rel="noopener"><i class="bi bi-twitter-x"></i></a>
+                    <a href="{{ $settings['social_twitter'] }}" class="twitter" aria-label="{{ __t('X') }}" target="_blank" rel="noopener"><i class="bi bi-twitter-x"></i></a>
                 @endif
                 @if(!empty($settings['social_whatsapp']))
-                    <a href="{{ $settings['social_whatsapp'] }}" class="whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i></a>
+                    <a href="{{ $settings['social_whatsapp'] }}" class="whatsapp" aria-label="{{ __t('WhatsApp') }}" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i></a>
                 @endif
                 @if(!empty($settings['social_facebook']))
-                    <a href="{{ $settings['social_facebook'] }}" class="facebook" aria-label="Facebook" target="_blank" rel="noopener"><i class="bi bi-facebook"></i></a>
+                    <a href="{{ $settings['social_facebook'] }}" class="facebook" aria-label="{{ __t('Facebook') }}" target="_blank" rel="noopener"><i class="bi bi-facebook"></i></a>
                 @endif
                 @if(!empty($settings['social_instagram']))
-                    <a href="{{ $settings['social_instagram'] }}" class="instagram" aria-label="Instagram" target="_blank" rel="noopener"><i class="bi bi-instagram"></i></a>
+                    <a href="{{ $settings['social_instagram'] }}" class="instagram" aria-label="{{ __t('Instagram') }}" target="_blank" rel="noopener"><i class="bi bi-instagram"></i></a>
                 @endif
                 @if(!empty($settings['social_linkedin']))
-                    <a href="{{ $settings['social_linkedin'] }}" class="linkedin" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i></a>
+                    <a href="{{ $settings['social_linkedin'] }}" class="linkedin" aria-label="{{ __t('LinkedIn') }}" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i></a>
                 @endif
                 @if(!empty($settings['social_youtube']))
-                    <a href="{{ $settings['social_youtube'] }}" class="youtube" aria-label="YouTube" target="_blank" rel="noopener"><i class="bi bi-youtube"></i></a>
+                    <a href="{{ $settings['social_youtube'] }}" class="youtube" aria-label="{{ __t('YouTube') }}" target="_blank" rel="noopener"><i class="bi bi-youtube"></i></a>
                 @endif
                 @if(!empty($settings['social_tiktok']))
-                    <a href="{{ $settings['social_tiktok'] }}" class="tiktok" aria-label="TikTok" target="_blank" rel="noopener"><i class="bi bi-tiktok"></i></a>
+                    <a href="{{ $settings['social_tiktok'] }}" class="tiktok" aria-label="{{ __t('TikTok') }}" target="_blank" rel="noopener"><i class="bi bi-tiktok"></i></a>
                 @endif
             </div>
         </div>
@@ -95,10 +95,10 @@
             <div class="header-actions">
                 <a href="{{ route('appointment') }}" class="header-appointment">
                     <i class="bi bi-calendar2-check"></i>
-                    <span>Book</span>
+                    <span>{{ __t('Book') }}</span>
                 </a>
                 <div class="language-switcher-modern">
-                    <button class="lang-current" type="button" aria-label="Change language">
+                    <button class="lang-current" type="button" aria-label="{{ __t('Change language') }}">
                         <span class="lang-orbit" aria-hidden="true"></span>
                         <span class="lang-code">{{ strtoupper($currentLocale ?? app()->getLocale()) }}</span>
                         <i class="bi bi-chevron-down"></i>
@@ -106,20 +106,20 @@
                     <ul class="lang-dropdown">
                         <li>
                             <a href="{{ route('lang.switch', 'en') }}" class="{{ ($currentLocale ?? app()->getLocale()) == 'en' ? 'active' : '' }}">
-                                <img src="{{ asset('public/assets/img/flags/uk.png') }}" alt="English" class="lang-flag" />
-                                <span>English</span>
+                                <img src="{{ asset('public/assets/img/flags/uk.png') }}" alt="{{ __t('English') }}" class="lang-flag" />
+                                <span>{{ __t('English') }}</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('lang.switch', 'ar') }}" class="{{ ($currentLocale ?? app()->getLocale()) == 'ar' ? 'active' : '' }}">
-                                <img src="{{ asset('public/assets/img/flags/sa.png') }}" alt="Arabic" class="lang-flag" />
-                                <span>العربية</span>
+                                <img src="{{ asset('public/assets/img/flags/sa.png') }}" alt="{{ __t('Arabic') }}" class="lang-flag" />
+                                <span>{{ __t('العربية') }}</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('lang.switch', 'fr') }}" class="{{ ($currentLocale ?? app()->getLocale()) == 'fr' ? 'active' : '' }}">
-                                <img src="{{ asset('public/assets/img/flags/fr.png') }}" alt="French" class="lang-flag" />
-                                <span>Français</span>
+                                <img src="{{ asset('public/assets/img/flags/fr.png') }}" alt="{{ __t('French') }}" class="lang-flag" />
+                                <span>{{ __t('Français') }}</span>
                             </a>
                         </li>
                     </ul>

@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin')
 
-@section('title', 'Translations')
+@section('title', __t('Translations'))
 
 @section('content')
     <div class="px-4 sm:px-6 lg:px-8 py-8">
@@ -9,23 +9,23 @@
             class="mb-8 rounded-2xl bg-gradient-to-r from-primary/5 to-primary/10 p-6 backdrop-blur-sm dark:from-primary/20 dark:to-primary/5">
             <div class="sm:flex sm:items-center sm:justify-between">
                 <div>
-                    <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Translations</h1>
-                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Manage all text translations for the website.
+                    <h1 class="text-3xl font-bold text-gray-900 dark:text-white">{{ __t('Translations') }}</h1>
+                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">{{ __t('Manage all text translations for the website.') }}
                     </p>
                 </div>
                 <div class="mt-4 sm:mt-0 flex flex-wrap gap-3">
                     <form action="{{ route('admin.translations.index') }}" method="GET" class="flex flex-wrap gap-3">
                         <input type="hidden" name="locale" value="{{ $locale }}">
-                        <input type="text" name="search" value="{{ $search }}" placeholder="Search by key or value..."
+                        <input type="text" name="search" value="{{ $search }}" placeholder="{{ __t('Search by key or value...') }}"
                             class="rounded-lg border-gray-300 bg-white shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm px-4 py-2">
                         <button type="submit"
                             class="inline-flex items-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700">
-                            <i class="bi bi-search mr-2"></i> Search
+                            <i class="bi bi-search mr-2"></i> {{ __t('Search') }}
                         </button>
                         @if($search)
                             <button type="button" onclick="window.location.href='{{ route('admin.translations.index', ['locale' => $locale]) }}'"
                                 class="inline-flex items-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700">
-                                <i class="bi bi-x-circle mr-2"></i> Clear
+                                <i class="bi bi-x-circle mr-2"></i> {{ __t('Clear') }}
                             </button>
                         @endif
                     </form>
@@ -40,11 +40,11 @@
                     <button type="button"
                         onclick="window.location.href='{{ route('admin.translations.index') }}?locale='+document.getElementById('localeSwitcher').value"
                         class="inline-flex items-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700">
-                        <i class="bi bi-arrow-repeat mr-2"></i> Switch
+                        <i class="bi bi-arrow-repeat mr-2"></i> {{ __t('Switch') }}
                     </button>
                     <button type="button" onclick="document.getElementById('addKeyModal').classList.remove('hidden')"
                         class="inline-flex items-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white shadow-sm shadow-primary/20 transition-all hover:bg-primary/90 hover:shadow-primary/30 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:ring-offset-gray-800">
-                        <i class="bi bi-plus-lg mr-2 text-lg"></i> Add Key
+                        <i class="bi bi-plus-lg mr-2 text-lg"></i> {{ __t('Add Key') }}
                     </button>
                 </div>
             </div>
@@ -72,13 +72,13 @@
                             <tr>
                                 <th
                                     class="px-6 py-4 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                                    Key</th>
+                                    {{ __t('Key') }}</th>
                                 <th
                                     class="px-6 py-4 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                                    Value ({{ strtoupper($locale) }})</th>
+                                    {{ __t('Value') }} ({{ strtoupper($locale) }})</th>
                                 <th
                                     class="px-6 py-4 text-right text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                                    Actions</th>
+                                    {{ __t('Actions') }}</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-gray-900">
@@ -86,17 +86,19 @@
                                 <tr class="transition-colors hover:bg-gray-50 dark:hover:bg-gray-800/50">
                                     <td
                                         class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white break-words max-w-xs">
-                                        {{ $trans->key }}
+                                        <div class="rounded-lg bg-gray-50 px-3 py-2 font-mono text-xs text-gray-700 dark:bg-gray-800 dark:text-gray-300">
+                                            {{ $trans->key }}
+                                        </div>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <input type="text" name="translations[{{ $trans->key }}]" value="{{ $trans->value }}"
-                                            class="w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">
+                                        <textarea name="translations[{{ $trans->key }}]" rows="3"
+                                            class="w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">{{ $trans->value }}</textarea>
                                     </td>
                                     <td class="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
                                         <button type="button"
-                                            onclick="if(confirm('Are you sure?')) document.getElementById('delete-form-{{ $trans->id }}').submit();"
+                                            onclick="if(confirm('{{ __t('Are you sure?') }}')) document.getElementById('delete-form-{{ $trans->id }}').submit();"
                                             class="inline-flex items-center text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300">
-                                            <i class="bi bi-trash3 mr-1"></i> Delete
+                                            <i class="bi bi-trash3 mr-1"></i> {{ __t('Delete') }}
                                         </button>
                                     </td>
                                 </tr>
@@ -108,7 +110,7 @@
                 <div class="border-t border-gray-200 px-6 py-4 dark:border-gray-700">
                     <button type="submit"
                         class="inline-flex items-center rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-white shadow-sm shadow-primary/20 transition-all hover:bg-primary/90 hover:shadow-primary/30 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:ring-offset-gray-800">
-                        <i class="bi bi-save mr-2 text-lg"></i> Save All Changes
+                        <i class="bi bi-save mr-2 text-lg"></i> {{ __t('Save All Changes') }}
                     </button>
                 </div>
             </form>
@@ -146,8 +148,7 @@
 
                     <div class="bg-white px-6 pt-5 pb-4 dark:bg-gray-800 sm:p-6 sm:pb-4">
                         <div class="flex items-center justify-between pb-3">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white" id="modal-title">Add New
-                                Translation Key</h3>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white" id="modal-title">{{ __t('Add New Translation Key') }}</h3>
                             <button type="button" onclick="document.getElementById('addKeyModal').classList.add('hidden')"
                                 class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300">
                                 <i class="bi bi-x-lg text-xl"></i>
@@ -155,32 +156,31 @@
                         </div>
 
                         <div class="mt-4">
-                            <label for="key_input" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Key
+                            <label for="key_input" class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __t('Key') }}
                                 <span class="text-red-500">*</span></label>
-                            <input type="text" name="key" id="key_input" required placeholder="e.g., home.title, about.hero"
+                            <input type="text" name="key" id="key_input" required placeholder="{{ __t('e.g., home.title, about.hero') }}"
                                 class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">
-                            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Use dot notation for grouping (e.g.,
-                                home.welcome).</p>
+                            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">{{ __t('Use dot notation for grouping (e.g., home.welcome).') }}</p>
                         </div>
 
                         <div class="mt-4">
                             <label for="value_input"
-                                class="block text-sm font-medium text-gray-700 dark:text-gray-300">Value
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __t('Value') }}
                                 ({{ strtoupper($locale) }})</label>
                             <textarea name="value" id="value_input" rows="3"
                                 class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm"
-                                placeholder="Translation text..."></textarea>
+                                placeholder="{{ __t('Translation text...') }}"></textarea>
                         </div>
                     </div>
 
                     <div class="bg-gray-50 px-6 py-3 dark:bg-gray-900 sm:flex sm:flex-row-reverse sm:px-6">
                         <button type="submit"
                             class="inline-flex w-full justify-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white shadow-sm shadow-primary/20 transition-all hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 sm:ml-3 sm:w-auto dark:ring-offset-gray-800">
-                            <i class="bi bi-check-lg mr-2"></i> Create
+                            <i class="bi bi-check-lg mr-2"></i> {{ __t('Create') }}
                         </button>
                         <button type="button" onclick="document.getElementById('addKeyModal').classList.add('hidden')"
                             class="mt-3 inline-flex w-full justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 sm:mt-0 sm:w-auto dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700">
-                            Cancel
+                            {{ __t('Cancel') }}
                         </button>
                     </div>
                 </form>
