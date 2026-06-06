@@ -41,8 +41,8 @@
                             <i class="bi bi-arrow-right-short"></i>
                         </a>
                         <a href="#" class="btn btn-outline glightbox">
-                            <i class="bi bi-play-circle me-2"></i>
-                            {{ __t('Watch About Vayu') }}
+                            {{ __t('Explore Treatments') }}
+                            <i class="bi bi-arrow-right ms-2"></i>
                         </a>
                     </div>
 
