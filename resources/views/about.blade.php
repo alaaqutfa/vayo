@@ -30,22 +30,30 @@
     <!-- About Section (Main Content) -->
     <section id="about" class="about section">
         <div class="container" data-aos="fade-up">
-            <div class="row align-items-center">
+            <div class="row align-items-start">
                 <div class="col-lg-6" data-aos="fade-right">
                     <div class="about-content">
-                        @if(empty($page->content))
+                        {{-- @if($page->content)
                             {!! $page->content !!}
-                        @else
+                        @else --}}
                             <h2>{{ __t('Modern Dentistry, Beautiful Smiles') }}</h2>
-                            <p class="lead">{{ __t('At Vayu Clinic, we combine state-of-the-art technology with a gentle, patient‑first approach to transform your dental experience.') }}</p>
-                            <p>{{ __t('Whether you need a Hollywood smile makeover, dental implants, Invisalign, or routine preventive care, our team of specialist dentists and hygienists works closely with you to achieve natural, long‑lasting results.') }}</p>
-                            <p>{{ __t('We believe that a healthy, confident smile changes lives – and we’re here to make that journey comfortable, transparent, and tailored to you.') }}</p>
+                            <p class="lead">
+                                {{ __t('Vayu is a specialized dental services company dedicated to helping patients achieve healthy, confident, and beautiful smiles under the guidance and medical supervision of Dr. Imad.') }}
+                            </p>
+
+                            <p>
+                                {{ __t('We provide advanced dental care through personalized treatment plans, clear communication, and trusted support. From cosmetic dentistry and dental implants to orthodontics, routine care, and complete smile design, every treatment is tailored to each patient’s needs.') }}
+                            </p>
+
+                            <p>
+                                {{ __t('With experienced specialists, modern technology, and a patient-centered approach, Vayu makes every dental journey comfortable, transparent, and focused on lasting results.') }}
+                            </p>
                             <div class="stats-grid mt-4">
-                                <div class="stat-item"><div class="stat-number">5000+</div><div class="stat-label">{{ __t('Smiles Transformed') }}</div></div>
+                                <div class="stat-item"><div class="stat-number">5000+</div><div class="stat-label">{{ __t('Happy Patients') }}</div></div>
                                 <div class="stat-item"><div class="stat-number">15+</div><div class="stat-label">{{ __t('Years of Excellence') }}</div></div>
-                                <div class="stat-item"><div class="stat-number">8</div><div class="stat-label">{{ __t('Specialist Dentists') }}</div></div>
+                                <div class="stat-item"><div class="stat-number">20K+</div><div class="stat-label">{{ __t('Procedures Done') }}</div></div>
                             </div>
-                        @endif
+                        {{-- @endif --}}
                     </div>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">

@@ -4,22 +4,22 @@
         <div class="row align-items-center">
             <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right" data-aos-delay="200">
                 <div class="about-content">
-                    <h2 class="section-heading">{!! __t('about_personal_care') !!}</h2>
+                    <h2 class="section-heading">{!! __t('Modern Dentistry, Beautiful Smiles') !!}</h2>
                     <p class="lead-text">{{ __t('about_lead') }}</p>
                     <p>{{ __t('about_description') }}</p>
                     <div class="stats-grid">
                         <div class="stat-item">
-                            <div class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="15000"
+                            <div class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="5000"
                                 data-purecounter-duration="1"></div>
                             <div class="stat-label">{{ __t('about_patients_served') }}</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="25"
+                            <div class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="15"
                                 data-purecounter-duration="1"></div>
                             <div class="stat-label">{{ __t('about_years_excellence') }}</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="50"
+                            <div class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="20000"
                                 data-purecounter-duration="1"></div>
                             <div class="stat-label">{{ __t('about_medical_specialists') }}</div>
                         </div>
@@ -32,7 +32,7 @@
             <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
                 <div class="about-visual">
                     <div class="main-image">
-                        <img src="{{ asset('public/assets/img/health/facilities-9.webp') }}" alt="Modern medical facility"
+                        <img src="{{ asset('public/assets/img/health/facilities-6.webp') }}" alt="Modern medical facility"
                             class="img-fluid">
                     </div>
                     <div class="floating-card">
@@ -41,15 +41,15 @@
                                 <i class="bi bi-heart-pulse"></i>
                             </div>
                             <div class="card-text">
-                                <h4>24/7 Emergency Care</h4>
-                                <p>Always here when you need us most</p>
+                                <h4>24/7 {{ __t('Patient Support') }}</h4>
+                                <p>{{ __t('Here When Your Smile Needs Care') }}</p>
                             </div>
                         </div>
                     </div>
                     <div class="experience-badge">
                         <div class="badge-content">
-                            <span class="years">25+</span>
-                            <span class="text">Years of Trusted Care</span>
+                            <span class="years">15+</span>
+                            <span class="text">{{ __t('Years of Trusted Care') }}</span>
                         </div>
                     </div>
                 </div>

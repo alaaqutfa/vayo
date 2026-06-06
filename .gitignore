@@ -25,3 +25,5 @@ Thumbs.db
 *.zip
 doc.md
 doc.pdf
+.htaccess
+index.php

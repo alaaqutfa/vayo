@@ -33,4 +33,17 @@ class PageController extends Controller
 
         return view('page', compact('page'));
     }
+
+    public function showAbout()
+    {
+        $page = Page::where('slug', 'about-us')
+            ->where('is_active', true)
+            ->first();
+
+        if (!$page) {
+            abort(404);
+        }
+
+        return view('about', compact('page'));
+    }
 }

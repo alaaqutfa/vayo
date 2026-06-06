@@ -59,8 +59,7 @@
                             <h3>
                                 <span class="purecounter" data-purecounter-start="0"
                                     data-purecounter-end="{{ $settings['hero_patients_treated'] ?? 20 }}"
-                                    data-purecounter-duration="2"></span>
-                                    K+
+                                    data-purecounter-duration="2"></span>K+
                                 </h3>
                             <p>{{ __t('Procedures Done') }}</p>
                         </div>
@@ -74,7 +73,7 @@
                         </div>
                         <div class="stat-item">
                             <h3>
-                                <span class="purecounter">24/7</span>
+                                <span class="">24/7</span>
                             </h3>
                             <p>{{ __t('Patient Support') }}</p>
                         </div>
