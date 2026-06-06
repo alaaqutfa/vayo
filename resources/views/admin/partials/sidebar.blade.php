@@ -8,7 +8,7 @@
                     class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 group {{ request()->routeIs('admin.dashboard') ? 'sidebar-active' : '' }}">
                     <i
                         class="bi bi-speedometer2 w-5 h-5 text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"></i>
-                    <span class="ml-3">Dashboard</span>
+                    <span class="ml-3">{{ __t('Dashboard') }}</span>
                 </a>
             </li>
             <li>
@@ -16,7 +16,7 @@
                     class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 group {{ request()->routeIs('admin.doctors.*') ? 'sidebar-active' : '' }}">
                     <i
                         class="bi bi-person-badge w-5 h-5 text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"></i>
-                    <span class="ml-3">Doctors</span>
+                    <span class="ml-3">{{ __t('Doctors') }}</span>
                 </a>
             </li>
             <li>
@@ -24,7 +24,7 @@
                     class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 group {{ request()->routeIs('admin.services.*') ? 'sidebar-active' : '' }}">
                     <i
                         class="bi bi-briefcase w-5 h-5 text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"></i>
-                    <span class="ml-3">Services</span>
+                    <span class="ml-3">{{ __t('Services') }}</span>
                 </a>
             </li>
             <li>
@@ -32,7 +32,7 @@
                     class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 group {{ request()->routeIs('admin.testimonials.*') ? 'sidebar-active' : '' }}">
                     <i
                         class="bi bi-chat-quote w-5 h-5 text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"></i>
-                    <span class="ml-3">Testimonials</span>
+                    <span class="ml-3">{{ __t('Testimonials') }}</span>
                 </a>
             </li>
             <li>
@@ -40,7 +40,7 @@
                     class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 group {{ request()->routeIs('admin.galleries.*') ? 'sidebar-active' : '' }}">
                     <i
                         class="bi bi-images w-5 h-5 text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"></i>
-                    <span class="ml-3">Gallery</span>
+                    <span class="ml-3">{{ __t('Gallery') }}</span>
                 </a>
             </li>
             <li>
@@ -48,7 +48,7 @@
                     class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 group {{ request()->routeIs('admin.pages.*') ? 'sidebar-active' : '' }}">
                     <i
                         class="bi bi-files w-5 h-5 text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"></i>
-                    <span class="ml-3">Pages</span>
+                    <span class="ml-3">{{ __t('Pages') }}</span>
                 </a>
             </li>
             <li>
@@ -56,7 +56,7 @@
                     class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 group {{ request()->routeIs('admin.faqs.*') ? 'sidebar-active' : '' }}">
                     <i
                         class="bi bi-question-circle w-5 h-5 text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"></i>
-                    <span class="ml-3">FAQs</span>
+                    <span class="ml-3">{{ __t('FAQs') }}</span>
                 </a>
             </li>
             <li>
@@ -64,7 +64,7 @@
                     class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 group {{ request()->routeIs('admin.appointments.*') ? 'sidebar-active' : '' }}">
                     <i
                         class="bi bi-calendar-check w-5 h-5 text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"></i>
-                    <span class="ml-3">Appointments</span>
+                    <span class="ml-3">{{ __t('Appointments') }}</span>
                 </a>
             </li>
             <li>
@@ -72,7 +72,7 @@
                     class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 group {{ request()->routeIs('admin.contact-messages.*') ? 'sidebar-active' : '' }}">
                     <i
                         class="bi bi-envelope w-5 h-5 text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"></i>
-                    <span class="ml-3">Contact Messages</span>
+                    <span class="ml-3">{{ __t('Contact Messages') }}</span>
                 </a>
             </li>
             <li>
@@ -80,7 +80,7 @@
                     class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 group {{ request()->routeIs('admin.translations.*') ? 'sidebar-active' : '' }}">
                     <i
                         class="bi bi-translate w-5 h-5 text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"></i>
-                    <span class="ml-3">Translations</span>
+                    <span class="ml-3">{{ __t('Translations') }}</span>
                 </a>
             </li>
             <li>
@@ -88,7 +88,7 @@
                     class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 group {{ request()->routeIs('admin.settings.*') ? 'sidebar-active' : '' }}">
                     <i
                         class="bi bi-gear w-5 h-5 text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"></i>
-                    <span class="ml-3">Settings</span>
+                    <span class="ml-3">{{ __t('Settings') }}</span>
                 </a>
             </li>
         </ul>
@@ -97,7 +97,7 @@
                 class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                 <i
                     class="bi bi-eye w-5 h-5 text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"></i>
-                <span class="ml-3">Visit Site</span>
+                <span class="ml-3">{{ __t('Visit Site') }}</span>
             </a>
         </div>
     </div>

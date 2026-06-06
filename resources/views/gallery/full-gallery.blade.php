@@ -28,7 +28,7 @@
                                             @if($item->embed_html)
                                                 {!! $item->embed_html !!}
                                             @elseif($item->youtube_id || $item->embed_url)
-                                                <iframe src="{{ asset('public/storage/'.$item->embed_url) }}" title="{{ $item->title ?: 'Vayu Clinic video' }}"
+                                                <iframe src="{{ asset('public/storage/'.$item->embed_url) }}" title="{{ $item->title ?: __t('Vayu Clinic video') }}"
                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                     allowfullscreen loading="lazy"></iframe>
                                             @elseif($item->is_direct_video)
@@ -43,7 +43,7 @@
                                             @endif
                                         </div>
                                         <div class="gallery-card-copy">
-                                            <h4>{{ $item->title ?: 'Vayu Clinic Video' }}</h4>
+                                            <h4>{{ $item->title ?: __t('Vayu Clinic Video') }}</h4>
                                             @if($item->description)
                                                 <p>{{ Str::limit($item->description, 90) }}</p>
                                             @endif
@@ -76,19 +76,19 @@
                                         <div class="result-images">
                                             <a href="{{ asset('public/storage/' . $item->before_image) }}" class="result-image glightbox"
                                                 data-gallery="before-after-{{ $item->id }}">
-                                                <img src="{{ asset('public/storage/' . $item->before_image) }}" alt="{{ $item->title }} before"
+                                                <img src="{{ asset('public/storage/' . $item->before_image) }}" alt="{{ ($item->title ?: __t('Treatment Result')) . ' ' . __t('before') }}"
                                                     loading="lazy">
                                                 <span>{{ __t('Before') }}</span>
                                             </a>
                                             <a href="{{ asset('public/storage/' . $item->after_image) }}" class="result-image glightbox"
                                                 data-gallery="before-after-{{ $item->id }}">
-                                                <img src="{{ asset('public/storage/' . $item->after_image) }}" alt="{{ $item->title }} after"
+                                                <img src="{{ asset('public/storage/' . $item->after_image) }}" alt="{{ ($item->title ?: __t('Treatment Result')) . ' ' . __t('after') }}"
                                                     loading="lazy">
                                                 <span>{{ __t('After') }}</span>
                                             </a>
                                         </div>
                                         <div class="gallery-card-copy">
-                                            <h4>{{ $item->title ?: 'Treatment Result' }}</h4>
+                                            <h4>{{ $item->title ?: __t('Treatment Result') }}</h4>
                                             @if($item->description)
                                                 <p>{{ Str::limit($item->description, 100) }}</p>
                                             @endif
@@ -120,9 +120,9 @@
                                     <a href="{{ asset('public/storage/' . $item->image) }}" class="single-gallery-card glightbox"
                                         data-gallery="single-gallery">
                                         <img src="{{ asset('public/storage/' . $item->image) }}"
-                                            alt="{{ $item->title ?: 'Vayu Clinic gallery image' }}" loading="lazy">
+                                            alt="{{ $item->title ?: __t('Vayu Clinic gallery image') }}" loading="lazy">
                                         <span>
-                                            <strong>{{ $item->title ?: 'Vayu Clinic' }}</strong>
+                                            <strong>{{ $item->title ?: __t('Vayu Clinic') }}</strong>
                                             @if($item->description)
                                                 <small>{{ Str::limit($item->description, 70) }}</small>
                                             @endif

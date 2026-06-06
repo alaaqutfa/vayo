@@ -51,9 +51,6 @@ Route::post('/appointment', [AppointmentController::class, 'store'])->name('appo
 Route::get('/contact', [ContactController::class, 'create'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.submit');
 
-// 404 fallback
-Route::fallback(fn() => response()->view('errors.404', [], 404))->name('404');
-
 // Guide Menu
 Route::get('/guide', [GuideController::class, 'index'])->name('guide.index');
 Route::get('/guide/{slug}', [GuideController::class, 'show'])->name('guide.category');
@@ -103,3 +100,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('contact-messages', ContactMessageController::class)->only(['index', 'show', 'destroy']);
     Route::patch('contact-messages/{contactMessage}/mark-read', [ContactMessageController::class, 'markAsRead'])->name('contact-messages.mark-read');
 });
+
+// 404 fallback
+Route::fallback(fn() => response()->view('errors.404', [], 404))->name('404');

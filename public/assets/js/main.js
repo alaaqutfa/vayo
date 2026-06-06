@@ -56,10 +56,22 @@
    * Preloader
    */
   const preloader = document.querySelector('#preloader');
+  let preloaderHidden = false;
+
+  function hidePreloader() {
+    if (preloaderHidden || !preloader) {
+      return;
+    }
+
+    preloaderHidden = true;
+    preloader.remove();
+  }
+
   if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove();
-    });
+    document.addEventListener('DOMContentLoaded', hidePreloader, { once: true });
+    window.addEventListener('load', hidePreloader, { once: true });
+    window.setTimeout(hidePreloader, 2500);
+    hidePreloader();
   }
 
   /**

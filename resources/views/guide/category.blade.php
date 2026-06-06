@@ -10,7 +10,7 @@
                 <div class="row align-items-center" data-aos="fade-up">
                     <div class="col-lg-8">
                         <span class="badge bg-primary-soft text-primary mb-3 px-3 py-1 rounded-pill">
-                            @if($category->parent_id) {{ $category->parent->name ?? 'Subcategory' }} @else
+                            @if($category->parent_id) {{ $category->parent->name ?? __t('Subcategory') }} @else
                             {{ __t('Main Category') }} @endif
                         </span>
                         <h1 class="heading-title">{{ $category->name }}</h1>

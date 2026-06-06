@@ -79,6 +79,13 @@
 
         </div>
 
+        @php
+            $emergencyPhone = data_get($settings, 'emergency_phone')
+                ?? data_get($settings, 'contact_phone')
+                ?? '+90 555 057 65 55';
+            $whatsappLink = data_get($settings, 'social_whatsapp');
+            $emergencyHref = $whatsappLink ?: 'tel:' . preg_replace('/\s+/', '', $emergencyPhone);
+        @endphp
         <div class="contact-block">
             <div class="row">
 
@@ -91,10 +98,10 @@
 
                 <div class="col-lg-4">
                     <div class="contact-actions" data-aos="fade-up" data-aos-delay="300">
-                        <a href="{{ $settings['social_whatsapp'] ?? 'tel:' . $settings['emergency_phone'] ?? 'tel:+905550576555' }}"
+                        <a href="{{ $emergencyHref }}"
                             class="emergency-call" target="_blank">
-                            <i class="bi bi-{{ $settings['social_whatsapp'] ? 'whatsapp' : $settings['emergency_phone'] ?? 'telephone' }}"></i>
-                            <span>{{ $settings['emergency_phone'] ?? '+90 555 057 65 55' }}</span>
+                            <i class="bi bi-{{ $whatsappLink ? 'whatsapp' : 'telephone' }}"></i>
+                            <span>{{ $emergencyPhone }}</span>
                         </a>
                         <a href="{{ url('contact') }}" class="contact-link">{{ __t('find_location') }}</a>
                     </div>

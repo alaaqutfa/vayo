@@ -1,18 +1,18 @@
 @extends('admin.layouts.admin')
 
-@section('title', 'Guide Categories')
+@section('title', __t('Guide Categories'))
 
 @section('content')
     <div class="px-4 sm:px-6 lg:px-8">
         <div class="sm:flex sm:items-center">
             <div class="sm:flex-auto">
-                <h1 class="text-2xl font-semibold text-gray-900">Guide Categories</h1>
-                <p class="mt-2 text-sm text-gray-700">Manage main and sub categories for the guide menu.</p>
+                <h1 class="text-2xl font-semibold text-gray-900">{{ __t('Guide Categories') }}</h1>
+                <p class="mt-2 text-sm text-gray-700">{{ __t('Manage main and sub categories for the guide menu.') }}</p>
             </div>
             <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
                 <a href="{{ route('admin.guide-categories.create') }}"
                     class="inline-flex items-center justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primary/90">
-                    <i class="bi bi-plus-lg mr-2"></i> Add Category
+                    <i class="bi bi-plus-lg mr-2"></i> {{ __t('Add Category') }}
                 </a>
             </div>
         </div>
@@ -29,12 +29,12 @@
                             <thead class="bg-gray-50">
                                 <tr>
                                     <th class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold">ID</th>
-                                    <th>Name</th>
-                                    <th>Slug</th>
-                                    <th>Parent</th>
-                                    <th>Order</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
+                                    <th>{{ __t('Name') }}</th>
+                                    <th>{{ __t('Slug') }}</th>
+                                    <th>{{ __t('Parent') }}</th>
+                                    <th>{{ __t('Order') }}</th>
+                                    <th>{{ __t('Status') }}</th>
+                                    <th>{{ __t('Actions') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -48,14 +48,14 @@
                                         <td>
                                             <form action="{{ route('admin.guide-categories.toggle-status', $cat) }}"
                                                 method="POST">@csrf @method('PATCH')<button type="submit"
-                                                    class="px-2 py-1 text-xs rounded-full {{ $cat->is_active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">{{ $cat->is_active ? 'Active' : 'Inactive' }}</button>
+                                                    class="px-2 py-1 text-xs rounded-full {{ $cat->is_active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">{{ $cat->is_active ? __t('Active') : __t('Inactive') }}</button>
                                             </form>
                                         </td>
                                         <td><a href="{{ route('admin.guide-categories.edit', $cat) }}"
-                                                class="text-primary">Edit</a> | <form
+                                                class="text-primary">{{ __t('Edit') }}</a> | <form
                                                 action="{{ route('admin.guide-categories.destroy', $cat) }}" method="POST"
-                                                class="inline" onsubmit="return confirm('Delete?')">@csrf
-                                                @method('DELETE')<button type="submit" class="text-red-600">Delete</button>
+                                                class="inline" onsubmit="return confirm('{{ __t('Delete?') }}')">@csrf
+                                                @method('DELETE')<button type="submit" class="text-red-600">{{ __t('Delete') }}</button>
                                             </form>
                                         </td>
                                     </tr>
