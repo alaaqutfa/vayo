@@ -7,6 +7,7 @@ use App\Models\GuideCategory;
 use App\Models\Service;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class ServiceController extends Controller
 {
@@ -32,7 +33,7 @@ class ServiceController extends Controller
         }
 
         $data['features'] = $data['features'] ?? [];
-        $data['slug']     = Str::slug($data['name']);
+        $data['slug']     = $this->generateUniqueSlug($data['name']);
 
         Service::create($data);
 
@@ -64,7 +65,7 @@ class ServiceController extends Controller
         }
 
         $data['features'] = $data['features'] ?? [];
-        $data['slug']     = Str::slug($data['name']);
+        $data['slug']     = $this->generateUniqueSlug($data['name'], $service->id);
 
         $service->update($data);
 
@@ -85,5 +86,31 @@ class ServiceController extends Controller
         $service->save();
 
         return redirect()->back()->with('success', 'Status updated.');
+    }
+
+    protected function generateUniqueSlug(string $name, ?int $ignoreId = null): string
+    {
+        $baseSlug = Str::slug($name);
+
+        if ($baseSlug === '') {
+            throw ValidationException::withMessages([
+                'name' => 'Service name must contain letters or numbers to generate a valid link.',
+            ]);
+        }
+
+        $slug = $baseSlug;
+        $counter = 2;
+
+        while (
+            Service::query()
+                ->when($ignoreId, fn ($query) => $query->whereKeyNot($ignoreId))
+                ->where('slug', $slug)
+                ->exists()
+        ) {
+            $slug = $baseSlug . '-' . $counter;
+            $counter++;
+        }
+
+        return $slug;
     }
 }

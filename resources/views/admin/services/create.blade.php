@@ -27,6 +27,21 @@
                     <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
                         <div class="space-y-6">
                             <div>
+                                <label for="category_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Category</label>
+                                <select name="category_id" id="category_id"
+                                    class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">
+                                    <option value="">No category</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('category_id') <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div>
                                 <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Service
                                     Name <span class="text-red-500">*</span></label>
                                 <input type="text" name="name" id="name" value="{{ old('name') }}"

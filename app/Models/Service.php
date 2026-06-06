@@ -11,6 +11,7 @@ class Service extends Model
     use HasFactory, HasMediaTrait;
 
     protected $fillable = [
+        'category_id',
         'name',
         'slug',
         'description',

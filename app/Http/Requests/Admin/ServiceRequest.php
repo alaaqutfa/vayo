@@ -19,9 +19,9 @@ class ServiceRequest extends FormRequest
             'icon'        => 'nullable|string|max:100',
             'image'       => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'features'    => 'nullable|array',
-            'features.*'  => 'string|max:255',
+            'features.*'  => 'nullable|string|max:255',
             'is_active'   => 'boolean',
-            'order'       => 'integer|min:0',
+            'order'       => 'nullable|integer|min:0',
         ];
 
         if ($this->isMethod('PUT') || $this->isMethod('PATCH')) {
@@ -36,8 +36,24 @@ class ServiceRequest extends FormRequest
         return [
             'name.required'        => 'Service name is required.',
             'description.required' => 'Service description is required.',
+            'category_id.exists'   => 'Selected category is invalid.',
             'image.image'          => 'The file must be an image.',
             'image.max'            => 'Image size must not exceed 2MB.',
         ];
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $features = collect($this->input('features', []))
+            ->map(fn ($feature) => is_string($feature) ? trim($feature) : $feature)
+            ->filter(fn ($feature) => filled($feature))
+            ->values()
+            ->all();
+
+        $this->merge([
+            'is_active' => $this->boolean('is_active'),
+            'order' => $this->filled('order') ? $this->input('order') : 0,
+            'features' => $features,
+        ]);
     }
 }
