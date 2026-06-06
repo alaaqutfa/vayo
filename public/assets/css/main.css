@@ -1958,7 +1958,7 @@ section,
 
     .hero .hero-visual .main-image .floating-card.care-card {
         right: 10px;
-        bottom: 96px;
+        bottom: 25px;
         min-width: 170px;
     }
 
@@ -2480,7 +2480,7 @@ section,
     position: absolute;
     left: 26px;
     right: 26px;
-    bottom: 104px;
+    bottom: 110px;
     z-index: 2;
     max-width: 320px;
     padding: 1rem;

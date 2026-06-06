@@ -9,21 +9,21 @@
                 <div class="hero-content">
                     <div class="hero-kicker" data-aos="fade-right" data-aos-delay="150">
                         <i class="bi bi-activity"></i>
-                        <span>Advanced Dental & Medical Care</span>
+                        <span>{{ __t('Advanced Dental & Medical Care') }}</span>
                     </div>
 
                     <div class="trust-badges mb-4" data-aos="fade-right" data-aos-delay="200">
                         <div class="badge-item">
-                            <i class="bi bi-shield-check"></i>
-                            <span>Accredited</span>
-                        </div>
-                        <div class="badge-item">
-                            <i class="bi bi-clock"></i>
-                            <span>24/7 Emergency</span>
-                        </div>
-                        <div class="badge-item">
                             <i class="bi bi-star-fill"></i>
-                            <span>4.9/5 Rating</span>
+                            <span>{{ __t('5,000+ Happy Patients') }}</span>
+                        </div>
+                        <div class="badge-item">
+                            <i class="bi bi-award"></i>
+                            <span>{{ __t('Award-Winning Clinic') }}</span>
+                        </div>
+                        <div class="badge-item">
+                            <i class="bi bi-person-arms-up"></i>
+                            <span>{{ __t('International Patients') }}</span>
                         </div>
                     </div>
 
@@ -37,12 +37,12 @@
 
                     <div class="hero-actions" data-aos="fade-right" data-aos-delay="500">
                         <a href="{{ url('appointment') }}" class="btn btn-primary">
-                            <span>Book Appointment</span>
+                            <span>{{ __t('Book Appointment') }}</span>
                             <i class="bi bi-arrow-right-short"></i>
                         </a>
                         <a href="#" class="btn btn-outline glightbox">
                             <i class="bi bi-play-circle me-2"></i>
-                            Watch About Vayu
+                            {{ __t('Watch About Vayu') }}
                         </a>
                     </div>
 
@@ -83,7 +83,7 @@
                 <div class="hero-visual" data-aos="fade-left" data-aos-delay="400">
                     <div class="hero-visual-frame" aria-hidden="true"></div>
                     <div class="hero-logo-mark">
-                        <span>Powered by</span>
+                        <span>{{ __t('Powered by') }}</span>
                         <img src="{{ isset($settings['site_logo']) && $settings['site_logo'] ? asset($settings['site_logo']) : asset('public/assets/img/logo.png') }}"
                             alt="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
                     </div>
@@ -115,7 +115,7 @@
                         <div class="image-shine" aria-hidden="true"></div>
 
                         {{-- Floating Card: Appointment --}}
-                        <div class="floating-card appointment-card">
+                        {{-- <div class="floating-card appointment-card">
                             <div class="card-icon">
                                 <i class="bi bi-calendar-check"></i>
                             </div>
@@ -126,7 +126,7 @@
                                     {{ isset($doctors) && $doctors->count() ? $doctors->first()->name : 'Vayu Clinic' }}
                                 </small>
                             </div>
-                        </div>
+                        </div> --}}
 
                         {{-- Floating Card: Care / Satisfaction --}}
                         <div class="floating-card care-card">
@@ -169,7 +169,7 @@
                                 <h6 class="rating-value-placeholder">{{ number_format($firstRating, 1) }}/5</h6>
                                 <small class="reviews-count-placeholder">
                                     {{ isset($doctors) && $doctors->count() ? number_format($doctors->first()->reviews_count) : '1,234' }}
-                                    Reviews
+                                    {{ __t('Reviews') }}
                                 </small>
                             </div>
                         </div>
@@ -177,9 +177,10 @@
 
                     {{-- Service Strip (clinic-wide, can stay static or be dynamic) --}}
                     <div class="hero-service-strip" aria-label="Featured treatments">
-                        <span><i class="bi bi-check2-circle"></i> Implants</span>
-                        <span><i class="bi bi-check2-circle"></i> Veneers</span>
-                        <span><i class="bi bi-check2-circle"></i> Emergency</span>
+                        <span><i class="bi bi-check2-circle"></i> {{ __t('Implants') }}</span>
+                        <span><i class="bi bi-check2-circle"></i> {{ __t('Veneers') }}</span>
+                        <span><i class="bi bi-check2-circle"></i> {{ __t('Emergency') }}</span>
+                        <span><i class="bi bi-check2-circle"></i> {{ __t('Emergency') }}</span>
                     </div>
 
                     <div class="background-elements">

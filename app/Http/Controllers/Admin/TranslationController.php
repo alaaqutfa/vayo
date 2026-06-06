@@ -12,9 +12,20 @@ class TranslationController extends Controller
     public function index(Request $request)
     {
         $locale    = $request->get('locale', app()->getLocale());
+        $search    = $request->get('search', '');
         $languages = Language::where('is_active', true)->get();
 
-        $translations = Translation::where('lang', $locale)
+        $query = Translation::where('lang', $locale);
+
+        // Add search filter if search term is provided
+        if (!empty($search)) {
+            $query->where(function ($q) use ($search) {
+                $q->where('key', 'like', '%' . $search . '%')
+                  ->orWhere('value', 'like', '%' . $search . '%');
+            });
+        }
+
+        $translations = $query
             ->orderByRaw("
                 CASE
                     WHEN value IS NULL THEN 0
@@ -26,7 +37,7 @@ class TranslationController extends Controller
             ->orderBy('key')
             ->paginate(50);
 
-        return view('admin.translations.index', compact('translations', 'locale', 'languages'));
+        return view('admin.translations.index', compact('translations', 'locale', 'languages', 'search'));
     }
 
     public function update(Request $request)

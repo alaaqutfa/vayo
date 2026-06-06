@@ -14,6 +14,21 @@
                     </p>
                 </div>
                 <div class="mt-4 sm:mt-0 flex flex-wrap gap-3">
+                    <form action="{{ route('admin.translations.index') }}" method="GET" class="flex flex-wrap gap-3">
+                        <input type="hidden" name="locale" value="{{ $locale }}">
+                        <input type="text" name="search" value="{{ $search }}" placeholder="Search by key or value..."
+                            class="rounded-lg border-gray-300 bg-white shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm px-4 py-2">
+                        <button type="submit"
+                            class="inline-flex items-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700">
+                            <i class="bi bi-search mr-2"></i> Search
+                        </button>
+                        @if($search)
+                            <button type="button" onclick="window.location.href='{{ route('admin.translations.index', ['locale' => $locale]) }}'"
+                                class="inline-flex items-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700">
+                                <i class="bi bi-x-circle mr-2"></i> Clear
+                            </button>
+                        @endif
+                    </form>
                     <select id="localeSwitcher"
                         class="rounded-lg border-gray-300 bg-white shadow-sm focus:border-primary focus:ring-primary dark:border-gray-600 dark:bg-gray-700 dark:text-white sm:text-sm">
                         @foreach($languages as $lang)
@@ -100,7 +115,7 @@
 
             @if($translations->hasPages())
                 <div class="border-t border-gray-200 px-6 py-4 dark:border-gray-700">
-                    {{ $translations->appends(['locale' => $locale])->links() }}
+                    {{ $translations->appends(['locale' => $locale, 'search' => $search])->links() }}
                 </div>
             @endif
         </div>
