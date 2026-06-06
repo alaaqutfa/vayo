@@ -48,22 +48,35 @@
 
                     <div class="hero-stats mb-4" data-aos="fade-right" data-aos-delay="500">
                         <div class="stat-item">
-                            <h3><span class="purecounter" data-purecounter-start="0"
-                                    data-purecounter-end="{{ $settings['hero_years_experience'] ?? 10 }}"
-                                    data-purecounter-duration="2"></span>+</h3>
+                            <h3>
+                                <span class="purecounter" data-purecounter-start="0"
+                                    data-purecounter-end="{{ $settings['hero_years_experience'] ?? 15 }}"
+                                    data-purecounter-duration="2"></span>+
+                            </h3>
                             <p>{{ __t('hero_years_experience') }}</p>
                         </div>
                         <div class="stat-item">
-                            <h3><span class="purecounter" data-purecounter-start="0"
-                                    data-purecounter-end="{{ $settings['hero_patients_treated'] ?? 4000 }}"
-                                    data-purecounter-duration="2"></span>+</h3>
-                            <p>{{ __t('hero_patients_treated') }}</p>
+                            <h3>
+                                <span class="purecounter" data-purecounter-start="0"
+                                    data-purecounter-end="{{ $settings['hero_patients_treated'] ?? 20 }}"
+                                    data-purecounter-duration="2"></span>
+                                    K+
+                                </h3>
+                            <p>{{ __t('Procedures Done') }}</p>
                         </div>
                         <div class="stat-item">
-                            <h3><span class="purecounter" data-purecounter-start="0"
-                                    data-purecounter-end="{{ $settings['hero_medical_experts'] ?? 50 }}"
-                                    data-purecounter-duration="2"></span>+</h3>
-                            <p>{{ __t('hero_medical_experts') }}</p>
+                            <h3>
+                                <span class="purecounter" data-purecounter-start="0"
+                                    data-purecounter-end="{{ $settings['hero_medical_experts'] ?? 99 }}"
+                                    data-purecounter-duration="2"></span>%
+                            </h3>
+                            <p>{{ __t('Success Rate') }}</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>
+                                <span class="purecounter">24/7</span>
+                            </h3>
+                            <p>{{ __t('Patient Support') }}</p>
                         </div>
                     </div>
 
