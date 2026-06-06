@@ -33,7 +33,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/page/{slug}', [PageController::class, 'show'])->name('page.show');
 
 // Static pages (explicit for SEO)
-Route::get('/about', [PageController::class, 'showAbout'])->name('about')->defaults('slug', 'about-us');
+Route::get('/about', [PageController::class, 'showAbout'])->name('about')->defaults('slug', 'about');
 Route::get('/privacy', [PageController::class, 'show'])->name('privacy')->defaults('slug', 'privacy');
 Route::get('/terms', [PageController::class, 'show'])->name('terms')->defaults('slug', 'terms');
 
