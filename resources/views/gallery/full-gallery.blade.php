@@ -378,15 +378,10 @@
                         if (container.classList.contains('beforeafter-swiper') || container.classList.contains('singles-swiper')) {
                             autoplayDelay = 1000; // 1 second for images
                         }
-                        const swiper = new Swiper(container, {
+                        const swiperOptions = {
                             slidesPerView: 1,
                             spaceBetween: 30,
                             speed: 400,
-                            autoplay: {
-                                delay: autoplayDelay,
-                                disableOnInteraction: false,
-                                pauseOnMouseEnter: true,
-                            },
                             loop: true,
                             pagination: {
                                 el: container.querySelector('.swiper-pagination'),
@@ -395,7 +390,17 @@
                             breakpoints: {
                                 480: { slidesPerView: 1, spaceBetween: 16 }
                             }
-                        });
+                        };
+
+                        if (!container.classList.contains('videos-swiper')) {
+                            swiperOptions.autoplay = {
+                                delay: autoplayDelay,
+                                disableOnInteraction: false,
+                                pauseOnMouseEnter: true,
+                            };
+                        }
+
+                        const swiper = new Swiper(container, swiperOptions);
                         activeSwipers.push(swiper);
                     });
                 } else {

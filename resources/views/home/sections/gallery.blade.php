@@ -60,6 +60,8 @@
                             @endforeach
                         </div>
                         <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
                     </div>
                 </div>
             @endif
@@ -349,6 +351,39 @@
                     margin-top: 0.5rem;
                     z-index: 10;
                 }
+                .swiper-button-prev,
+                .swiper-button-next {
+                    display: block;
+                    position: absolute;
+                    top: 50%;
+                    width: 42px;
+                    height: 42px;
+                    margin-top: -21px;
+                    border-radius: 50%;
+                    background: rgba(0, 0, 0, 0.45);
+                    color: #fff;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    z-index: 20;
+                    transition: background 0.2s ease;
+                }
+                .swiper-button-prev:hover,
+                .swiper-button-next:hover {
+                    background: rgba(0, 0, 0, 0.65);
+                }
+                .swiper-button-prev {
+                    left: 0.75rem;
+                }
+                .swiper-button-next {
+                    right: 0.75rem;
+                }
+                .swiper-button-prev::after,
+                .swiper-button-next::after {
+                    font-size: 1.2rem;
+                    color: #fff;
+                }
             }
 
             /* Dark mode overrides */
@@ -385,24 +420,34 @@
                         if (container.classList.contains('beforeafter-swiper') || container.classList.contains('singles-swiper')) {
                             autoplayDelay = 1000; // 1 second for images
                         }
-                        const swiper = new Swiper(container, {
+
+                        const swiperOptions = {
                             slidesPerView: 1,
                             spaceBetween: 30,
                             speed: 400,
-                            autoplay: {
-                                delay: autoplayDelay,
-                                disableOnInteraction: false,
-                                pauseOnMouseEnter: true,
-                            },
                             loop: true,
                             pagination: {
                                 el: container.querySelector('.swiper-pagination'),
                                 clickable: true,
                             },
+                            navigation: {
+                                nextEl: container.querySelector('.swiper-button-next'),
+                                prevEl: container.querySelector('.swiper-button-prev'),
+                            },
                             breakpoints: {
                                 480: { slidesPerView: 1, spaceBetween: 16 }
                             }
-                        });
+                        };
+
+                        if (!container.classList.contains('videos-swiper')) {
+                            swiperOptions.autoplay = {
+                                delay: autoplayDelay,
+                                disableOnInteraction: false,
+                                pauseOnMouseEnter: true,
+                            };
+                        }
+
+                        const swiper = new Swiper(container, swiperOptions);
                         activeSwipers.push(swiper);
                     });
                 } else {

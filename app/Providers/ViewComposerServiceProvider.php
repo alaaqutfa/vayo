@@ -21,11 +21,30 @@ class ViewComposerServiceProvider extends ServiceProvider
             $view->with('settings', $settings);
         });
 
-        View::composer(['sections.featured-departments', 'sections.featured-services'], function ($view) {
+        View::composer(['home.sections.featured-departments', 'home.sections.featured-services'], function ($view) {
             $services = Schema::hasTable('services')
-                ? Service::where('is_active', true)->orderBy('order')->get()
+                ? Service::active()->ordered()->get()
                 : collect();
+
+            $dentistryServices = Schema::hasTable('services')
+                ? Service::active()->ordered()->where(function ($query) {
+                    $query->where('slug', 'like', '%dental%')
+                        ->orWhere('slug', 'like', '%implant%')
+                        ->orWhere('slug', 'like', '%veneer%')
+                        ->orWhere('slug', 'like', '%whitening%')
+                        ->orWhere('slug', 'like', '%gum%')
+                        ->orWhere('slug', 'like', '%invisalign%')
+                        ->orWhere('name', 'like', '%Dental%')
+                        ->orWhere('name', 'like', '%implant%')
+                        ->orWhere('name', 'like', '%Veneer%')
+                        ->orWhere('name', 'like', '%Whitening%')
+                        ->orWhere('name', 'like', '%Gum%')
+                        ->orWhere('name', 'like', '%Invisalign%');
+                })->get()
+                : collect();
+
             $view->with('services', $services);
+            $view->with('dentistryServices', $dentistryServices);
         });
 
         View::composer('sections.testimonials', function ($view) {

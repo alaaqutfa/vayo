@@ -16,6 +16,8 @@ class SettingsTableSeeder extends Seeder
             'contact_email'   => 'info@vayuclinic.com',
             'contact_address' => 'Vayu Clinic Medical Center, Istanbul, Türkiye',
             'emergency_phone' => '+90 555 057 65 55',
+            'cta_title'       => 'Trusted Medical Care, Every Day',
+            'cta_description' => 'At Vayu Clinic, patients receive compassionate, expert care from multidisciplinary teams using advanced technology and tailored treatment plans.',
             'footer_text'     => 'Providing modern, patient-centered healthcare through trusted specialists, clear communication, and coordinated care for every stage of life.',
         ];
 

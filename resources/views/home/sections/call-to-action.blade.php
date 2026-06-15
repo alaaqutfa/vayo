@@ -7,9 +7,13 @@
             <div class="row align-items-center">
 
                 <div class="col-lg-6">
+                    @php
+                        $ctaTitle = data_get($settings, 'cta_title', __t('cta_title'));
+                        $ctaDescription = data_get($settings, 'cta_description', __t('cta_description'));
+                    @endphp
                     <div class="content-wrapper" data-aos="fade-up" data-aos-delay="200">
-                        <h1>{{ __t('cta_title') }}</h1>
-                        <p>{{ __t('cta_description') }}</p>
+                        <h1>{{ $ctaTitle }}</h1>
+                        <p>{{ $ctaDescription }}</p>
 
                         <div class="cta-wrapper">
                             <a href="{{ url('appointment') }}" class="primary-cta">
@@ -33,7 +37,7 @@
 
                 <div class="col-lg-6">
                     <div class="image-container" data-aos="fade-left" data-aos-delay="300">
-                        <img src="{{ asset('public/assets/img/health/facilities-9.webp') }}" alt="{{ __t('cta_title') }}"
+                        <img src="{{ asset('public/assets/img/health/facilities-9.webp') }}" alt="{{ $ctaTitle }}"
                             class="img-fluid">
                     </div>
                 </div>
