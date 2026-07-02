@@ -338,14 +338,23 @@
                     scroll-snap-type: x mandatory;
                     -webkit-overflow-scrolling: touch;
                     padding: 0 0 0.75rem;
+                    align-items: stretch;
                 }
                 .videos-showcase .reel-card {
-                    min-width: min(85vw, 360px);
+                    width: min(78vw, 320px);
+                    min-width: min(78vw, 320px);
+                    max-width: 320px;
                     scroll-snap-align: start;
                     flex: 0 0 auto;
                 }
                 .reel-frame {
-                    min-height: 240px;
+                    min-height: auto;
+                    aspect-ratio: 9 / 16;
+                }
+                .reel-frame iframe,
+                .reel-frame video {
+                    object-fit: contain;
+                    background: #000;
                 }
                 .swiper.mobile-swiper {
                     padding-bottom: 2rem;
