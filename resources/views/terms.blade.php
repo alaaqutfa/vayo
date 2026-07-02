@@ -88,7 +88,7 @@
 
                     <section>
                         <h2>11. Contact</h2>
-                        <p>For questions about these Terms, contact <a href="mailto:{{ $settings['contact_email'] ?? 'info@vayuclinic.com' }}">{{ $settings['contact_email'] ?? 'info@vayuclinic.com' }}</a> or call <a href="tel:{{ preg_replace('/\D+/', '', $settings['contact_phone'] ?? '+905550576555') }}">{{ $settings['contact_phone'] ?? '+90 555 057 65 55' }}</a>.</p>
+                        <p>For questions about these Terms, contact <a href="mailto:{{ $settings['contact_email'] ?? 'info@vayuclinic.com' }}">{{ $settings['contact_email'] ?? 'info@vayuclinic.com' }}</a> or call <a href="{{ phone_href($settings['contact_phone'] ?? '+905550576555') }}"><span class="phone-number">{{ display_phone($settings['contact_phone'] ?? '+90 555 057 65 55') }}</span></a>.</p>
                     </section>
                 </article>
             </div>

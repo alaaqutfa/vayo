@@ -86,7 +86,7 @@
 
                     <section id="contact-privacy">
                         <h2>10. Contact Us</h2>
-                        <p>For privacy requests or questions, contact us at <a href="mailto:{{ $settings['contact_email'] ?? 'info@vayuclinic.com' }}">{{ $settings['contact_email'] ?? 'info@vayuclinic.com' }}</a> or call <a href="tel:{{ preg_replace('/\D+/', '', $settings['contact_phone'] ?? '+905550576555') }}">{{ $settings['contact_phone'] ?? '+90 555 057 65 55' }}</a>.</p>
+                        <p>For privacy requests or questions, contact us at <a href="mailto:{{ $settings['contact_email'] ?? 'info@vayuclinic.com' }}">{{ $settings['contact_email'] ?? 'info@vayuclinic.com' }}</a> or call <a href="{{ phone_href($settings['contact_phone'] ?? '+905550576555') }}"><span class="phone-number">{{ display_phone($settings['contact_phone'] ?? '+90 555 057 65 55') }}</span></a>.</p>
                     </section>
                 </article>
             </div>

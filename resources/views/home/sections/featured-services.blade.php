@@ -31,7 +31,7 @@
                         <div class="service-overlay">
                             <div class="service-badge">
                                 <i class="bi bi-heart-pulse"></i>
-                                <span>{{ $featuredService->category?->name ?? $featuredService->name }}</span>
+                                <span>{{ $featuredService?->category?->name ?? $featuredService?->name ?? __t('featured_services_title') }}</span>
                             </div>
                         </div>
                     </div>

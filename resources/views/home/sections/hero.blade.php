@@ -84,7 +84,7 @@
                             ?? data_get($settings, 'contact_phone')
                             ?? '+90 555 057 65 55';
                         $whatsappLink = data_get($settings, 'social_whatsapp');
-                        $emergencyHref = $whatsappLink ?: 'tel:' . preg_replace('/\s+/', '', $emergencyPhone);
+                        $emergencyHref = $whatsappLink ?: phone_href($emergencyPhone);
                     @endphp
                     <div class="emergency-contact" data-aos="fade-right" data-aos-delay="700">
                         <div class="emergency-icon">
@@ -92,7 +92,7 @@
                         </div>
                         <div class="emergency-info">
                             <small>{{ __t('Emergency Hotline') }}</small>
-                            <strong><a href="{{ $emergencyHref }}" target="_blank">{{ $emergencyPhone }}</a></strong>
+                            <strong><a href="{{ $emergencyHref }}" target="_blank"><span class="phone-number">{{ display_phone($emergencyPhone) }}</span></a></strong>
                         </div>
                     </div>
                 </div>

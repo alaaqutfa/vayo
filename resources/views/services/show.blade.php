@@ -87,13 +87,14 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="action-card secondary">
+                        @php($emergencyPhone = $settings['emergency_phone'] ?? '+90 555 057 65 55')
                         <div class="card-header"><i class="bi bi-telephone"></i>
                             <h4>{{ __t('emergency_consultations') }}</h4>
                         </div>
                         <p>{{ __t('24_7_support') }}</p>
-                        <div class="card-footer"><a href="tel:{{ $settings['emergency_phone'] ?? '+905550576555' }}"
+                        <div class="card-footer"><a href="{{ phone_href($emergencyPhone) }}"
                                 class="btn-action">{{ __t('call_now') }}</a><span
-                                class="availability">{{ $settings['emergency_phone'] ?? '+90 555 057 65 55' }}</span></div>
+                                class="availability phone-number">{{ display_phone($emergencyPhone) }}</span></div>
                     </div>
                 </div>
                 <div class="col-lg-4">

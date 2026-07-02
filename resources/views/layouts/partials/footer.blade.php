@@ -21,7 +21,7 @@
                                     class="bi bi-geo-alt"></i><span>{{ $settings['contact_address'] ?? 'Vayu Clinic Medical Center, Istanbul, Türkiye' }}</span>
                             </div>
                             <div class="contact-item"><i
-                                    class="bi bi-telephone"></i><span>{{ $settings['contact_phone'] ?? '+90 555 057 65 55' }}</span>
+                                    class="bi bi-telephone"></i><span class="phone-number">{{ display_phone($settings['contact_phone'] ?? '+90 555 057 65 55') }}</span>
                             </div>
                             <div class="contact-item"><i class="bi bi-envelope"></i><span>{{ $settings['contact_email']
                                     ?? 'info@vayuclinic.com' }}</span></div>
@@ -73,7 +73,7 @@
                                         <a href="{{ route('appointment') }}">{{ __t('book_appointment') }}</a>
                                         <a href="{{ route('contact') }}">{{ __t('contact_us') }}</a>
                                         <a
-                                            href="tel:{{ $settings['contact_phone'] ?? '+905550576555' }}">{{ __t('call_vayu') }}</a>
+                                            href="{{ phone_href($settings['contact_phone'] ?? '+905550576555') }}">{{ __t('call_vayu') }}</a>
                                         <a href="#">{{ __t('newsletter') }}</a>
                                     </nav>
                                 </div>

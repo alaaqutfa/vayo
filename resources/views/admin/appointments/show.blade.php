@@ -51,8 +51,8 @@
                             <div>
                                 <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">Phone Number</dt>
                                 <dd class="mt-1 text-base text-gray-900 dark:text-white">
-                                    <a href="tel:{{ $appointment->phone }}"
-                                        class="text-primary hover:underline">{{ $appointment->phone }}</a>
+                                    <a href="{{ phone_href($appointment->phone) }}"
+                                        class="text-primary hover:underline"><span class="phone-number">{{ display_phone($appointment->phone) }}</span></a>
                                 </dd>
                             </div>
                             <div>

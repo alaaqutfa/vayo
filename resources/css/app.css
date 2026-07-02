@@ -16,6 +16,13 @@
     }
 }
 
+.phone-number {
+    direction: ltr;
+    unicode-bidi: isolate;
+    display: inline-block;
+    text-align: start;
+}
+
 /* Form focus ring override */
 input:focus,
 select:focus,

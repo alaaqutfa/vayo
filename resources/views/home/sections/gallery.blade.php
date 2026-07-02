@@ -26,42 +26,35 @@
                         <a href="{{ route('gallery') }}">{{ __t('View all') }} <i class="bi bi-arrow-right"></i></a>
                     </div>
 
-                    <div class="swiper mobile-swiper videos-swiper">
-                        <div class="swiper-wrapper">
-                            @foreach($videos->take(4) as $item)
-                                <div class="swiper-slide">
-                                    <div class="reel-card">
-                                        <div class="reel-frame">
-                                            @if($item->embed_html)
-                                                {!! $item->embed_html !!}
-                                            @elseif($item->youtube_id || $item->embed_url)
-                                                <iframe src="{{ asset('public/storage/'.$item->embed_url) }}" title="{{ $item->title ?: 'Vayu Clinic video' }}"
-                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                                    allowfullscreen loading="lazy"></iframe>
-                                            @elseif($item->is_direct_video)
-                                                <video controls playsinline preload="metadata">
-                                                    <source src="{{ asset('public/storage/'.$item->video_url) }}">
-                                                </video>
-                                            @else
-                                                <a href="{{ $item->video_url }}" target="_blank" rel="noopener" class="video-link-card">
-                                                    <i class="bi bi-play-circle"></i>
-                                                    <span>{{ __t('Open video') }}</span>
-                                                </a>
-                                            @endif
-                                        </div>
-                                        <div class="gallery-card-copy">
-                                            <h4>{{ $item->title ?: 'Vayu Clinic Video' }}</h4>
-                                            @if($item->description)
-                                                <p>{{ Str::limit($item->description, 90) }}</p>
-                                            @endif
-                                        </div>
-                                    </div>
+                    <div class="videos-showcase" aria-label="{{ __t('Reels & videos') }}">
+                        @foreach($videos->take(4) as $item)
+                            <article class="reel-card">
+                                <div class="reel-frame">
+                                    @if($item->embed_html)
+                                        {!! $item->embed_html !!}
+                                    @elseif($item->youtube_id || $item->embed_url)
+                                        <iframe src="{{ asset('public/storage/'.$item->embed_url) }}" title="{{ $item->title ?: 'Vayu Clinic video' }}"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen loading="lazy"></iframe>
+                                    @elseif($item->is_direct_video)
+                                        <video controls playsinline preload="metadata">
+                                            <source src="{{ asset('public/storage/'.$item->video_url) }}">
+                                        </video>
+                                    @else
+                                        <a href="{{ $item->video_url }}" target="_blank" rel="noopener" class="video-link-card">
+                                            <i class="bi bi-play-circle"></i>
+                                            <span>{{ __t('Open video') }}</span>
+                                        </a>
+                                    @endif
                                 </div>
-                            @endforeach
-                        </div>
-                        <div class="swiper-pagination"></div>
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
+                                <div class="gallery-card-copy">
+                                    <h4>{{ $item->title ?: 'Vayu Clinic Video' }}</h4>
+                                    @if($item->description)
+                                        <p>{{ Str::limit($item->description, 90) }}</p>
+                                    @endif
+                                </div>
+                            </article>
+                        @endforeach
                     </div>
                 </div>
             @endif
@@ -196,12 +189,16 @@
                 overflow: hidden;
                 box-shadow: 0 8px 20px rgba(0,0,0,0.05);
                 height: 100%;
-                min-height: 80vh;
                 display: flex;
                 flex-direction: column;
             }
+            .videos-showcase {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 1.5rem;
+            }
             .reel-frame {
-                min-height: 600px;
+                min-height: 320px;
                 aspect-ratio: 16 / 9;
                 background: #000;
             }
@@ -334,6 +331,22 @@
             }
             /* Mobile: swiper active */
             @media (max-width: 768px) {
+                .videos-showcase {
+                    display: flex;
+                    gap: 1rem;
+                    overflow-x: auto;
+                    scroll-snap-type: x mandatory;
+                    -webkit-overflow-scrolling: touch;
+                    padding: 0 0 0.75rem;
+                }
+                .videos-showcase .reel-card {
+                    min-width: min(85vw, 360px);
+                    scroll-snap-align: start;
+                    flex: 0 0 auto;
+                }
+                .reel-frame {
+                    min-height: 240px;
+                }
                 .swiper.mobile-swiper {
                     padding-bottom: 2rem;
                 }
@@ -404,7 +417,7 @@
 
             function initMobileSwipers() {
                 const isMobile = window.innerWidth <= 768;
-                const swiperContainers = document.querySelectorAll('.swiper.mobile-swiper');
+                const swiperContainers = document.querySelectorAll('.swiper.mobile-swiper:not(.videos-swiper)');
 
                 // Destroy all existing swipers
                 activeSwipers.forEach(swiper => {

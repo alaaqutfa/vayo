@@ -83,9 +83,9 @@
                     </div>
                 </div>
                 <div class="col-lg-4 text-lg-end">
-                    <a href="tel:{{ $settings['emergency_phone'] ?? '+905550576555' }}" class="emergency-btn">
+                    <a href="{{ phone_href($settings['emergency_phone'] ?? '+905550576555') }}" class="emergency-btn">
                         <i class="bi bi-telephone-fill"></i>
-                        {{ __t('call_emergency') }}: {{ $settings['emergency_phone'] ?? '+90 555 057 65 55' }}
+                        {{ __t('call_emergency') }}: <span class="phone-number">{{ display_phone($settings['emergency_phone'] ?? '+90 555 057 65 55') }}</span>
                     </a>
                 </div>
             </div>

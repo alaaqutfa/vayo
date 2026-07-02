@@ -8,7 +8,7 @@
                     </a>
                 </i>
                 <i class="bi bi-phone d-flex align-items-center ms-4">
-                    <span>{{ $settings['contact_phone'] ?? '+90 555 057 65 55' }}</span>
+                    <span class="phone-number">{{ display_phone($settings['contact_phone'] ?? '+90 555 057 65 55') }}</span>
                 </i>
             </div>
             <div class="social-links d-none d-md-flex align-items-center">

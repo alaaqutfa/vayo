@@ -47,7 +47,7 @@
                                 <div class="meta-item"><i class="bi bi-envelope"></i> {{ $doctor->email }}</div>
                             @endif
                             @if($doctor->phone)
-                                <div class="meta-item"><i class="bi bi-telephone"></i> {{ $doctor->phone }}</div>
+                                <div class="meta-item"><i class="bi bi-telephone"></i> <span class="phone-number">{{ display_phone($doctor->phone) }}</span></div>
                             @endif
                         </div>
                         <div class="action-buttons mt-4">
