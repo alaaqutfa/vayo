@@ -19,7 +19,7 @@
                 <div class="col-lg-4" data-aos="fade-right">
                     <div class="doctor-profile-card text-center">
                             <div class="doctor-avatar">
-                            <img src="{{ asset('public/storage/'.$doctor->image) }}" alt="{{ $doctor->name }}" class="img-fluid rounded-circle">
+                            <img src="{{ storage_asset($doctor->image) }}" alt="{{ $doctor->name }}" class="img-fluid rounded-circle">
                                 <div class="status-badge status-{{ $doctor->status }}">{{ __t($doctor->status) }}</div>
                         </div>
                         <h2 class="mt-3">{{ $doctor->name }}</h2>
@@ -47,7 +47,7 @@
                                 <div class="meta-item"><i class="bi bi-envelope"></i> {{ $doctor->email }}</div>
                             @endif
                             @if($doctor->phone)
-                                <div class="meta-item"><i class="bi bi-telephone"></i> <span class="phone-number">{{ display_phone($doctor->phone) }}</span></div>
+                                <div class="meta-item"><i class="bi bi-telephone"></i> <a href="{{ phone_href($doctor->phone) }}"><span class="phone-number">{{ display_phone($doctor->phone) }}</span></a></div>
                             @endif
                         </div>
                         <div class="action-buttons mt-4">
@@ -204,3 +204,4 @@
         }
     </style>
 @endpush
+

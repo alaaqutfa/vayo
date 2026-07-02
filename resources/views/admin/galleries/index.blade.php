@@ -63,14 +63,14 @@
                                 <td class="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
                                     @if($item->type == 'image')
                                         @if($item->image)
-                                            <img src="{{ asset('public/storage/'.$item->image) }}" loading="lazy"
+                                            <img src="{{ storage_asset($item->image) }}" loading="lazy"
                                                  class="h-10 w-10 rounded-lg object-cover shadow-sm">
                                         @elseif($item->before_image)
                                             <div class="flex items-center gap-1">
-                                                <img src="{{ asset('public/storage/'.$item->before_image) }}" loading="lazy"
+                                                <img src="{{ storage_asset($item->before_image) }}" loading="lazy"
                                                      class="h-8 w-8 rounded object-cover">
                                                 <i class="bi bi-arrow-right-short text-gray-500"></i>
-                                                <img src="{{ asset('public/storage/'.$item->after_image) }}" loading="lazy"
+                                                <img src="{{ storage_asset($item->after_image) }}" loading="lazy"
                                                      class="h-8 w-8 rounded object-cover">
                                             </div>
                                         @else
@@ -123,3 +123,4 @@
         </div>
     </div>
 @endsection
+

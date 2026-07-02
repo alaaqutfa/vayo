@@ -17,8 +17,8 @@
                 $specialties = $displayServices->skip(1)->take(4);
             }
             $mainImage = $featuredService && $featuredService->image
-                ? (\Illuminate\Support\Str::startsWith($featuredService->image, 'assets/') ? asset('public/'.$featuredService->image) : asset('public/storage/'.$featuredService->image))
-                : asset('public/assets/img/health/default.webp');
+                ? (\Illuminate\Support\Str::startsWith($featuredService->image, 'assets/') ? public_asset($featuredService->image) : storage_asset($featuredService->image))
+                : public_asset('assets/img/health/default.webp');
         @endphp
 
         <div class="row g-0">
@@ -70,7 +70,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="specialty-card">
                             <div class="specialty-image">
-                                <img src="{{ $service->image ? (Str::startsWith($service->image, 'assets/') ? asset('public/'.$service->image) : asset('public/storage/'.$service->image)) : asset('public/assets/img/health/default.webp') }}"
+                                <img src="{{ $service->image ? (Str::startsWith($service->image, 'assets/') ? public_asset($service->image) : storage_asset($service->image)) : public_asset('assets/img/health/default.webp') }}"
                                     alt="{{ $service->name }}" class="img-fluid" loading="lazy">
                             </div>
                             <div class="specialty-content">
@@ -86,3 +86,4 @@
     </div>
 
 </section>
+

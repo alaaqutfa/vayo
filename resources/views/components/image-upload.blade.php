@@ -41,7 +41,7 @@
             <div class="flex items-end gap-3">
                 <div class="flex flex-col">
                     <span class="text-xs text-gray-500 dark:text-gray-400 mb-2 block">Current image:</span>
-                    <img src="{{ asset('public/storage/' . $currentImage) }}"
+                    <img src="{{ storage_asset($currentImage) }}"
                          alt="Current {{ $label }}"
                          class="{{ $shape }} {{ $size }} object-cover shadow-sm">
                 </div>
@@ -187,3 +187,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
+

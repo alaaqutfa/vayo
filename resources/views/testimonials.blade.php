@@ -35,7 +35,7 @@
                             <div class="service-content">
                                 <div class="d-flex align-items-center gap-3 mb-3">
                                     @if($testimonial->image)
-                                        <img src="{{ asset('public/storage/' . $testimonial->image) }}" alt="{{ $testimonial->name }}"
+                                        <img src="{{ storage_asset($testimonial->image) }}" alt="{{ $testimonial->name }}"
                                             class="rounded-circle" width="64" height="64" style="object-fit: cover;">
                                     @else
                                         <div class="rounded-circle d-flex align-items-center justify-content-center"
@@ -82,3 +82,4 @@
         </div>
     </section>
 @endsection
+

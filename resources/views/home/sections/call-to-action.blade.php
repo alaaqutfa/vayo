@@ -28,8 +28,8 @@
                     </div>
                     <div class="relative w-full">
                         <video class="bg-video" autoplay muted loop playsinline preload="none"
-                            poster="{{ asset('public/assets/videos/vayu-2.jpg') ?? '' }}">
-                            <source src="{{ asset('public/assets/videos/vayu-2.mp4') }}" type="video/mp4">
+                            poster="{{ public_asset('assets/videos/vayu-2.jpg') ?? '' }}">
+                            <source src="{{ public_asset('assets/videos/vayu-2.mp4') }}" type="video/mp4">
                         </video>
                         <div class="video-overlay-light"></div>
                     </div>
@@ -37,7 +37,7 @@
 
                 <div class="col-lg-6">
                     <div class="image-container" data-aos="fade-left" data-aos-delay="300">
-                        <img src="{{ asset('public/assets/img/health/facilities-9.webp') }}" alt="{{ $ctaTitle }}"
+                        <img src="{{ public_asset('assets/img/health/facilities-9.webp') }}" alt="{{ $ctaTitle }}"
                             class="img-fluid">
                     </div>
                 </div>
@@ -128,3 +128,4 @@
         }
     </style>
 @endpush
+

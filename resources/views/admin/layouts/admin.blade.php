@@ -12,11 +12,11 @@
 
     <!-- Favicons -->
     @if(isset($settings['favicon']))
-        <link href="{{ asset('public/storage/'.$settings['favicon']) }}" rel="icon">
+        <link href="{{ storage_asset($settings['favicon']) }}" rel="icon">
     @else
-        <link href="{{ asset('public/assets/img/favicon.png') }}" rel="icon">
+        <link href="{{ public_asset('assets/img/favicon.png') }}" rel="icon">
     @endif
-    <link href="{{ asset('public/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ public_asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
     <!-- Bootstrap Icons (CDN) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -93,6 +93,52 @@
             color: #33FF99;
             border-right-color: #33FF99;
         }
+
+        [dir="rtl"] .sidebar-active {
+            border-left: 3px solid #012119;
+            border-right: 0;
+        }
+
+        [dir="rtl"] .dark .sidebar-active {
+            border-left-color: #33FF99;
+        }
+
+        [dir="rtl"] .text-left {
+            text-align: right !important;
+        }
+
+        [dir="rtl"] .text-right {
+            text-align: left !important;
+        }
+
+        [dir="rtl"] .mr-1,
+        [dir="rtl"] .mr-2,
+        [dir="rtl"] .mr-3,
+        [dir="rtl"] .mr-4 {
+            margin-right: 0 !important;
+        }
+
+        [dir="rtl"] .ml-2 {
+            margin-right: 0.5rem !important;
+            margin-left: 0 !important;
+        }
+
+        [dir="rtl"] .ml-3 {
+            margin-right: 0.75rem !important;
+            margin-left: 0 !important;
+        }
+
+        [dir="rtl"] .ml-4 {
+            margin-right: 1rem !important;
+            margin-left: 0 !important;
+        }
+
+        @media (min-width: 640px) {
+            [dir="rtl"] main.pt-16.sm\:ml-64 {
+                margin-right: 16rem;
+                margin-left: 0;
+            }
+        }
     </style>
 </head>
 
@@ -117,3 +163,4 @@
 </body>
 
 </html>
+

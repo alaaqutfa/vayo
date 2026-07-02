@@ -9,7 +9,7 @@
                     <i class="bi bi-list text-2xl"></i>
                 </button>
                 <a href="{{ route('admin.dashboard') }}" class="flex ml-2 md:mr-24">
-                    <img src="{{ asset('public/assets/img/logo.png') }}" class="h-8 w-auto" alt="{{ __t('Logo') }}">
+                    <img src="{{ public_asset('assets/img/logo.png') }}" class="h-8 w-auto" alt="{{ __t('Logo') }}">
                     {{-- <span
                         class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-primary dark:text-primary/90 ml-2">
                         {{ $settings['site_name'] ?? 'Vayu Clinic' }}
@@ -128,3 +128,4 @@
         });
     </script>
 @endpush
+

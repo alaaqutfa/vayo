@@ -87,6 +87,33 @@ class Gallery extends Model
         return null;
     }
 
+    public function getExternalVideoUrlAttribute(): ?string
+    {
+        if ($this->video_url) {
+            return $this->video_url;
+        }
+
+        if (! $this->embed_code) {
+            return null;
+        }
+
+        $embedCode = html_entity_decode($this->embed_code, ENT_QUOTES | ENT_HTML5);
+
+        if (preg_match('/data-instgrm-permalink="([^"]+)"/i', $embedCode, $matches)) {
+            return $matches[1];
+        }
+
+        if (preg_match('/<iframe[^>]+src="([^"]+)"/i', $embedCode, $matches)) {
+            return $matches[1];
+        }
+
+        if (preg_match('/<a[^>]+href="([^"]+)"/i', $embedCode, $matches)) {
+            return $matches[1];
+        }
+
+        return null;
+    }
+
     // إرجاع كود التضمين إذا كان موجوداً، وإلا الـ embed_url المحسوب
     public function getEmbedHtmlAttribute(): ?string
     {

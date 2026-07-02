@@ -32,7 +32,7 @@
             <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
                 <div class="about-visual">
                     <div class="main-image">
-                        <img src="{{ asset('public/assets/img/health/facilities-6.webp') }}" alt="{{ __t('Modern medical facility') }}"
+                        <img src="{{ public_asset('assets/img/health/facilities-6.webp') }}" alt="{{ __t('Modern medical facility') }}"
                             loading="lazy"
                             class="img-fluid">
                     </div>
@@ -58,3 +58,4 @@
         </div>
     </div>
 </section>
+

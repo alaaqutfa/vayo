@@ -285,7 +285,7 @@
                                                         <i class="{{ $icon }}"></i>
                                                     </div>
                                                     <div class="department-image">
-                                                        <img src="{{ asset('public/assets/img/health/dental-placeholder.webp') }}"
+                                                        <img src="{{ public_asset('assets/img/health/dental-placeholder.webp') }}"
                                                              alt="{{ $child->name }}"
                                                              class="img-fluid"
                                                              onerror="this.src='https://placehold.co/400x300?text=Dental'">
@@ -382,3 +382,4 @@
         </div>
     </section>
 @endsection
+

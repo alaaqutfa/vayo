@@ -8261,3 +8261,94 @@ section,
     padding-bottom: 60px;
     /* Add your styles here */
 }
+
+.phone-number {
+    direction: ltr;
+    unicode-bidi: isolate;
+    display: inline-block;
+    text-align: start;
+    white-space: nowrap;
+}
+
+[dir="rtl"] .topbar .contact-info,
+[dir="rtl"] .topbar .social-links,
+[dir="rtl"] .branding .container,
+[dir="rtl"] .gallery-block-head,
+[dir="rtl"] .footer .footer-top .footer-contact ul,
+[dir="rtl"] .footer .footer-top .footer-links ul {
+    direction: rtl;
+}
+
+[dir="rtl"] .topbar .contact-info .ms-4 {
+    margin-right: 1rem !important;
+    margin-left: 0 !important;
+}
+
+[dir="rtl"] .header .header-actions,
+[dir="rtl"] .topbar .container,
+[dir="rtl"] .gallery-block-head,
+[dir="rtl"] .footer .footer-top .footer-contact ul li,
+[dir="rtl"] .footer .footer-top .footer-links ul li {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .guide-panel-item,
+[dir="rtl"] .hero-actions .btn,
+[dir="rtl"] .cta-wrapper a,
+[dir="rtl"] .gallery-block-head a,
+[dir="rtl"] .contact-actions .emergency-call {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .gallery-block-head a:hover i,
+[dir="rtl"] .hero-actions .btn:hover i,
+[dir="rtl"] .cta-wrapper a:hover i {
+    transform: translateX(-4px);
+}
+
+[dir="rtl"] .navmenu .dropdown ul,
+[dir="rtl"] .guide-panel {
+    text-align: right;
+}
+
+[dir="rtl"] .whatsapp-float {
+    left: 22px;
+    right: auto;
+}
+
+[dir="rtl"] .home-about .about-visual .floating-card {
+    right: -30px;
+    left: auto;
+}
+
+[dir="rtl"] .home-about .about-visual .experience-badge {
+    left: -20px;
+    right: auto;
+}
+
+[dir="rtl"] .find-doctor .search-form .field-icon,
+[dir="rtl"] .find-doctor .finder-form .field-icon {
+    right: 15px;
+    left: auto;
+}
+
+[dir="rtl"] .find-doctor .search-form input,
+[dir="rtl"] .find-doctor .finder-form input,
+[dir="rtl"] .find-doctor .search-form select,
+[dir="rtl"] .find-doctor .finder-form select {
+    padding-right: 2.5rem;
+    padding-left: 1rem;
+    text-align: right;
+}
+
+[dir="rtl"] .result-image span {
+    right: 0.5rem;
+    left: auto;
+}
+
+@media (max-width: 1199px) {
+    [dir="rtl"] .mobile-nav-toggle {
+        margin-left: 0;
+        margin-right: auto;
+    }
+}

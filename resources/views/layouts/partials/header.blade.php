@@ -1,4 +1,5 @@
 <header id="header" class="header fixed-top">
+    @php($languageRedirect = url()->full())
     <div class="topbar d-flex align-items-center dark-background">
         <div class="container d-flex justify-content-between align-items-center flex-wrap">
             <div class="contact-info d-flex align-items-center flex-wrap">
@@ -41,9 +42,9 @@
         <div class="container position-relative d-flex align-items-center justify-content-between">
             <a href="{{ url('/') }}" class="logo d-flex align-items-center" aria-label="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
                 @if(isset($settings['site_logo']) && $settings['site_logo'])
-                    <img src="{{ asset('public/storage/'.$settings['site_logo']) }}" alt="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
+                    <img src="{{ storage_asset($settings['site_logo']) }}" alt="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
                 @else
-                    <img src="{{ asset('public/assets/img/logo.png') }}" alt="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
+                    <img src="{{ public_asset('assets/img/logo.png') }}" alt="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
                 @endif
             </a>
 
@@ -105,20 +106,20 @@
                     </button>
                     <ul class="lang-dropdown">
                         <li>
-                            <a href="{{ route('lang.switch', 'en') }}" class="{{ ($currentLocale ?? app()->getLocale()) == 'en' ? 'active' : '' }}">
-                                <img src="{{ asset('public/assets/img/flags/uk.png') }}" alt="{{ __t('English') }}" class="lang-flag" />
+                            <a href="{{ route('lang.switch', ['locale' => 'en', 'redirect' => $languageRedirect]) }}" class="{{ ($currentLocale ?? app()->getLocale()) == 'en' ? 'active' : '' }}">
+                                <img src="{{ public_asset('assets/img/flags/uk.png') }}" alt="{{ __t('English') }}" class="lang-flag" />
                                 <span>{{ __t('English') }}</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('lang.switch', 'ar') }}" class="{{ ($currentLocale ?? app()->getLocale()) == 'ar' ? 'active' : '' }}">
-                                <img src="{{ asset('public/assets/img/flags/sa.png') }}" alt="{{ __t('Arabic') }}" class="lang-flag" />
+                            <a href="{{ route('lang.switch', ['locale' => 'ar', 'redirect' => $languageRedirect]) }}" class="{{ ($currentLocale ?? app()->getLocale()) == 'ar' ? 'active' : '' }}">
+                                <img src="{{ public_asset('assets/img/flags/sa.png') }}" alt="{{ __t('Arabic') }}" class="lang-flag" />
                                 <span>{{ __t('العربية') }}</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('lang.switch', 'fr') }}" class="{{ ($currentLocale ?? app()->getLocale()) == 'fr' ? 'active' : '' }}">
-                                <img src="{{ asset('public/assets/img/flags/fr.png') }}" alt="{{ __t('French') }}" class="lang-flag" />
+                            <a href="{{ route('lang.switch', ['locale' => 'fr', 'redirect' => $languageRedirect]) }}" class="{{ ($currentLocale ?? app()->getLocale()) == 'fr' ? 'active' : '' }}">
+                                <img src="{{ public_asset('assets/img/flags/fr.png') }}" alt="{{ __t('French') }}" class="lang-flag" />
                                 <span>{{ __t('Français') }}</span>
                             </a>
                         </li>
@@ -128,3 +129,4 @@
         </div>
     </div>
 </header>
+

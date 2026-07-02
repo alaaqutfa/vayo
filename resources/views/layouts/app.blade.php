@@ -22,7 +22,7 @@
         $appleTouchIcon = $siteUrl . '/public/assets/img/apple-touch-icon.png';
         $manifestUrl = $siteUrl . '/public/site.webmanifest';
         $favicon = isset($settings['favicon'])
-            ? asset('public/storage/' . $settings['favicon'])
+            ? storage_asset($settings['favicon'])
             : $favicon192;
         $schema = [
             '@context' => 'https://schema.org',
@@ -96,18 +96,18 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="{{ asset('public/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/assets/vendor/aos/aos.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link href="{{ public_asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ public_asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ public_asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
+    <link href="{{ public_asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ public_asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ public_asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <!-- Main CSS File -->
-    <link href="{{ asset('public/assets/css/main.css') }}" rel="stylesheet">
+    <link href="{{ public_asset('assets/css/main.css') }}" rel="stylesheet">
     @stack('styles')
 </head>
 
@@ -167,17 +167,18 @@
     </script>
 
     <!-- Vendor JS Files -->
-    <script src="{{ asset('public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('public/assets/vendor/php-email-form/validate.js') }}"></script>
-    <script src="{{ asset('public/assets/vendor/aos/aos.js') }}"></script>
-    <script src="{{ asset('public/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-    <script src="{{ asset('public/assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
-    <script src="{{ asset('public/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ public_asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ public_asset('assets/vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ public_asset('assets/vendor/aos/aos.js') }}"></script>
+    <script src="{{ public_asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ public_asset('assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+    <script src="{{ public_asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
 
     <!-- Main JS File -->
-    <script src="{{ asset('public/assets/js/main.js') }}"></script>
+    <script src="{{ public_asset('assets/js/main.js') }}"></script>
 
     @stack('scripts')
 </body>
 
 </html>
+

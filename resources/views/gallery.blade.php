@@ -24,3 +24,4 @@
     </div><!-- End Page Title -->
     @include('gallery.full-gallery')
 @endsection
+

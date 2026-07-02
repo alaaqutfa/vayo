@@ -103,7 +103,7 @@
                     <div class="hero-visual-frame" aria-hidden="true"></div>
                     <div class="hero-logo-mark">
                         <span>{{ __t('Powered by') }}</span>
-                        <img src="{{ isset($settings['site_logo']) && $settings['site_logo'] ? asset($settings['site_logo']) : asset('public/assets/img/logo.png') }}"
+                        <img src="{{ isset($settings['site_logo']) && $settings['site_logo'] ? asset($settings['site_logo']) : public_asset('assets/img/logo.png') }}"
                             alt="{{ $settings['site_name'] ?? 'Vayu Clinic' }}">
                     </div>
                     <div class="main-image">
@@ -116,7 +116,7 @@
                                             data-doctor-rating="{{ $doctor->rating }}"
                                             data-doctor-reviews="{{ $doctor->reviews_count }}"
                                             data-doctor-years="{{ $doctor->years_experience }}">
-                                            <img src="{{ asset('public/storage/'.$doctor->image) }}" alt="{{ $doctor->name }}" class="img-fluid">
+                                            <img src="{{ storage_asset($doctor->image) }}" alt="{{ $doctor->name }}" class="img-fluid">
                                             <div class="hero-doctor-caption">
                                                 <span>{{ $doctor->specialty }}</span>
                                                 <strong>{{ $doctor->name }}</strong>
@@ -127,7 +127,7 @@
                                 </div>
                             </div>
                         @else
-                            <img src="{{ asset('public/assets/img/health/staff-10.webp') }}" alt="Vayu Clinic medical team"
+                            <img src="{{ public_asset('assets/img/health/staff-10.webp') }}" alt="Vayu Clinic medical team"
                                 class="img-fluid">
                         @endif
 
@@ -289,3 +289,4 @@
         });
     </script>
 @endpush
+

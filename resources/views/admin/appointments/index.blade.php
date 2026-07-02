@@ -64,7 +64,10 @@
                                 <td class="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
                                     {{ $app->email }}</td>
                                 <td class="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
-                                    <span class="phone-number">{{ display_phone($app->phone) }}</span></td>
+                                    <a href="{{ phone_href($app->phone) }}" class="hover:text-primary">
+                                        <span class="phone-number">{{ display_phone($app->phone) }}</span>
+                                    </a>
+                                </td>
                                 <td class="whitespace-nowrap px-4 py-4 text-sm text-gray-500 dark:text-gray-400">
                                     {{ $app->date }} @if($app->time) {{ $app->time }} @endif</td>
                                 <td class="whitespace-nowrap px-4 py-4">
@@ -114,3 +117,4 @@
         </div>
     </div>
 @endsection
+

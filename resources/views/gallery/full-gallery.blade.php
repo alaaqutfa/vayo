@@ -21,18 +21,29 @@
 
                     <div class="videos-showcase" aria-label="{{ __t('Reels & videos') }}">
                         @foreach($videos->take(4) as $item)
+                            @php
+                                $externalVideoHref = $item->external_video_url ?: $item->embed_url;
+                            @endphp
                             <article class="reel-card">
                                 <div class="reel-frame">
-                                    @if($item->embed_html)
-                                        {!! $item->embed_html !!}
-                                    @elseif($item->youtube_id || $item->embed_url)
-                                        <iframe src="{{ asset('public/storage/'.$item->embed_url) }}" title="{{ $item->title ?: __t('Vayu Clinic video') }}"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowfullscreen loading="lazy"></iframe>
-                                    @elseif($item->is_direct_video)
+                                    @if($item->is_direct_video)
                                         <video controls playsinline preload="metadata">
-                                            <source src="{{ asset('public/storage/'.$item->video_url) }}">
+                                            <source src="{{ storage_asset($item->video_url) }}">
                                         </video>
+                                    @elseif($externalVideoHref)
+                                        <div class="reel-embed reel-embed-desktop">
+                                            @if($item->embed_html)
+                                                {!! $item->embed_html !!}
+                                            @elseif($item->youtube_id || $item->embed_url)
+                                                <iframe src="{{ $item->embed_url }}" title="{{ $item->title ?: __t('Vayu Clinic video') }}"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen loading="lazy"></iframe>
+                                            @endif
+                                        </div>
+                                        <a href="{{ $externalVideoHref }}" target="_blank" rel="noopener" class="video-link-card reel-link-mobile">
+                                            <i class="bi bi-play-circle"></i>
+                                            <span>{{ __t('Open video') }}</span>
+                                        </a>
                                     @else
                                         <a href="{{ $item->video_url }}" target="_blank" rel="noopener" class="video-link-card">
                                             <i class="bi bi-play-circle"></i>
@@ -69,15 +80,15 @@
                                 <div class="swiper-slide">
                                     <div class="result-card">
                                         <div class="result-images">
-                                            <a href="{{ asset('public/storage/' . $item->before_image) }}" class="result-image glightbox"
+                                            <a href="{{ storage_asset($item->before_image) }}" class="result-image glightbox"
                                                 data-gallery="before-after-{{ $item->id }}">
-                                                <img src="{{ asset('public/storage/' . $item->before_image) }}" alt="{{ ($item->title ?: __t('Treatment Result')) . ' ' . __t('before') }}"
+                                                <img src="{{ storage_asset($item->before_image) }}" alt="{{ ($item->title ?: __t('Treatment Result')) . ' ' . __t('before') }}"
                                                     loading="lazy">
                                                 <span>{{ __t('Before') }}</span>
                                             </a>
-                                            <a href="{{ asset('public/storage/' . $item->after_image) }}" class="result-image glightbox"
+                                            <a href="{{ storage_asset($item->after_image) }}" class="result-image glightbox"
                                                 data-gallery="before-after-{{ $item->id }}">
-                                                <img src="{{ asset('public/storage/' . $item->after_image) }}" alt="{{ ($item->title ?: __t('Treatment Result')) . ' ' . __t('after') }}"
+                                                <img src="{{ storage_asset($item->after_image) }}" alt="{{ ($item->title ?: __t('Treatment Result')) . ' ' . __t('after') }}"
                                                     loading="lazy">
                                                 <span>{{ __t('After') }}</span>
                                             </a>
@@ -112,9 +123,9 @@
                         <div class="swiper-wrapper">
                             @foreach($singleImages->take(8) as $item)
                                 <div class="swiper-slide">
-                                    <a href="{{ asset('public/storage/' . $item->image) }}" class="single-gallery-card glightbox"
+                                    <a href="{{ storage_asset($item->image) }}" class="single-gallery-card glightbox"
                                         data-gallery="single-gallery">
-                                        <img src="{{ asset('public/storage/' . $item->image) }}"
+                                        <img src="{{ storage_asset($item->image) }}"
                                             alt="{{ $item->title ?: __t('Vayu Clinic gallery image') }}" loading="lazy">
                                         <span>
                                             <strong>{{ $item->title ?: __t('Vayu Clinic') }}</strong>
@@ -187,19 +198,60 @@
             }
             .videos-showcase {
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
                 gap: 1.5rem;
             }
             .reel-frame {
                 min-height: 320px;
-                aspect-ratio: 16 / 9;
+                aspect-ratio: 9 / 16;
                 background: #000;
+                position: relative;
             }
+            .reel-embed,
             .reel-frame iframe,
             .reel-frame video {
                 width: 100%;
                 height: 100%;
+            }
+            .reel-frame iframe,
+            .reel-frame video {
                 object-fit: cover;
+            }
+            .reel-frame blockquote.instagram-media,
+            .reel-frame .instagram-media,
+            .reel-frame .instagram-media-rendered {
+                min-width: 0 !important;
+                width: 100% !important;
+                max-width: none !important;
+                margin: 0 !important;
+                height: 100% !important;
+            }
+            .video-link-card {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                gap: 0.75rem;
+                width: 100%;
+                height: 100%;
+                padding: 1.5rem;
+                color: #fff;
+                text-decoration: none;
+                background:
+                    linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.72)),
+                    radial-gradient(circle at top, rgba(60, 148, 225, 0.45), transparent 42%),
+                    #050505;
+            }
+            .video-link-card i {
+                font-size: 2.4rem;
+            }
+            .video-link-card span {
+                font-weight: 600;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+            }
+            .reel-link-mobile {
+                display: none;
             }
             .gallery-card-copy {
                 padding: 1rem;
@@ -334,9 +386,9 @@
                     align-items: stretch;
                 }
                 .videos-showcase .reel-card {
-                    width: min(78vw, 320px);
-                    min-width: min(78vw, 320px);
-                    max-width: 320px;
+                    width: min(86vw, 340px);
+                    min-width: min(86vw, 340px);
+                    max-width: 340px;
                     scroll-snap-align: start;
                     flex: 0 0 auto;
                 }
@@ -344,9 +396,14 @@
                     min-height: auto;
                     aspect-ratio: 9 / 16;
                 }
-                .reel-frame iframe,
+                .reel-embed-desktop {
+                    display: none;
+                }
+                .reel-link-mobile {
+                    display: flex;
+                }
                 .reel-frame video {
-                    object-fit: contain;
+                    object-fit: cover;
                     background: #000;
                 }
                 .swiper.mobile-swiper {
@@ -365,6 +422,12 @@
                     bottom: -0.5rem;
                     margin-top: 0.5rem;
                     z-index: 10;
+                }
+            }
+
+            @media (min-width: 769px) {
+                .reel-link-mobile {
+                    display: none;
                 }
             }
 
@@ -458,3 +521,4 @@
         </script>
     @endpush
 @endif
+
